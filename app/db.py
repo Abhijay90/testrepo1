@@ -8,13 +8,15 @@ def _dictfetchall(cursor):
     ]
     return s
 
-def db(query,commit=0,asdict=0):
+def db(query,commit=0,asdict=0,lastrowid=0):
     conn = mysql.connection
     cur = conn.cursor()
     try:
         cur.execute(query)
         if commit:
             conn.commit()
+        if lastrowid and commit:
+            return cursor.lastrowid
     except:
         print "error"
         return []
