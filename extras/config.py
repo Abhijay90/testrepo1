@@ -1,7 +1,7 @@
 db_conf = {'MYSQL_HOST':'localhost',
 'MYSQL_USER': 'root',
 'MYSQL_PASSWORD': 'root',
-'MYSQL_DB': None,
+'MYSQL_DB': "testing",
 'MYSQL_PORT': 3306,
 'MYSQL_UNIX_SOCKET': None,
 'MYSQL_CONNECT_TIMEOUT': 10,
