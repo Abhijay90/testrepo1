@@ -29,26 +29,26 @@ def login_new():
     try:
         username = s["username"]
         if not username:
-            return response_json(status=False,val=dict(msg="enter username"))
+            return response_json(status=False,data=dict(msg="enter username"))
     except:
-        return response_json(status=False,val=dict(msg="enter username"))
+        return response_json(status=False,data=dict(msg="enter username"))
     try:
         secret = s["password"]
         if not secret:
-            return response_json(status=False,val=dict(msg="enter password"))
+            return response_json(status=False,data=dict(msg="enter password"))
     except:
-        return response_json(status=False,val=dict(msg="enter password"))
+        return response_json(status=False,data=dict(msg="enter password"))
 
     obj = User(username = username,password=password,id=0)
 
-    val = obj.login()
+    data = obj.login()
 
-    if val["status"]:
-        return obj.set_cookie(response_json(status=True,val={}),user_type=val["val"]["user_type"],user_company_id=val["val"]["user_company_id"]) #login
+    if data["status"]:
+        return obj.set_cookie(response_json(status=True,data={}),user_type=data["data"]["user_type"],user_company_id=data["data"]["user_company_id"]) #login
     else:
-        return obj.set_cookie(response_json(status=False,val={}))
+        return obj.set_cookie(response_json(status=False,data={}))
 
 @login_dummy.route('/',methods=['GET'])
 def dummy_session():
     obj = User(username = "",password="",id=1)
-    return obj.set_cookie(response_json(status=True,val={}),user_type=1,user_company_id=1)
+    return obj.set_cookie(response_json(status=True,data={}),user_type=1,user_company_id=1)
