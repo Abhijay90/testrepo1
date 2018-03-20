@@ -8,7 +8,7 @@ from core_logic.hrmetrics import homepage_dashboard,hrmetrics
 from app import mysql
 
 # api = Api(app)
-app.register_blueprint(homepage_bp,url_prefix='/')
+app.register_blueprint(homepage_bp,url_prefix='/home')
 app.register_blueprint(login_dummy,url_prefix='/login/')
 app.register_blueprint(homepage_dashboard,url_prefix='/dashboard')
 app.register_blueprint(user_check,url_prefix='/user_options')

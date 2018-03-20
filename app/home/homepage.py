@@ -17,18 +17,9 @@ user_check= Blueprint('multicheck',__name__,template_folder='templates')
 
 @homepage_bp.route('',methods=['GET'])
 def homepage():
-    query = '''select 1 as tm;'''
-    try:
-        res = db(query,asdict=True)
-    except Exception as e:
-        return response_json(val={},status=False)
-    if not res:
-        return response_json(val={},status=False)
-    # return render_template('index.html')
-    return response_json(val=res[0]['tm'],status=True)
+    return render_template('home.html')
 
 
 @user_check.route('',methods=['GET'])
 def multicheck():
     return render_template('index_choice.html')
-    # return response_json(val=res[0]['tm'],status=True)
