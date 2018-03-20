@@ -16,7 +16,7 @@ from app.core_logic.metrics import user_access
  
 homepage_dashboard = Blueprint('dashboard',__name__)
 
-hrmetrics=Blueprint('metrics',__name__)
+hrmetrics=Blueprint('hrmetrics',__name__)
 
 @homepage_dashboard.route('',methods=['GET'])
 @user_access()
@@ -24,18 +24,19 @@ def dashboard(obj):
     resp = obj.employee_cost(json=0)
     return render_template('index.html',resp=resp["data"])
     
-@hrmetrics.route('',methods=['GET'])
+@hrmetrics.route('/',methods=['GET'])
 @user_access()
 def employee_cost(obj):
     resp = obj.user_averages_rs(required_field="Employee_Cost",json=0)
     return render_template('index.html',resp=resp["data"])
 
 
-# @hrmetrics.route('/revenue_employee',methods=['GET'])
-# @user_access()
-# def Revenue_Per_Employe(obj):
-#     resp = obj.user_averages_rs(required_field="Revenue_Per_Employe",json=0)
-#     return render_template('index.html',resp=resp["data"])
+@hrmetrics.route('/revenue_employee',methods=['GET'])
+@user_access()
+def Revenue_Per_Employe(obj):
+    resp = obj.user_averages_rs(required_field="Revenue_Per_Employe",json=0)
+    return render_template('index.html',resp=resp["data"])
+
 
 
 

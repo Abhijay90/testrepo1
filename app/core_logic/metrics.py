@@ -1,5 +1,6 @@
 from app.db import db,db_cursor
 from app.utility import response_json 
+from functools import wraps
 
 try:
     from flask import session
@@ -20,7 +21,9 @@ def user_access(required_field="",redirect="/"):
                 return dict(status=False)
             kwargs.update({"obj":obj})
             return function(*args, **kwargs)
-        return __decorator
+
+        return wraps(function)(__decorator)
+        # return __decorator
     return decorator
 
 
