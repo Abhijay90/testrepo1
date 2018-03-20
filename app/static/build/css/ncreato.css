@@ -23,13 +23,13 @@ section.top_prof{
 }
 section.middle_scroll{
 	width:100%;
-	height:70%;
+	height:74%;
 	overflow:hidden;
 	overflow-y: auto;
 }
 section.bottom_tabs{
 	width:100%;
-	height:10%;
+	height:6%;
 	background-color:#fafafa;
 }
 .prime{
@@ -83,10 +83,10 @@ section.bottom_tabs{
 	width:100%;
 }
 h3{
-	font-size:2em;
+	font-size:1.8em;
 }
 h6{
-	font-size:1em;
+	font-size:0.8em;
 	margin:auto;
 }
 .prime h6 span{
@@ -141,10 +141,10 @@ ul.cards_outer li h3{
     text-align: center;
     width: auto;
     color:#333;
+    font-size:0.6em;
 }
 .bottom_tabs ul li .fa{
     color: #3E7BFD;
-    font-size: 3em;
     margin-bottom: 5px;
 }
 .ratio {
@@ -191,8 +191,26 @@ ul.cards_outer li h3{
     text-align: center;
     color: #3E7BFD;
     position: relative;
-    font-weight:900;
-    height:10%;
+    font-weight:600;
+    height:15%;
+}
+.carousel-inner > .item > .item-head > h3{
+	font-size:1.5em;
+	margin:0.2em auto;
+}
+.carousel-inner > .item > .item-head > .btns > button{
+	color:#333;
+	padding:5px 10px;
+	background-color:#E0E0E0;
+	border:none;
+	font-size:0.8em;
+	margin:auto;
+	font-weight:300;
+}
+.carousel-inner > .item > .item-head > .btns > button.active,
+.carousel-inner > .item > .item-head > .btns > button:hover{
+	color:#EEE;
+	background-color:#1A89FF;
 }
 .carousel-indicators {
     position: relative;
@@ -202,7 +220,7 @@ ul.cards_outer li h3{
     margin: auto;
     width: 100%;
     height: 5%;
-    padding: 5px 0;
+    padding: 0.2em 0;
 }
 .carousel-indicators li {
     background-color: #E5E5E5;
@@ -222,7 +240,7 @@ ul.cards_outer li h3{
     width: 80%;
     margin: auto;
     height: 80%;
-    margin-top: 10%;
+    margin-top: 5%;
     background-color: #FFF;
     box-shadow: 0px 0px 3px 5px #eee;
     color:#000;
@@ -291,6 +309,9 @@ ul.carousel-tabs li img{
     font-size: 1.5em;
     padding: 5px 10px;
     margin: auto 5%;
+}
+.carousel-bottom .btns button:hover{
+	box-shadow:0px 0px 5px #333;
 }
 .carousel-bottom img{
 	width:40%;
