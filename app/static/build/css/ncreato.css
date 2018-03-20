@@ -198,6 +198,9 @@ ul.cards_outer li h3{
 	font-size:1.5em;
 	margin:0.2em auto;
 }
+.carousel-inner > .item > .item-head > .btns{
+	margin:1em auto;
+}
 .carousel-inner > .item > .item-head > .btns > button{
 	color:#333;
 	padding:5px 10px;
@@ -317,6 +320,9 @@ ul.carousel-tabs li img{
 	width:40%;
 	margin:auto;
 }
+button[disabled]{
+	pointer-events: none;
+}
 
 /* Custom, iPhone Retina */ 
 @media only screen and (min-width : 320px) {
@@ -340,6 +346,15 @@ ul.carousel-tabs li img{
 	}
 	.carousel-control .glyphicon {
 	    font-size: 1.5em;
+	}
+	.carousel-inner > .item > .chart_hold {
+	    height: 72%;
+	}
+	.carousel-inner > .item > .item-head {
+	    height: 23%;
+	}
+	.carousel-inner > .item > .item-head > .btns {
+	    margin: 0em auto;
 	}
 }
 
@@ -365,6 +380,9 @@ ul.carousel-tabs li img{
 	}
 	.carousel-control .glyphicon {
 	    font-size: 2.5em;
+	}
+	.carousel-inner > .item > .item-head > .btns {
+	    margin: 1em auto;
 	}
 }
 
