@@ -10,3 +10,5 @@ db_conf = {'MYSQL_HOST':'localhost',
 'MYSQL_CHARSET':'utf8',
 'MYSQL_SQL_MODE':None,
 'MYSQL_CURSORCLASS':None}
+
+app_secret={"SECRET_KEY":"LSho3t1qIf5pPIvbGVtl"}
