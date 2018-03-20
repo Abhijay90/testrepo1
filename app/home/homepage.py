@@ -16,13 +16,14 @@ homepage_bp = Blueprint('homepage',__name__,template_folder='templates')
 
 @homepage_bp.route('',methods=['GET'])
 def homepage():
-    print session
-    query = '''select 1 as tm;'''
-    try:
-        res = db(query,asdict=True)
-    except Exception as e:
-        return response_json(val={},status=False)
-    if not res:
-        return response_json(val={},status=False)
+    return render_template('home.html')
+#    print session
+#    query = '''select 1 as tm;'''
+#    try:
+#        res = db(query,asdict=True)
+#    except Exception as e:
+#        return response_json(val={},status=False)
+#    if not res:
+#        return response_json(val={},status=False)
     # return render_template('index.html')
-    return response_json(val=res[0]['tm'],status=True)
+#    return response_json(val=res[0]['tm'],status=True)
