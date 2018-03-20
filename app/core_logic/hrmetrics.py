@@ -18,6 +18,8 @@ homepage_dashboard = Blueprint('dashboard',__name__)
 
 hrmetrics=Blueprint('hrmetrics',__name__)
 
+
+#Cost
 @homepage_dashboard.route('',methods=['GET'])
 @user_access()
 def dashboard(obj):
@@ -28,42 +30,102 @@ def dashboard(obj):
 @user_access()
 def employee_cost(obj):
     resp = obj.user_averages_rs(required_field="Employee_Cost",json=0)
-    return render_template('index.html',resp=resp["data"])
+    return render_template('benchmark_results.html',resp=resp["data"])
 
 
 @hrmetrics.route('/revenue_employee',methods=['GET'])
 @user_access()
-def Revenue_Per_Employe(obj):
+def Revenue_Per_Employee(obj):
     resp = obj.user_averages_rs(required_field="Revenue_Per_Employe",json=0)
-    return render_template('index.html',resp=resp["data"])
+    return render_template('benchmark_results.html',resp=resp["data"])
+
+
+@hrmetrics.route('/employee_cost_to_revenue',methods=['GET'])
+@user_access()
+def Employee_Cost_Revenue_percentage(obj):
+    resp = obj.user_averages_rs(required_field="Employee_Cost_Revenue_percentage",json=0)
+    return render_template('benchmark_results.html',resp=resp["data"])
+
+
+@hrmetrics.route('/employee_cost_avg',methods=['GET'])
+@user_access()
+def Average_Employee_Cost(obj):
+    resp = obj.user_averages_rs(required_field="Average_Employee_Cost_rs",json=0)
+    return render_template('benchmark_results.html',resp=resp["data"])
+
+
+
+# performance
+
+@hrmetrics.route('/attrition_voluntary',methods=['GET'])
+@user_access()
+def Voluntary_Attrition_Annual(obj):
+    resp = obj.user_averages_rs(required_field="Voluntary_Attrition_Annual",json=0)
+    return render_template('benchmark_results.html',resp=resp["data"])
+
+
+
+@hrmetrics.route('/attrition_all',methods=['GET'])
+@user_access()
+def attrition_overall(obj):
+    resp = obj.user_averages_rs(required_field="Overall_Attrition_Annual",json=0)
+    return render_template('benchmark_results.html',resp=resp["data"])
+
+
+
+@hrmetrics.route('/hiring_quarterly',methods=['GET'])
+@user_access()
+def Average_Hiring_Quarterly(obj):
+    resp = obj.user_averages_rs(required_field="Average_Hiring_Quarterly",json=0)
+    return render_template('benchmark_results.html',resp=resp["data"])
+
+
+@hrmetrics.route('/hiring_annual',methods=['GET'])
+@user_access()
+def Average_Hiring_Annual(obj):
+    resp = obj.user_averages_rs(required_field="Average_Hiring_Annual",json=0)
+    return render_template('benchmark_results.html',resp=resp["data"])
+
+
+@hrmetrics.route('/hiring_cost',methods=['GET'])
+@user_access()
+def Cost_Per_Hire_Annual(obj):
+    resp = obj.user_averages_rs(required_field="Cost_Per_Hire_Annual",json=0)
+    return render_template('benchmark_results.html',resp=resp["data"])
 
 
 
 
-@homepage_dashboard.route('',methods=['GET'])
-def api_people_count():
-    user_type=0
-    if session:
-        user_type=int(session["data"]["user_type"])
-        user_company_id=int(session["data"]["user_company_id"])
-    if not user_type:
-        return response_json(data={},status=False)
-
-    query_user_access = '''select group_concat(fields) as fields from user_roles where user_type={user_type};'''.format(user_type=int(user_type))
-    query = '''select {fields} from company_data_master limit 10;'''
-
-    try:
-        resp_user_access_fields=db(query_user_access,asdict=True)
-        if resp_user_access_fields:
-            res = db(query.format(fields=resp_user_access_fields[0]["fields"]),asdict=True)
-            if not res:
-                return response_json(data={},status=False,state=2)
-        else:
-            return response_json(data={},status=False,state=2)
-    except Exception as e:
-        return response_json(data={},status=False)
-    if not res:
-        return response_json(data={},status=False)
-    return response_json(data=res,status=True)
+@hrmetrics.route('/time_to_hire',methods=['GET'])
+@user_access()
+def Time_to_Hire_Days(obj):
+    resp = obj.user_averages_rs(required_field="Time_to_Hire_Days",json=0)
+    return render_template('benchmark_results.html',resp=resp["data"])
 
 
+
+# Efficiency
+
+@hrmetrics.route('/headcount_hr',methods=['GET'])
+@user_access()
+def HR_Headcount(obj):
+    resp = obj.user_averages_rs(required_field="HR_Headcount",json=0)
+    return render_template('benchmark_results.html',resp=resp["data"])
+
+@hrmetrics.route('/employee_to_hr',methods=['GET'])
+@user_access()
+def Employee_to_HR(obj):
+    resp = obj.user_averages_rs(required_field="Employee_to_HR",json=0)
+    return render_template('benchmark_results.html',resp=resp["data"])
+
+@hrmetrics.route('/hr_bp_headcount',methods=['GET'])
+@user_access()
+def HR_BP_Headcount(obj):
+    resp = obj.user_averages_rs(required_field="HR_BP_Headcount",json=0)
+    return render_template('benchmark_results.html',resp=resp["data"])
+
+@hrmetrics.route('/ratio_employee_hrbp',methods=['GET'])
+@user_access()
+def Employee_HR_BP_Ratio(obj):
+    resp = obj.user_averages_rs(required_field="Employee_HR_BP_Ratio",json=0)
+    return render_template('benchmark_results.html',resp=resp["data"])
