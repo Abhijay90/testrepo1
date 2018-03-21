@@ -385,7 +385,7 @@
           element: 'tier',
           data: [
           { company: 'You', revenue: {{ resp.tier.user_data }} },
-          {% for item in resp.peers.tab_data: %}
+          {% for item in resp.tier.tab_data: %}
             {company:  "{{item.name}}", revenue: {{ item.data }} },
           {% endfor %}
           // {company: 'TCS', revenue: 92691.2}

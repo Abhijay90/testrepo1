@@ -38,7 +38,7 @@ def employee_cost(obj):
 @user_access()
 def Revenue_Per_Employee(obj):
     resp = obj.user_averages_rs(required_field="Revenue_Per_Employe",json=0)
-    resp["data"].update(dict(head="Revenue Per Employe ($)"))
+    resp["data"].update(dict(head="Revenue Per Employee ($)"))
     return render_template('benchmark_results.html',resp=resp["data"])
 
 
