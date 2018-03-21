@@ -51,5 +51,5 @@ def login_new():
 @login_dummy.route('/',methods=['GET'])
 def dummy_session():
     obj = User(username = "",password="",id=1)
-    obj.set_cookie(response_json(status=True,data={}),user_type=1,user_company_id=1)
-    return redirect("/home", code=302)
+    return obj.set_cookie(response_json(status=True,data={}),user_type=1,user_company_id=1)
+    # return redirect("/home", code=302)
