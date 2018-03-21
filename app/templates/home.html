@@ -110,6 +110,10 @@
           </ul>
         </section>
     </div>
+    <form hidden="true" action="/metrics/aggregate_data" method="POST" id="form">
+    <input type="text" name="aggregate_key">
+    <input type="text" name="is_chro" value="1">
+    </form>
   </body>
 
 
@@ -165,7 +169,23 @@
 
 
     function redirect_to_chro(){
+
+var post_params=
+["Employee_Cost",
+"Revenue_Per_Employe",
+"Employee_Cost_Revenue_percentage",
+"Average_Employee_Cost_rs",
+"Voluntary_Attrition_Annual",
+"Overall_Attrition_Annual",
+"Average_Hiring_Quarterly",
+"Average_Hiring_Annual",
+"Cost_Per_Hire_Annual",
+"Time_to_Hire_Days",
+"HR_Headcount"
+];
+
       arr=[0,1,2,3,5]
+      glob_key_arr=["Employee_Cost","Revenue_Per_Employe","Employee_Cost_Revenue_percentage","Average_Employee_Cost_rs","Overall_Attrition_Annual"];
         if (arr.length>0)
         {
           $.removeCookie("nxt_arr");
@@ -175,12 +195,24 @@
             var j_arr = JSON.stringify(arr); 
             $.cookie("nxt_arr",j_arr );
             // window.location.href="/metrics/";
+            post_data(JSON.stringify(glob_key_arr));
           }
         else{
           return 0;
         }
 
       }
+
+    function post_data(value){
+
+  $("input[name=aggregate_key]").val(value);
+
+   console.log($("input[name=aggregate_key]").val());
+
+  $('form#form').submit();
+
+  
+}
     </script>
   
   </body>

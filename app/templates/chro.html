@@ -81,7 +81,8 @@
                   <div class="item active" id="data">
 
                     <div class="item-head">
-                      <div ><h3 id="title"> </h3></div>
+                      <h3>CHRO Metric</h3>
+                      <h3 id="title"> </h3>
                       <div class="btns">
                         <button  class ="active" onclick="change_tab('tier');$('.btns button').removeClass('active'); $(this).addClass('active');" id="def_click">TIER</button>
                         <button onClick="change_tab('industry');$('.btns button').removeClass('active'); $(this).addClass('active');">INDUSTRY</button>
@@ -145,13 +146,9 @@
                 <li id="bar"><img src="../static/build/images/icon4.png" /></li>
                 <li id="table"><img src="../static/build/images/icon6.png" /></li>
               </ul>
-              <div class="carousel-bottom">
-                <div class="btns">
-                  <button>EXPORT</button>
-                  <button>SHARE</button>
-                </div>
+              <!-- <div class="carousel-bottom">
                 <img src="../static/build/images/latest.jpg" />
-              </div>
+              </div> -->
             </div>
           </div>
         </section>
@@ -433,13 +430,15 @@ var graph_provider = function () {
             switchRowsAndColumns: true
         },
         chart: {
-            type: 'column'
+            type: 'column',
+            fontFamily:'Helvetica',
         },
         yAxis: {
             allowDecimals: false,
             title: {
                 text: null,
-            }
+            },
+            gridLineWidth:1,
         },
         title:{
           text:null,
@@ -453,11 +452,14 @@ var graph_provider = function () {
           },
           labels:{
             enabled:false,
-          }
+          },
+          gridLineWidth:1,
+          reversed:false,
         },
         credits: {
           enabled:false,
         }
+
     };
 
     $('#graph').highcharts(Highcharts.merge(options));

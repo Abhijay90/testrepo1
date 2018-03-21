@@ -208,7 +208,7 @@ ul.cards_outer li:hover{
     height:15%;
 }
 .carousel-inner > .item > .item-head > h3{
-	font-size:1.2em;
+	font-size:1em;
 	margin:0.2em auto;
 }
 .carousel-inner > .item > .item-head > .btns{
@@ -651,8 +651,9 @@ h6.item_hd{
 	    width: calc(100% - 110px);
 	}
 	.carousel-inner > .item > .chart_hold {
-	    margin-top:0;
+	    margin-top:2%;
 	}
+	
 	/*.chart_view.bar div.gp svg {
 	    width: 100% !important;
 	    height: 90% !important;
@@ -660,6 +661,11 @@ h6.item_hd{
 	/*.chart_view.bar div.gp {
 	    transform: scale(1);
 	}*/
+}
+@media only screen and (min-width : 1025px) {
+	.item-head h3#title {
+	    font-size: 1em;
+	}
 }
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
@@ -724,6 +730,7 @@ h6.item_hd{
 	ul.carousel-tabs li img {
 	    width: 64px;
 	}
+
 }
 @media only screen and (min-width : 1400px) {
 	.pp_out .ratio {

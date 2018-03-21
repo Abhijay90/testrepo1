@@ -150,6 +150,10 @@ def Employee_HR_BP_Ratio(obj):
 def aggregate_data(obj):
     import json
     in_key =  json.loads(request.form['aggregate_key'])
+    try:
+        is_chro =  json.loads(request.form['is_chro'])
+    except:
+        is_chro=0
     # in_key=["Employee_HR_BP_Ratio","HR_BP_Headcount"]
     resp_data=[]
     for i in in_key:
@@ -162,7 +166,10 @@ def aggregate_data(obj):
     # print resp_data
     # return response_json(data=resp_data,status=True,as_json=1)
     # return response_json(data={},status=True,as_json=1)
-    return render_template('benchmark_results.html',resp=resp_data)
+    if is_chro:
+        return render_template('chro.html',resp=resp_data)
+    else:
+        return render_template('benchmark_results.html',resp=resp_data)
 
 def ger_resp_head(key):
     headings={
