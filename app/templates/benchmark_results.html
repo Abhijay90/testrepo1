@@ -89,9 +89,9 @@
                     <div class="chart_hold">
                       <div class="chart_view bar valign">
                       
-                      <div id="peers" class="showhide gp"></div>
-                      <div id="industry" class="showhide gp"></div>
-                      <div id="tier" class="showhide gp"></div>
+                      <div id="peers-g" class="showhide gp"></div>
+                      <div id="industry-g" class="showhide gp"></div>
+                      <div id="tier-g" class="showhide gp"></div>
                       </div>
 
                       
@@ -307,6 +307,8 @@
       console.log(val);
       $(".showhide").hide();
       $("#"+val +".showhide").show();
+      $("#"+val +"-g .showhide").show();
+      last_val=val;
     }
 
   
