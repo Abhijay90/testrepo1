@@ -13,6 +13,7 @@
 
     <!-- Bootstrap -->
     <link href="../static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -114,8 +115,8 @@
                       <table style="display:none" id = "graph-table">
                          <thead>
                             <tr>
-                                <th>Segment</th>
-                                <th>Data</th>
+                                <th></th>
+                                <th>Segments</th>
                                 </tr>
                               </thead>
                             <tbody id = "table_body_graph">                              
@@ -211,6 +212,8 @@
     <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/data.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
 
 
 
@@ -318,8 +321,9 @@ function create_table_elements(value){
 
 
   function create_table_row(val,val2){
-    $("#table_body").append(val);
+    $("#table_body").append(val).fadeIn(500);
     $("#table_body_graph").append(val2);
+
   }
 
 
@@ -363,8 +367,11 @@ graph_provider();
 
 function destroy_table_elements(value)
 {
-$("#table_body").empty();
+
+$("#table_body").fadeOut(50).empty();//,function(){$(this).empty()});
+  // $("#table_body").empty();
 $("#table_body_graph").empty();
+
 }
 
 function change_title(value)
@@ -410,10 +417,10 @@ function init_change(val1){
 
   change_title(json_string[json_index].data.head);
 
+  destroy_table_elements();
   $("#def_click").click();
 
-  destroy_table_elements();
-  create_table_elements("tier");
+  // create_table_elements("tier");
 
 }
 
@@ -431,8 +438,19 @@ var graph_provider = function () {
         yAxis: {
             allowDecimals: false,
             title: {
-                text: 'Units'
+                text: null,
             }
+        },
+        title:{
+          text:null,
+
+        },
+
+        xAxis: {
+          title: {
+            text:null,
+            // labels: null,
+          },
         }
     };
 
