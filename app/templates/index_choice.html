@@ -65,31 +65,31 @@
           <div class="hd"><h3 class="valign">CUSTOM CHART</h3></div>
           <div class="row scroll">
             <div class="col-md-12 col-xs-12">
-              <form>
+              <!-- <form> -->
                 <div class="listBl">
                   <h3>Cost</h3>
                   <ul>
-                      <li><input type="checkbox"><span>Employee Cost (INR Crore or $)</span></li>
-                      <li><input type="checkbox"><span>Revenue Per Employe ($)</span></li>
-                      <li><input type="checkbox"><span>Employee Cost as % of Revenue</span></li>
-                      <li><input type="checkbox"><span>Average Employee Cost (INR Crore or $)</span></li>
+                      <li><input type="checkbox" onclick="myFunction(0)"><span>Employee Cost (INR Crore or $)</span></li>
+                      <li><input type="checkbox" onclick="myFunction(1)"><span>Revenue Per Employe ($)</span></li>
+                      <li><input type="checkbox" onclick="myFunction(2)"><span>Employee Cost as % of Revenue</span></li>
+                      <li><input type="checkbox" onclick="myFunction(3)"><span>Average Employee Cost (INR Crore or $)</span></li>
                   </ul>
                 </div>
 
                 <div class="listBl">
                   <h3>Performance</h3>
                   <ul>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Voluntary Attrition - Annual</span></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Overall Attrition - Annual (Voluntary + Involuntary)</span></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Average Hiring (Quarterly)</span></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Average Hiring (Annual)</span></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Cost Per Hire (Annual)</span></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Time to Hire (Days)</span></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Hiring Channel Mix (Agency, Referral & Direct)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(4)"><span>Voluntary Attrition - Annual</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(5)"><span>Overall Attrition - Annual (Voluntary + Involuntary)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(6)"><span>Average Hiring (Quarterly)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(7)"><span>Average Hiring (Annual)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(8)"><span>Cost Per Hire (Annual)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(9)"><span>Time to Hire (Days)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(10)"><span>Hiring Channel Mix (Agency, Referral & Direct)</span></li>
                   </ul>
                 </div>
 
-                <div class="listBl">
+                <div class="listBl" disabled>
                   <h3>Efficiency</h3>
                   <ul>
                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>HR Headcount</span></li>
@@ -105,16 +105,16 @@
                 <div class="listBl">
                   <h3>HR Productivity</h3>
                   <ul>
-                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span># of Recruiters (TAG Team)</span></li>
-                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Joiner Per Recruiter (Quarterly)</span></li>
-                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Joiner Per Recruiter (Annual)</span></li>
-                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Training Time (Days/Hours)</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span># of Recruiters (TAG Team)</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Joiner Per Recruiter (Quarterly)</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Joiner Per Recruiter (Annual)</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Training Time (Days/Hours)</span></li>
                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Training Spend (Annual)</span></li>
                   </ul>
                 </div>
 
-                <button>NEXT</button>
-              </form>
+                <button onclick="to_next_page()">NEXT</button>
+              <!-- </form> -->
             </div>
           </div>
         </section>
@@ -175,6 +175,66 @@
     <!-- <script src="../build/js/custom.min.js"></script> -->
 
     <!-- <script src="../static/build/js/custom_example.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+   
+    <script type="text/javascript">
+      
+        var url_redirect_objects=
+["/metrics/",
+"/metrics/revenue_employee",
+"/metrics/employee_cost_to_revenue",
+"/metrics/employee_cost_avg",
+"/metrics/attrition_voluntary",
+"/metrics/attrition_all",
+"/metrics/hiring_quarterly",
+"/metrics/hiring_annual",
+"/metrics/hiring_cost",
+"/metrics/time_to_hire",
+"/metrics/headcount_hr"
+];
+glob_arr=[]
+function myFunction(val){
+  index=glob_arr.indexOf(val);
+
+  if (index==-1){
+    glob_arr.push(val);
+  } 
+  else{
+    glob_arr.splice(index, 1);
+
+  }
+
+
+
+}
+function to_next_page(){
+  console.log("here");
+  s = glob_arr[0]
+if (cookie_storage(glob_arr))
+{
+  // console.log(s);
+  console.log(url_redirect_objects[s]);
+ window.location.href=url_redirect_objects[s];
+ 
+}
+}
+
+function cookie_storage(arr){
+  if (arr.length>0)
+  {
+    $.removeCookie("nxt_arr");
+    $.cookie("nxt_arr",j_arr );
+      var j_arr = JSON.stringify(arr); 
+      $.cookie("nxt_arr",j_arr );
+      return 1;
+    }
+  else{
+    return 0;
+  }
+
+}
+    </script>
   
   </body>
 </html>
