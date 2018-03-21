@@ -6,136 +6,175 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <meta name="theme-color" content="#4E00FF" />
 
-    <title>User Choice </title>
+    <title>METRICS</title>
 
     <!-- Bootstrap -->
-    
+    <link href="../static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../static/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../static/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  
+    <!-- bootstrap-progressbar -->
+    <link href="../static/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../static/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../static/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../static/build/css/custom.min.css" rel="stylesheet">
+
+    <!-- New Styles -->
+    <link href="../static/build/css/ncreato.css" rel="stylesheet">
+
   </head>
 
-<body class="nav-md">
+  <body>
+    <div class="container main">
+        <section class="top_prof">
+          <div class=" prime">
+              <div class="valign" style="height:80%">
+                <div class="row" style="height:100%">
+                  <div  style="height:100%">
+                    <div class="pp_out">
+                      <!-- <div class="pp">
+                        <img src="../static/build/images/dummy-profile.jpg" alt="Profile Name" />
+                      </div> -->
+                      <div  class="ratio img-responsive img-circle" style="background-image: url('../static/build/images/dummy-profile.jpg');"></div>
+                    </div>
+                    <div class="pdet_out">
+                      <div class="pdet valign">
+                        <h3>Alex Pandiyan</h3>
+                        <h6>CHRO</h6>
+                        <h6><span>TATA CONSULTANCY SERVICES</span></h6>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </section>
+        <section class="middle_scroll custom_chart" style="overflow:hidden;overflow-y:hidden">
+          <div class="hd"><h3 class="valign">CUSTOM CHART</h3></div>
+          <div class="row scroll">
+            <div class="col-md-12 col-xs-12">
+              <form>
+                <div class="listBl">
+                  <h3>Cost</h3>
+                  <ul>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Employee Cost (INR Crore or $)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Revenue Per Employe ($)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Employee Cost as % of Revenue</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Average Employee Cost (INR Crore or $)</span></li>
+                  </ul>
+                </div>
 
-<div>
-    Please fill check box :
+                <div class="listBl">
+                  <h3>Performance</h3>
+                  <ul>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Voluntary Attrition - Annual</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Overall Attrition - Annual (Voluntary + Involuntary)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Average Hiring (Quarterly)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Average Hiring (Annual)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Cost Per Hire (Annual)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Time to Hire (Days)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Hiring Channel Mix (Agency, Referral & Direct)</span></li>
+                  </ul>
+                </div>
 
-    <div>
+                <div class="listBl">
+                  <h3>Efficiency</h3>
+                  <ul>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>HR Headcount</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Employee to HR Ratio</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>HR BP Headcount</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Employee to HR BP Ratio</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>India HR Spend in Million $</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>India HR Spend as % of Revenue</span></li>
+                  </ul>
+                </div>
 
-        <span> <b>Cost</b></span>
 
-        <ul>
-            <span><input type="checkbox" id="myCheck" onclick="myFunction()">Employee Cost (INR Crore or $)</span>
-        </ul>
+                <div class="listBl">
+                  <h3>HR Productivity</h3>
+                  <ul>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span># of Recruiters (TAG Team)</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Joiner Per Recruiter (Quarterly)</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Joiner Per Recruiter (Annual)</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Training Time (Days/Hours)</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()"><span>Training Spend (Annual)</span></li>
+                  </ul>
+                </div>
 
-        <ul>
-            <span><input type="checkbox" id="myCheck" onclick="myFunction()">Revenue Per Employe ($)</span>
-        </ul>
-
-        <ul>
-            <span><input type="checkbox" id="myCheck" onclick="myFunction()">Employee Cost as % of Revenue</span>
-        </ul>
-
-        <ul>
-            <span><input type="checkbox" id="myCheck" onclick="myFunction()">Average Employee Cost (INR Crore or $)</span>
-        </ul>
+                <button>NEXT</button>
+              </form>
+            </div>
+          </div>
+        </section>
+        <section class="bottom_tabs">
+          <ul class="valign">
+            <li>
+              <span><i class="fa fa-lg fa-home"></i><br/>HOME</span>
+            </li>
+          </ul>
+        </section>
     </div>
+  </body>
 
 
-    <div>
-        <span><b>Performance</b></span>
-        <ul>
-            <span><input type="checkbox" id="myCheck" onclick="myFunction()">Voluntary Attrition - Annual</span>
-        </ul>
-
-        <ul>
-            <span><input type="checkbox" id="myCheck" onclick="myFunction()">Overall Attrition - Annual (Voluntary + Involuntary)</span>
-        </ul>
-
-        <ul>
-            <span><input type="checkbox" id="myCheck" onclick="myFunction()">Average Hiring (Quarterly)</span>
-        </ul>
-
-        <ul>
-            <span><input type="checkbox" id="myCheck" onclick="myFunction()">Average Hiring (Annual)</span>
-        </ul>
-
-        <ul>
-            <span><input type="checkbox" id="myCheck" onclick="myFunction()">Cost Per Hire (Annual)</span>
-        </ul>
-        <ul>
-            <span><input type="checkbox" id="myCheck" onclick="myFunction()">Time to Hire (Days)</span>
-        </ul>
-        <ul>
-            <span><input type="checkbox" id="myCheck" onclick="myFunction()">Hiring Channel Mix (Agency, Referral & Direct)</span>
-        </ul>
-    </div>
-
-
-
-    <div>
-    <span><b>Efficiency</b></span>
-       <ul>
-         <span><input type="checkbox" id="myCheck" onclick="myFunction()">HR Headcount</span>
-       </ul>
-       
-        <ul>
-         <span><input type="checkbox" id="myCheck" onclick="myFunction()">Employee to HR Ratio</span>
-        </ul>
-
-
-       <ul>
-         <span><input type="checkbox" id="myCheck" onclick="myFunction()">HR BP Headcount</span>
-       </ul>
-       
-        <ul>
-         <span><input type="checkbox" id="myCheck" onclick="myFunction()">Employee to HR BP Ratio</span>
-        </ul>
-
-        <ul>
-         <span><input type="checkbox" id="myCheck" onclick="myFunction()">India HR Spend in Million $</span>
-        </ul>
-
-        <ul>
-         <span><input type="checkbox" id="myCheck" onclick="myFunction()">India HR Spend as % of Revenue</span>
-        </ul>
-    </div>
-
-
-    <div>
-    <span><b>HR Productivity</b></span>
-       <ul>
-         <span><input type="checkbox" id="myCheck" onclick="myFunction()"># of Recruiters (TAG Team)</span>
-       </ul>
-       
-        <ul>
-         <span><input type="checkbox" id="myCheck" onclick="myFunction()">Joiner Per Recruiter (Quarterly)</span>
-        </ul>
-
-
-       <ul>
-         <span><input type="checkbox" id="myCheck" onclick="myFunction()">Joiner Per Recruiter (Annual)</span>
-       </ul>
-       
-        <ul>
-         <span><input type="checkbox" id="myCheck" onclick="myFunction()">Training Time (Days/Hours)</span>
-        </ul>
-
-        <ul>
-         <span><input type="checkbox" id="myCheck" onclick="myFunction()">Training Spend (Annual)</span>
-        </ul>
-    </div>
+    <!-- jQuery -->
+    <script src="../static/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <!-- <script src="../static/vendors/fastclick/lib/fastclick.js"></script> -->
+    <!-- NProgress -->
+    <!-- <script src="../static/vendors/nprogress/nprogress.js"></script> -->
+    <!-- Chart.js -->
+    <script src="../static/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <!-- <script src="../static/vendors/gauge.js/dist/gauge.min.js"></script> -->
+    <!-- bootstrap-progressbar -->
+    <!-- <script src="../static/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script> -->
+    <!-- iCheck -->
+    <!-- <script src="../static/vendors/iCheck/icheck.min.js"></script> -->
+    <!-- Skycons -->
+    <!-- <script src="../static/vendors/skycons/skycons.js"></script> -->
+    <!-- Flot -->
+    <!-- <script src="../static/vendors/Flot/jquery.flot.js"></script>
+    <script src="../static/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../static/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../static/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../static/vendors/Flot/jquery.flot.resize.js"></script> -->
+    <!-- Flot plugins -->
+    <!-- <script src="../static/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../static/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../static/vendors/flot.curvedlines/curvedLines.js"></script> -->
+    <!-- DateJS -->
+    <!-- <script src="../static/vendors/DateJS/build/date.js"></script> -->
+    <!-- JQVMap -->
+    <!-- <script src="../static/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../static/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../static/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script> -->
+    <!-- bootstrap-daterangepicker -->
+    <!-- <script src="../static/vendors/moment/min/moment.min.js"></script>
+    <script src="../static/vendors/bootstrap-daterangepicker/daterangepicker.js"></script> -->
 
 
 
+    <script src="../static/vendors/raphael/raphael.min.js"></script>
+    <script src="../static/vendors/morris.js/morris.min.js"></script>
+        <!-- Custom Theme Scripts -->
+    <!-- <script src="../build/js/custom.min.js"></script> -->
 
-</div>
-
-
-<script type="text/javascript">
-  function myFunction(val){
-
-  }
-
-</script>
+    <!-- <script src="../static/build/js/custom_example.js"></script> -->
+  
   </body>
 </html>
