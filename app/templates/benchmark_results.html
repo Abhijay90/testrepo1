@@ -300,35 +300,20 @@
 </script>
 
 <script type="text/javascript">
-  last_val="";
-
-  function show_hide_tables(val){
-    if (val!=last_val){
-      console.log(val);
-      $(".showhide").hide();
-      $("#"+val +".showhide").show();
-      $("#"+val +"-g .showhide").show();
-      last_val=val;
-    }
-
-  
-  }
-  show_hide_tables("tier");
-  // init_morris_charts();
 
 </script>
 
 
 <script type="text/javascript">
-  function init_morris_charts() {
+  function init_morris_charts_peers() {
       
       if( typeof (Morris) === 'undefined'){ return; }
       console.log('init_morris_charts');
       
-      if ($('#peers').length){ 
+      if ($('#peers-g').length){ 
       
         Morris.Bar({
-          element: 'peers',
+          element: 'peers-g',
           data: [
           { company: 'You', revenue: {{ resp.peers.user_data }} },
           {% for item in resp.peers.tab_data: %}
@@ -347,15 +332,18 @@
         });
 
       }
+    }
 
-
+function init_morris_charts_industry() {
+      
+      
       if( typeof (Morris) === 'undefined'){ return; }
       console.log('init_morris_charts');
       
-      if ($('#industry').length){ 
+      if ($('#industry-g').length){ 
       
         Morris.Bar({
-          element: 'industry',
+          element: 'industry-g',
           data: [
           { company: 'You', revenue: {{ resp.industry.user_data }} },
           { company: 'All', revenue: {{ resp.industry.data }} },
@@ -376,15 +364,16 @@
         });
 
       }
-
+}
+function init_morris_charts_tier() {
 
       if( typeof (Morris) === 'undefined'){ return; }
       console.log('init_morris_charts');
       
-      if ($('#tier').length){ 
+      if ($('#tier-g').length){ 
       
         Morris.Bar({
-          element: 'tier',
+          element: 'tier-g',
           data: [
           { company: 'You', revenue: {{ resp.tier.user_data }} },
           {% for item in resp.tier.tab_data: %}
@@ -403,17 +392,36 @@
         });
 
       }
-
-
-
-
-
-
-      
     };
 
-    init_morris_charts()
-</script>>
+last_val="";
+
+  function show_hide_tables(val){
+    if (val!=last_val){
+      console.log(val);
+      $(".showhide").fadeOut(300);
+      $("#"+val).fadeIn(300);
+      $("#"+val +"-g").fadeIn(300);
+
+      last_val=val;
+    }
+
+  
+  }
+  $(document).ready(function(){
+            init_morris_charts_peers();
+        init_morris_charts_tier();
+        init_morris_charts_industry();
+
+      show_hide_tables("tier");
+  });
+
+
+  // init_morris_charts();
+
+
+    // init_morris_charts()
+</script>
 
 
 <script type="text/javascript">
