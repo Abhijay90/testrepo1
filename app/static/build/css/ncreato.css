@@ -58,14 +58,18 @@ section.bottom_tabs{
 	float:left;
 	height:100%;
 }
-.prime .pp{
-	display:inline-block;
-	width:auto;
-	height:100%;
-	overflow:hidden;
-	border-radius:50%;
-	text-align:center;
-	vertical-align: middle;
+.prime .pp {
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    background-image: url(/static/build/images/circle.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 .prime .pp img {
     padding: 3px;
@@ -74,7 +78,6 @@ section.bottom_tabs{
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
-    border: 1px solid #FFF;
 }
 .prime .pdet_out{
 	text-align:left;
