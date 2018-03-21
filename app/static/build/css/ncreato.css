@@ -263,6 +263,25 @@ ul.cards_outer li:hover{
     color:#000;
     overflow:hidden;
 }
+.carousel-inner{
+	overflow:visible;
+}
+.carousel-inner:after {
+    content: '';
+    position: absolute;
+    top: 96%;
+    left: 33%;
+    margin-left: 0;
+    width: 0;
+    height: 0;
+    border-top: 32px solid #FFF;
+    border-right: 32px solid transparent;
+    border-left: 32px solid transparent;
+    transition:all 0.25s ease-in-out;
+}
+.carousel-inner.table:after{
+	left:60%;
+}
 .carousel-inner > .item > .chart_hold > .table{
 	display:none;
 }
@@ -297,7 +316,7 @@ ul.carousel-tabs{
 }
 ul.carousel-tabs li {
     display: inline-block;
-    width: auto;
+    width: 25%;
     margin: auto;
     position: relative;
     top: 50%;
@@ -483,15 +502,25 @@ h6.item_hd{
 }
 
 
+
 /* Custom, iPhone Retina */ 
 @media only screen and (max-width : 340px) {
 	h6.item_hd {
-	    margin-top: 0;
+	    margin-top: 0.25em;
 	    font-size: 1em;
 	}
-	/*.chart_view.bar div.gp {
-	    transform: scale(0.5);
-	}*/
+	.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
+	    margin-right: -10px;
+	}
+	.carousel-inner:after {
+	    border-top: 32px solid #FFF;
+	    border-right: 32px solid transparent;
+	    border-left: 32px solid transparent;
+	    left: 27%;
+	}
+	.carousel-inner:after {
+	    left: 53%;
+	}
 }
 @media only screen and (min-width : 320px) {
 	.prime h3{
@@ -517,7 +546,7 @@ h6.item_hd{
 	}
 	.carousel-inner > .item > .chart_hold {
 	    height: 72%;
-	    margin-top:0;
+	    /*margin-top:0;*/
 	}
 	.carousel-inner > .item > .item-head {
 	    height: 23%;
@@ -528,14 +557,20 @@ h6.item_hd{
 	.carousel-bottom img {
 	    width: 35%;
 	}
+	.carousel-inner:after {
+	    border-top: 16px solid #FFF;
+	    border-right: 16px solid transparent;
+	    border-left: 16px solid transparent;
+	    top: 105%;
+	}
+
 	
 	
 
 }
 
 /* Extra Small Devices, Phones */ 
-@media only screen and (min-width : 480px) {
-	
+@media only screen and (min-width : 410px) {
 
 }
 
@@ -569,6 +604,12 @@ h6.item_hd{
 	h6.item_hd {
 	    margin-top: 0.5em;
 	    font-size: 1.5em;
+	}
+	.carousel-inner:after {
+	    border-top: 32px solid #FFF;
+	    border-right: 32px solid transparent;
+	    border-left: 32px solid transparent;
+	    top: 105%;
 	}
 }
 
