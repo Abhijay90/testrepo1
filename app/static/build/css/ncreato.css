@@ -489,15 +489,30 @@ h6.item_hd{
     font-size: 1em;
 }
 .chart_view.bar div.gp{
-	width:90%;
-	height:70%;
+	width:100%;
+	height:100%;
 	margin:auto;
 	text-align:center;
-	transform: scale(0.9, 0.5);
+	/*transform: scale(0.9, 0.5);*/
 }
-.chart_view.bar div.gp svg{
+.item-head h3#title{
+	font-size:1em;
+}
+/*.chart_view.bar div.gp svg{
 	width:100% !important;
 	height:40% !important;
+}*/
+.chart_view{
+	width:100%;
+	height:100%;
+}
+.chart_view.table {
+    width: auto;
+    height: auto;
+}
+.highcharts-container {
+	width:100% !important;
+	height:100% !important;
 }
 
 
@@ -515,10 +530,10 @@ h6.item_hd{
 	    border-top: 32px solid #FFF;
 	    border-right: 32px solid transparent;
 	    border-left: 32px solid transparent;
-	    left: 27%;
+	    left: 32%;
 	}
-	.carousel-inner:after {
-	    left: 53%;
+	.carousel-inner.table:after {
+	    left: 59%;
 	}
 }
 @media only screen and (min-width : 320px) {
@@ -596,10 +611,10 @@ h6.item_hd{
 	.carousel-inner > .item > .item-head > .btns {
 	    margin: 0 auto;
 	}
-	.chart_view.bar div.gp svg {
+	/*.chart_view.bar div.gp svg {
 	    width: 100% !important;
 	    height: 90% !important;
-	}
+	}*/
 	/*.chart_view.bar div.gp {
 	    transform: scale(1);
 	}*/
@@ -615,6 +630,9 @@ h6.item_hd{
 	}
 	.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
 	    margin-right: 10px;
+	}
+	.item-head h3#title {
+	    font-size: 2em;
 	}
 }
 
@@ -632,10 +650,10 @@ h6.item_hd{
 	.carousel-inner > .item > .chart_hold {
 	    margin-top:0;
 	}
-	.chart_view.bar div.gp svg {
+	/*.chart_view.bar div.gp svg {
 	    width: 100% !important;
 	    height: 90% !important;
-	}
+	}*/
 	/*.chart_view.bar div.gp {
 	    transform: scale(1);
 	}*/
@@ -685,9 +703,9 @@ h6.item_hd{
 	    max-width: 750px;
 	    margin: auto;
 	}
-	.chart_view.bar div.gp {
+	/*.chart_view.bar div.gp {
 	    transform: scale(0.9, 0.7);
-	}
+	}*/
 	ul.cards_outer {
 	    max-width: 750px;
 	}
