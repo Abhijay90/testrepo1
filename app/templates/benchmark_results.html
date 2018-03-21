@@ -80,9 +80,9 @@
                     <div class="item-head">
                       <!-- <h3 onclick="">PERFORMANCE</h3> -->
                       <div class="btns">
-                        <button class="active" onclick="show_hide_tables('tier');">TIER</button>
-                        <button onClick="show_hide_tables('industry');">INDUSTRY</button>
-                        <button onClick="show_hide_tables('peers');">PEERS(&#x20B9;)</button>
+                        <button  class ="active" onclick="show_hide_tables('tier');$('.btns button').removeClass('active'); $(this).addClass('active');" >TIER</button>
+                        <button onClick="show_hide_tables('industry');$('.btns button').removeClass('active'); $(this).addClass('active');">INDUSTRY</button>
+                        <button onClick="show_hide_tables('peers') ;$('.btns button').removeClass('active'); $(this).addClass('active');">PEERS(&#x20B9;)</button>
                       </div>
                     </div>
                     <div class="chart_hold">
@@ -101,7 +101,7 @@
                             <li>Segment</li><li>Data</li>
                           </ul>
                           <ul class="tb tbody">
-                            <li>Your Organnization</li><li>{{resp.tier.user_data}}</li>
+                            <li>Your Organization</li><li>{{resp.tier.user_data}}</li>
                           </ul>
                           {% for item in resp.tier.tab_data: %}
                           <ul class="tb tbody">
@@ -139,7 +139,7 @@
                             <li>Segment</li><li>Data</li>
                           </ul>
                           <ul class="tb tbody">
-                            <li>Your Organnization</li><li>{{resp.peers.user_data}}</li>
+                            <li>Your Organization</li><li>{{resp.peers.user_data}}</li>
                           </ul>
                           {% for item in resp.peers.tab_data: %}
                           <ul class="tb tbody">
@@ -329,7 +329,7 @@
         Morris.Bar({
           element: 'peers',
           data: [
-          { company: 'User', revenue: {{ resp.peers.user_data }} },
+          { company: 'You', revenue: {{ resp.peers.user_data }} },
           {% for item in resp.peers.tab_data: %}
             {company:  "{{item.name}}", revenue: {{ item.data }} },
           {% endfor %}
@@ -356,11 +356,11 @@
         Morris.Bar({
           element: 'industry',
           data: [
-          { company: 'Your Organization', revenue: {{ resp.industry.user_data }} },
-          { company: 'Others', revenue: {{ resp.industry.data }} },
+          { company: 'You', revenue: {{ resp.industry.user_data }} },
+          { company: 'All', revenue: {{ resp.industry.data }} },
 
           {% for item in resp.industry.tab_data: %}
-            {company:  "Your Industry", revenue: {{ item.data }} },
+            {company:  "Industry", revenue: {{ item.data }} },
           {% endfor %}
           // {company: 'TCS', revenue: 92691.2}
           ],
@@ -385,7 +385,7 @@
         Morris.Bar({
           element: 'tier',
           data: [
-          { company: 'Your Organization', revenue: {{ resp.tier.user_data }} },
+          { company: 'You', revenue: {{ resp.tier.user_data }} },
           {% for item in resp.peers.tab_data: %}
             {company:  "{{item.name}}", revenue: {{ item.data }} },
           {% endfor %}

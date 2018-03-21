@@ -77,9 +77,9 @@ class metrics_logic(object):
         return response_json(data=res,status=True,as_json=json)
 
     def __avg_data_by_industry(self,selector,json=1):
-        query = '''select AVG({selector}) as data from company_data where id <> {user_company_id};'''.format(selector =selector ,user_company_id=self.user_company_id)
+        query = '''select truncate(AVG({selector}),2) as data from company_data where id <> {user_company_id};'''.format(selector =selector ,user_company_id=self.user_company_id)
 
-        query_user_company='''select {selector} as data,industry as name from company_data where id = {user_company_id}; '''.format(selector=selector,user_company_id=self.user_company_id)
+        query_user_company='''select truncate({selector},2) as data,industry as name from company_data where id = {user_company_id}; '''.format(selector=selector,user_company_id=self.user_company_id)
         try:
             resp = db(query,asdict=True)
             resp_user = db(query_user_company,asdict=True)
@@ -102,7 +102,7 @@ class metrics_logic(object):
 
 
     def __avg_data_by_tier(self,selector,json=1):
-        query_user_company='''select {selector} as data,tier as name from company_data where id = {user_company_id}; '''.format(selector=selector,user_company_id=self.user_company_id)
+        query_user_company='''select truncate({selector},2) as data,tier as name from company_data where id = {user_company_id}; '''.format(selector=selector,user_company_id=self.user_company_id)
         
 
         try:
@@ -111,7 +111,7 @@ class metrics_logic(object):
             if not resp_user:
                 return response_json(data={},status=False,state=2)
             ### getting avg of tier
-            query_user_tier = '''select AVG({selector}) as data,tier as name from company_data where id <> {user_company_id} and tier <>"" and tier is not null group by tier;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
+            query_user_tier = '''select truncate(AVG({selector}),2) as data,tier as name from company_data where id <> {user_company_id} and tier <>"" and tier is not null group by tier;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
             resp_selector_tab = db(query_user_tier,asdict=True)
             if not resp_selector_tab:
                 return response_json(data={},status=False,state=2)
@@ -124,13 +124,13 @@ class metrics_logic(object):
 
 
     def __avg_data_by_revenue(self,selector,json=1):
-        query_user_company='''select {selector} as data, 
+        query_user_company='''select truncate({selector},2) as data, 
         case when Revenue_rs<500 then "<500 Cr"
         when Revenue_rs>500 and Revenue_rs<1000 then ">500 Cr and <1000 Cr"
         else  ">1000 Cr" end as name
         from company_data where id = {user_company_id}; '''.format(selector=selector,user_company_id=self.user_company_id)
 
-        query_user_revenue_bracket = '''select AVG(data) as data, name from  (select {selector} as data,
+        query_user_revenue_bracket = '''select truncate(AVG(data),2) as data, name from  (select {selector} as data,
         case when Revenue_rs<500 then "<500 Cr"
         when Revenue_rs>500 and Revenue_rs<1000 then ">500 Cr and <1000 Cr"
         else  ">1000 Cr" end as name from company_data where id <> {user_company_id} ) a group by name;'''.format(selector =selector ,user_company_id=self.user_company_id)
@@ -151,16 +151,16 @@ class metrics_logic(object):
         return response_json(data=res,status=True,as_json=json)
 
     def __avg_data_by_revenue(self,selector,json=1):
-        query_user_company='''select {selector} as data, 
-        case when Revenue_rs<500 then "<500 Cr"
-        when Revenue_rs>500 and Revenue_rs<1000 then ">500 Cr and <1000 Cr"
-        else  ">1000 Cr" end as name
+        query_user_company='''select truncate({selector},2) as data, 
+        case when Revenue_rs<500 then "500 Cr"
+        when Revenue_rs>500 and Revenue_rs<1000 then "1000 Cr"
+        else  "1000+ Cr" end as name
         from company_data where id = {user_company_id}; '''.format(selector=selector,user_company_id=self.user_company_id)
 
-        query_user_revenue_bracket = '''select AVG(data) as data, name from  (select {selector} as data,
-        case when Revenue_rs<500 then "<500 Cr"
-        when Revenue_rs>500 and Revenue_rs<1000 then ">500 Cr and <1000 Cr"
-        else  ">1000 Cr" end as name from company_data where id <> {user_company_id} ) a group by name;'''.format(selector =selector ,user_company_id=self.user_company_id)
+        query_user_revenue_bracket = '''select TRUNCATE(AVG(data),2) as data, name from  (select {selector} as data,
+        case when Revenue_rs<500 then "500 Cr"
+        when Revenue_rs>500 and Revenue_rs<1000 then "1000 Cr"
+        else  "1000+ Cr" end as name from company_data where id <> {user_company_id} ) a group by name;'''.format(selector =selector ,user_company_id=self.user_company_id)
         
         try:
             resp_user = db(query_user_company,asdict=True)
