@@ -271,6 +271,7 @@ ul.cards_outer li:hover{
 }
 .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
     right: 30%;
+    margin-right:0;
 }
 .carousel-control .glyphicon-chevron-left, .carousel-control .icon-previous {
     left: 30%;
@@ -630,6 +631,13 @@ h6.item_hd{
 	.carousel-inner {
 	    max-width: 750px;
 	    margin: auto;
+	}
+	.carousel {
+	    max-width: 750px;
+	    margin: auto;
+	}
+	.chart_view.bar div.gp {
+	    transform: scale(0.9, 0.7);
 	}
 }
 @media only screen and (min-width : 1400px) {
