@@ -514,6 +514,9 @@ h6.item_hd{
 	width:100% !important;
 	height:100% !important;
 }
+.carousel-control{
+	width:5%;
+}
 
 
 
