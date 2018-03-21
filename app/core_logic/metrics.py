@@ -189,7 +189,6 @@ class metrics_logic(object):
             data["tier"]=tier["data"]
             data["peers"]=peers["data"]
             data["industry"]=industry["data"]
-            print data
             return response_json(data=data,status=True,as_json=json)
         return response_json(data={},status=False,as_json=json)
 
