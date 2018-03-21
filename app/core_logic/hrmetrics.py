@@ -29,7 +29,8 @@ def dashboard(obj):
 @hrmetrics.route('/',methods=['GET'])
 @user_access()
 def employee_cost(obj):
-    resp = obj.user_averages_rs(required_field="Employee_Cost",json=0)
+    resp = obj.user_averages_rs(required_field="Employee_Cost",json=1)
+    return resp
     return render_template('benchmark_results.html',resp=resp["data"])
 
 
