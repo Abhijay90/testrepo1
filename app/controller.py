@@ -14,4 +14,5 @@ app.register_blueprint(homepage_dashboard,url_prefix='/dashboard')
 app.register_blueprint(user_check,url_prefix='/user_options')
 app.register_blueprint(hrmetrics,url_prefix='/metrics')
 
+
 # app.register_blueprint(logging_in,url_prefix = '/login/')

@@ -126,6 +126,9 @@
           </ul>
         </section>
     </div>
+    <form hidden="true" action="/metrics/aggregate_data" method="POST" id="form">
+    <input type="text" name="aggregate_key">
+    </form>
   </body>
 
 
@@ -180,7 +183,7 @@
    
     <script type="text/javascript">
       
-        var url_redirect_objects=
+var url_redirect_objects=
 ["/metrics/",
 "/metrics/revenue_employee",
 "/metrics/employee_cost_to_revenue",
@@ -193,29 +196,45 @@
 "/metrics/time_to_hire",
 "/metrics/headcount_hr"
 ];
-glob_arr=[]
+
+var post_params=
+["Employee_Cost",
+"Revenue_Per_Employe",
+"Employee_Cost_Revenue_percentage",
+"Average_Employee_Cost_rs",
+"Voluntary_Attrition_Annual",
+"Overall_Attrition_Annual",
+"Average_Hiring_Quarterly",
+"Average_Hiring_Annual",
+"Cost_Per_Hire_Annual",
+"Time_to_Hire_Days",
+"HR_Headcount"
+];
+glob_arr=[];
+glob_key_arr=[];
 function myFunction(val){
   index=glob_arr.indexOf(val);
 
   if (index==-1){
     glob_arr.push(val);
+    glob_key_arr.push(post_params[val]);
   } 
   else{
     glob_arr.splice(index, 1);
-
+    glob_key_arr.splice(index, 1);
   }
 
 
 
 }
 function to_next_page(){
-  console.log("here");
   s = glob_arr[0]
 if (cookie_storage(glob_arr))
 {
   // console.log(s);
   console.log(url_redirect_objects[s]);
- window.location.href=url_redirect_objects[s];
+ // window.location.href=url_redirect_objects[s];
+ post_data(JSON.stringify(glob_key_arr));
  
 }
 }
@@ -234,6 +253,17 @@ function cookie_storage(arr){
     return 0;
   }
 
+}
+
+function post_data(value){
+
+  $("input[name=aggregate_key]").val(value);
+
+ console.log($("input[name=aggregate_key]").val());
+
+$('form#form').submit();
+
+  
 }
     </script>
   

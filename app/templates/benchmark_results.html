@@ -77,81 +77,49 @@
                 <div class="carousel-inner" role="listbox">
 
 
-                  <div class="item active">
+                  <div class="item active" id="data">
 
                     <div class="item-head">
-                    <div><h2>CHRO Matric</h2>{{resp["head"]}}</div>
-                      <!-- <div><h3>{{resp["head"]}}</h3></div> -->
+                      <div ><h3 id="title"> </h3></div>
                       <div class="btns">
-                        <button  class ="active" onclick="show_hide_tables('tier');$('.btns button').removeClass('active'); $(this).addClass('active');" >TIER</button>
-                        <button onClick="show_hide_tables('industry');$('.btns button').removeClass('active'); $(this).addClass('active');">INDUSTRY</button>
-                        <button onClick="show_hide_tables('peers') ;$('.btns button').removeClass('active'); $(this).addClass('active');">PEERS(&#x20B9;)</button>
+                        <button  class ="active" onclick="change_tab('tier');$('.btns button').removeClass('active'); $(this).addClass('active');" id="def_click">TIER</button>
+                        <button onClick="change_tab('industry');$('.btns button').removeClass('active'); $(this).addClass('active');">INDUSTRY</button>
+                        <button onClick="change_tab('peers') ;$('.btns button').removeClass('active'); $(this).addClass('active');">PEERS(&#x20B9;)</button>
                       </div>
                       <!-- <h6 class="item_hd">{{resp["head"]}}</h6> -->
                     </div>
                     <div class="chart_hold">
                       <div class="chart_view bar valign">
                       
-                      <div id="peers-g" class="showhide gp"></div>
-                      <div id="industry-g" class="showhide gp"></div>
-                      <div id="tier-g" class="showhide gp"></div>
+                      <div id="graph" class="showhide gp"></div>
+                      
                       </div>
 
                       
                       <div class="chart_view table valign">
                         <!-- tier data-->
-                        <div id="tier" class="showhide">
+                        <div id="data-table" >
                           <ul class="tb thead">
                             <li>Segment</li><li>Data</li>
                           </ul>
-                          <ul class="tb tbody">
-                            <li>Your Organization</li><li>{{resp.tier.user_data}}</li>
-                          </ul>
-                          {% for item in resp.tier.tab_data: %}
-                          <ul class="tb tbody">
-                           <li>{{item.name}}</li><li>{{item.data}}</li>                         
-                          </ul>
-                            {% endfor %}
+
+                          <div id="table_body">
+
+                          </div>
+
                         </div>
                         <!-- tier data-->
-
-
-                        <!-- industry data-->
-                        <div id="industry" class="showhide">
-                          <ul class="tb thead">
-                            <li>Segment</li><li>Data</li>
-                          </ul>
-                          <ul class="tb tbody">
-                            <li>Your Organization</li><li>{{resp.industry.user_data}}</li>
-                          </ul>
-                          <ul class="tb tbody">
-                            <li>Others</li><li>{{resp.industry.data}}</li>
-                          </ul>
-                          {% for item in resp.industry.tab_data: %}
-                          <ul class="tb tbody">
-                           <li>Your Industry</li><li>{{item.data}}</li>                         
-                          </ul>
-                            {% endfor %}
-                        </div>
-                        <!-- tier data-->
-
-                        <!-- peer data-->
-                        <div id="peers" class="showhide">
-                          <ul class="tb thead">
-                            <li>Segment</li><li>Data</li>
-                          </ul>
-                          <ul class="tb tbody">
-                            <li>Your Organization</li><li>{{resp.peers.user_data}}</li>
-                          </ul>
-                          {% for item in resp.peers.tab_data: %}
-                          <ul class="tb tbody">
-                           <li>Value {{item.name}}</li><li>{{item.data}}</li>                         
-                          </ul>
-                            {% endfor %}
-                        </div>
-                        <!-- peer data-->
-
                       </div>
+                      <table style="display:none" id = "graph-table">
+                         <thead>
+                            <tr>
+                                <th>Segment</th>
+                                <th>Data</th>
+                                </tr>
+                              </thead>
+                            <tbody id = "table_body_graph">                              
+                            </tbody>
+                      </table>
 
 
 
@@ -159,51 +127,6 @@
                     </div>
                   </div>
 
-<!--                   <div class="item">
-                    <div class="item-head">
-                      <h3>PERFORMANCE2</h3>
-                      <div class="btns">
-                        <button class="active">TIER</button>
-                        <button>INDUSTRY</button>
-                        <button>PEERS(&#x20B9;)</button>
-                      </div>
-                    </div>
-                    <div class="chart_hold">
-                      <div class="chart_view bar">BAR</div>
-                      <div class="chart_view table">TABLE</div>
-                    </div>
-                  </div>
-                
-                  <div class="item">
-                    <div class="item-head">
-                      <h3>PERFORMANCE3</h3>
-                      <div class="btns">
-                        <button class="active">TIER</button>
-                        <button>INDUSTRY</button>
-                        <button>PEERS(&#x20B9;)</button>
-                      </div>
-                    </div>
-                    <div class="chart_hold">
-                      <div class="chart_view bar">BAR</div>
-                      <div class="chart_view table">TABLE</div>
-                    </div>
-                  </div>
-
-                  <div class="item">
-                    <div class="item-head">
-                      <h3>PERFORMANCE4</h3>
-                      <div class="btns">
-                        <button class="active">TIER</button>
-                        <button>INDUSTRY</button>
-                        <button>PEERS(&#x20B9;)</button>
-                      </div>
-                    </div>
-                    <div class="chart_hold">
-                      <div class="chart_view bar">BAR</div>
-                      <div class="chart_view table">TABLE</div>
-                    </div>
-                  </div>
-               -->
                 </div>
 
                 <!-- Left and right controls -->
@@ -284,6 +207,12 @@
     <script src="../static/vendors/raphael/raphael.min.js"></script>
     <script src="../static/vendors/morris.js/morris.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+
+
         <!-- Custom Theme Scripts -->
     <!-- <script src="../build/js/custom.min.js"></script> -->
 
@@ -302,100 +231,10 @@
     });
 </script>
 
-<script type="text/javascript">
 
-</script>
 
 
 <script type="text/javascript">
-  function init_morris_charts_peers() {
-      
-      if( typeof (Morris) === 'undefined'){ return; }
-      console.log('init_morris_charts');
-      
-      if ($('#peers-g').length){ 
-      
-        Morris.Bar({
-          element: 'peers-g',
-          data: [
-          { company: 'You', revenue: {{ resp.peers.user_data }} },
-          {% for item in resp.peers.tab_data: %}
-            {company:  "{{item.name}}", revenue: {{ item.data }} },
-          {% endfor %}
-          // {company: 'TCS', revenue: 92691.2}
-          ],
-          xkey: 'company',
-          ykeys: ['revenue'],
-          labels: ['Geekbench'],
-          barRatio: 0.4,
-          barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-          xLabelAngle: 35,
-          hideHover: 'auto',
-          resize: true
-        });
-
-      }
-    }
-
-function init_morris_charts_industry() {
-      
-      
-      if( typeof (Morris) === 'undefined'){ return; }
-      console.log('init_morris_charts');
-      
-      if ($('#industry-g').length){ 
-      
-        Morris.Bar({
-          element: 'industry-g',
-          data: [
-          { company: 'You', revenue: {{ resp.industry.user_data }} },
-          { company: 'All', revenue: {{ resp.industry.data }} },
-
-          {% for item in resp.industry.tab_data: %}
-            {company:  "Industry", revenue: {{ item.data }} },
-          {% endfor %}
-          // {company: 'TCS', revenue: 92691.2}
-          ],
-          xkey: 'company',
-          ykeys: ['revenue'],
-          labels: ['Geekbench'],
-          barRatio: 0.4,
-          barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-          xLabelAngle: 35,
-          hideHover: 'auto',
-          resize: true
-        });
-
-      }
-}
-function init_morris_charts_tier() {
-
-      if( typeof (Morris) === 'undefined'){ return; }
-      console.log('init_morris_charts');
-      
-      if ($('#tier-g').length){ 
-      
-        Morris.Bar({
-          element: 'tier-g',
-          data: [
-          { company: 'You', revenue: {{ resp.tier.user_data }} },
-          {% for item in resp.tier.tab_data: %}
-            {company:  "{{item.name}}", revenue: {{ item.data }} },
-          {% endfor %}
-          // {company: 'TCS', revenue: 92691.2}
-          ],
-          xkey: 'company',
-          ykeys: ['revenue'],
-          labels: ['Geekbench'],
-          barRatio: 0.4,
-          barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-          xLabelAngle: 35,
-          hideHover: 'auto',
-          resize: true
-        });
-
-      }
-    };
 
 last_val="";
 
@@ -404,30 +243,15 @@ last_val="";
       console.log(val);
       $(".showhide").fadeOut(300);
       $("#"+val).fadeIn(300);
-      $("#"+val +"-g").fadeIn(300);
-
       last_val=val;
     }
-
-  
   }
-  $(document).ready(function(){
-            init_morris_charts_peers();
-        init_morris_charts_tier();
-        init_morris_charts_industry();
 
-      show_hide_tables("tier");
-  });
+ var json_string = {{resp|tojson}};
 
 
-  // init_morris_charts();
 
 
-    // init_morris_charts()
-</script>
-
-
-<script type="text/javascript">
   var url_redirect_objects=
 ["/metrics/",
 "/metrics/revenue_employee",
@@ -449,6 +273,11 @@ last_val="";
   pg_val = url_redirect_objects.indexOf(current_url);
 
   function go_next_link(){
+
+    init_change(1);
+    return 0;
+
+
     if (recieved_arr.length==1){
       return 0;
     }
@@ -464,6 +293,9 @@ last_val="";
   }
 
 function go_prev_link(){
+      init_change(-1);
+    return 0;
+
     if (recieved_arr.length==1){
       return 0;
     }
@@ -481,8 +313,139 @@ function go_prev_link(){
   }
 
 
+function create_table_elements(value){
+
+
+  function create_table_row(val,val2){
+    $("#table_body").append(val);
+    $("#table_body_graph").append(val2);
+  }
+
+
+  obj_table_map = {"tier":json_string[json_index].data.tier,"peers":json_string[json_index].data.peers,"industry":json_string[json_index].data.industry};
+
+
+  $.each(obj_table_map[value],function(i,e){
+   if (e!=-1 && i=="user_data"){
+     row_element ='<ul class="tb tbody"> <li>You </li><li>'+e+'</li></ul>';
+     t_g = '<tr><td>You</td><td>'+e+'</td></tr>'
+     create_table_row(row_element,t_g);
+   } 
+
+   if (e!=-1 && i=="data"){
+     row_element ='<ul class="tb tbody"><li> Everyone Else </li><li>'+e+'</li></ul>';
+     t_g = '<tr><td>Everyone Else </td><td>'+e+'</td></tr>'
+     create_table_row(row_element,t_g);
+   } 
+
+
+   if ( i=="tab_data"){
+    if (e.length>0 )
+    {   
+    $.each(e,function(inc,el)
+    {
+       row_element ='<ul class="tb tbody"><li>'+el.name+'</li><li>'+el.data+'</li></ul>';
+       t_g = '<tr><td>'+el.name+' </td><td>'+el.data+'</td></tr>'
+       create_table_row(row_element,t_g);
+    });
+     
+   } 
+
+   }
+
+graph_provider();
+   
+  });
+
+  // 
+}
+
+function destroy_table_elements(value)
+{
+$("#table_body").empty();
+$("#table_body_graph").empty();
+}
+
+function change_title(value)
+{
+
+$("#title").text(value);
+
+}
+
+function change_tab(value){
+
+destroy_table_elements(value);
+create_table_elements(value);
+
+}
+
+var json_index=0;
+
+function init_change(val1){
+
+  if (json_string.length==1 && val1 !=0){
+    return 0
+  }
+
+  if (val1==1){
+    if (json_index==json_string.length-1){
+      json_index=0;
+    }
+    else{
+     json_index=json_index+1; 
+    }
+  }
+
+  if (val1==-1){
+    if (json_index==0){
+      json_index=json_string.length-1;
+    }
+    else{
+     json_index=json_index-1; 
+    }
+  }
+
+
+  change_title(json_string[json_index].data.head);
+
+  $("#def_click").click();
+
+  destroy_table_elements();
+  create_table_elements("tier");
+
+}
+
+
+
+var graph_provider = function () {
+    var options = {
+        data: {
+            table: document.getElementById('graph-table'),
+            switchRowsAndColumns: true
+        },
+        chart: {
+            type: 'column'
+        },
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: 'Units'
+            }
+        }
+    };
+
+    $('#graph').highcharts(Highcharts.merge(options));
+    $('#toggle').click(function () {
+        options.data.switchRowsAndColumns = !options.data.switchRowsAndColumns;
+        $('#graph').highcharts(Highcharts.merge(options));
+    });
+};
+
+init_change(0);
 
 </script>
+
   </body>
-}
+
 </html>

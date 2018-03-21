@@ -143,3 +143,44 @@ def Employee_HR_BP_Ratio(obj):
     resp = obj.user_averages_rs(required_field="Employee_HR_BP_Ratio",json=0)
     resp["data"].update(dict(head="Employee Cost (INR Crore or $)"))
     return render_template('benchmark_results.html',resp=resp["data"])
+
+
+@hrmetrics.route('/aggregate_data',methods=['GET'])
+@user_access()
+def aggregate_data(obj):
+    import json
+    # in_key =  json.loads(request.form['aggregate_key'])
+    in_key=["Employee_HR_BP_Ratio","HR_BP_Headcount"]
+    resp_data=[]
+    for i in in_key:
+        resp = obj.user_averages_rs(required_field=i,json=0)
+        if resp["status"]:
+            resp["data"].update(dict(head=ger_resp_head(i)))
+            resp_data.append(dict(key=i,data=resp["data"]))
+        else:
+            return render_template('benchmark_results.html',resp=resp_data)
+    # print resp_data
+    # return response_json(data=resp_data,status=True,as_json=1)
+    # return response_json(data={},status=True,as_json=1)
+    return render_template('benchmark_results.html',resp=resp_data)
+
+def ger_resp_head(key):
+    headings={
+    "Employee_HR_BP_Ratio":"Employee Cost (INR Crore or $)",
+    "HR_BP_Headcount":"Employee Cost (INR Crore or $)",
+    "Employee_to_HR":"",
+    "HR_Headcount":"",
+    "Time_to_Hire_Days":"Time to Hire (Days)",
+    "Cost_Per_Hire_Annual":"Cost Per Hiring Annual",
+    "Average_Hiring_Annual":"Average Hiring (Annual)",
+    "Average_Hiring_Quarterly":"Average Hiring",
+    "Overall_Attrition_Annual":"Employee Voluntary Attrition - Annual",
+    "Voluntary_Attrition_Annual":"Employee Cost (INR Crore or $)",
+    "Employee_Cost":"Employee Cost (INR Crore or $)",
+    "Revenue_Per_Employe":"Revenue Per Employee ($)",
+    "Employee_Cost_Revenue_percentage":"Employee Cost as % of Revenue",
+    "Average_Employee_Cost_rs":"Average Employee Cost (INR Crore or $)"
+    }
+
+    return headings[key]
+
