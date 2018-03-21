@@ -224,6 +224,7 @@ function cookie_storage(arr){
   if (arr.length>0)
   {
     $.removeCookie("nxt_arr");
+    $.removeCookie("chro_pg");
     $.cookie("nxt_arr",j_arr );
       var j_arr = JSON.stringify(arr); 
       $.cookie("nxt_arr",j_arr );

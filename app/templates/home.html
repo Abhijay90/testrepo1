@@ -81,7 +81,7 @@
                     <div class="clear"></div></a>
                   </li>
                   <li class="cards">
-                    <a href="#"><div class="icon">
+                    <a onclick="redirect_to_chro();"><div class="icon">
                       <img src="../static/build/images/icon2.png" alt="Benchmark Metrics" />
                     </div>
                     <div class="card_inner">
@@ -158,10 +158,33 @@
 
     <script src="../static/vendors/raphael/raphael.min.js"></script>
     <script src="../static/vendors/morris.js/morris.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
         <!-- Custom Theme Scripts -->
     <!-- <script src="../build/js/custom.min.js"></script> -->
 
     <!-- <script src="../static/build/js/custom_example.js"></script> -->
+    <script type="text/javascript">
+
+
+    function redirect_to_chro(){
+      arr=[0,1,2,3,5]
+        if (arr.length>0)
+        {
+          $.removeCookie("nxt_arr");
+          $.removeCookie("chro_pg");
+          $.cookie("chro_pg",1);
+          $.cookie("nxt_arr",j_arr );
+            var j_arr = JSON.stringify(arr); 
+            $.cookie("nxt_arr",j_arr );
+            // window.location.href="/metrics/";
+          }
+        else{
+          return 0;
+        }
+
+      }
+    </script>
   
   </body>
 </html>
