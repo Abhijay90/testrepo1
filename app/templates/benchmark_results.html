@@ -78,7 +78,7 @@
 
                   <div class="item active">
                     <div class="item-head">
-                      <h3 onclick="">PERFORMANCE</h3>
+                      <!-- <h3 onclick="">PERFORMANCE</h3> -->
                       <div class="btns">
                         <button class="active" onclick="show_hide_tables('tier');">TIER</button>
                         <button onClick="show_hide_tables('industry');">INDUSTRY</button>
@@ -96,9 +96,9 @@
                       <div class="chart_view table valign">
                         <!-- tier data-->
                         <div id="tier" class="showhide">
-                          <h6>HR Cost as a % of Revenue</h6>
+                          <h6>{{resp["head"]}}</h6>
                           <ul class="tb thead">
-                            <li>Overall Attrition</li><li>Benchmark</li>
+                            <li>Segment</li><li>Data</li>
                           </ul>
                           <ul class="tb tbody">
                             <li>Your Organnization</li><li>{{resp.tier.user_data}}</li>
@@ -114,9 +114,9 @@
 
                         <!-- industry data-->
                         <div id="industry" class="showhide">
-                          <h6>HR Cost as a % of Revenue</h6>
+                          <h6>{{resp["head"]}}</h6>
                           <ul class="tb thead">
-                            <li>Overall Attrition</li><li>Benchmark</li>
+                            <li>Segment</li><li>Data</li>
                           </ul>
                           <ul class="tb tbody">
                             <li>Your Organization</li><li>{{resp.industry.user_data}}</li>
@@ -134,9 +134,9 @@
 
                         <!-- peer data-->
                         <div id="peers" class="showhide">
-                          <h6>HR Cost as a % of Revenue</h6>
+                          <h6>{{resp["head"]}}</h6>
                           <ul class="tb thead">
-                            <li>Overall Attrition</li><li>Benchmark</li>
+                            <li>Segment</li><li>Data</li>
                           </ul>
                           <ul class="tb tbody">
                             <li>Your Organnization</li><li>{{resp.peers.user_data}}</li>
@@ -205,13 +205,13 @@
                 </div>
 
                 <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <a class="left carousel-control" href="#myCarousel"  onclick="go_prev_link();" role="button" data-slide="prev">
                   <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
                 </a>
-                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <a class="right carousel-control" href="#myCarousel"  onclick="go_next_link()" role="button" data-slide="next">
                   <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
+                  <span class="sr-only" >Next</span>
                 </a>
               </div>
               <ul class="carousel-tabs">
@@ -416,22 +416,59 @@
 
 
 <script type="text/javascript">
-  url_redirect_objects=
-{1:"",
-2:"revenue_employee",
-3:"employee_cost_to_revenue",
-4:"revenue_employee",
-5:"employee_cost_to_revenue",
-6:"employee_cost_avg",
-7:"attrition_voluntary",
-8:"attrition_all",
-9:"hiring_quarterly",
-10:"hiring_annual",
-11:"hiring_cost",
-12:"time_to_hire",
-13:"headcount_hr"
-};
-  base_url="/metrics/";
+  var url_redirect_objects=
+["/metrics/",
+"/metrics/revenue_employee",
+"/metrics/employee_cost_to_revenue",
+"/metrics/revenue_employee",
+"/metrics/employee_cost_to_revenue",
+"/metrics/employee_cost_avg",
+"/metrics/attrition_voluntary",
+"/metrics/attrition_all",
+"/metrics/hiring_quarterly",
+"/metrics/hiring_annual",
+"/metrics/hiring_cost",
+"/metrics/time_to_hire",
+"/metrics/headcount_hr"
+];
+  var recieved_arr=[1,2,4];
+
+  current_url = window.location.pathname;
+  pg_val = url_redirect_objects.indexOf(current_url);
+
+  function go_next_link(){
+    if (recieved_arr.length==1){
+      return 0;
+    }
+    // url_redirect_objects.indexOf(pg_val);
+    index=recieved_arr.indexOf(pg_val)
+    if (index==recieved_arr.length-1){
+      index=0;
+    }
+    else{
+      index=index+1
+    }
+    window.location.href=url_redirect_objects[recieved_arr[index]];
+  }
+
+function go_prev_link(){
+    if (recieved_arr.length==1){
+      return 0;
+    }
+
+    // url_redirect_objects.indexOf(pg_val);
+    index=recieved_arr.indexOf(pg_val)
+    if (index==0){
+      index=recieved_arr.length-1;
+    }
+    else{
+      index=index-1
+    }
+    window.location.href=url_redirect_objects[recieved_arr[index]];
+
+  }
+
+
 
 </script>
   </body>
