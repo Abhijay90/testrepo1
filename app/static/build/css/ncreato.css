@@ -366,6 +366,7 @@ button[disabled]{
 	text-align: center;
 	font-size:1em;
 	font-weight:900;
+	margin:0;
 }
 .custom_chart div.scroll{
 	height:90%;
