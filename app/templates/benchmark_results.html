@@ -420,8 +420,6 @@
 ["/metrics/",
 "/metrics/revenue_employee",
 "/metrics/employee_cost_to_revenue",
-"/metrics/revenue_employee",
-"/metrics/employee_cost_to_revenue",
 "/metrics/employee_cost_avg",
 "/metrics/attrition_voluntary",
 "/metrics/attrition_all",
@@ -431,7 +429,9 @@
 "/metrics/time_to_hire",
 "/metrics/headcount_hr"
 ];
-  var recieved_arr=[1,2,4];
+
+ var recieved_arr=$.parseJSON($.cookie("nxt_arr"));
+  // var recieved_arr=[1,2,4];
 
   current_url = window.location.pathname;
   pg_val = url_redirect_objects.indexOf(current_url);
