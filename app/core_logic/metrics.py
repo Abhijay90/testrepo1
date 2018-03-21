@@ -181,7 +181,18 @@ class metrics_logic(object):
     def user_averages_rs(self,required_field,json=1):
         if not self.is_function_accessible(required_field=required_field)["status"]:
             return response_json(data={},status=False,as_json=json)
-        return self.__avg_data(selector=required_field,json=json)
+        data=dict(tier={},industry={},peers=dict())
+        tier = self.__avg_data_by_tier(selector=required_field,json=0)
+        industry = self.__avg_data_by_industry(selector=required_field,json=0)
+        peers = self.__avg_data_by_revenue(selector=required_field,json=0)
+        if tier["status"] and industry["status"] and peers["status"]:
+            data["tier"]=tier["data"]
+            data["peers"]=peers["data"]
+            data["industry"]=industry["data"]
+            print data
+            return response_json(data=data,status=True,as_json=json)
+        return response_json(data={},status=False,as_json=json)
+
 
 
     # def Approx_Indian_HeadCount_avg(self,json=1):
