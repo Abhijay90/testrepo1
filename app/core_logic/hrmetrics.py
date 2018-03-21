@@ -145,12 +145,12 @@ def Employee_HR_BP_Ratio(obj):
     return render_template('benchmark_results.html',resp=resp["data"])
 
 
-@hrmetrics.route('/aggregate_data',methods=['GET'])
+@hrmetrics.route('/aggregate_data',methods=['POST'])
 @user_access()
 def aggregate_data(obj):
     import json
-    # in_key =  json.loads(request.form['aggregate_key'])
-    in_key=["Employee_HR_BP_Ratio","HR_BP_Headcount"]
+    in_key =  json.loads(request.form['aggregate_key'])
+    # in_key=["Employee_HR_BP_Ratio","HR_BP_Headcount"]
     resp_data=[]
     for i in in_key:
         resp = obj.user_averages_rs(required_field=i,json=0)
