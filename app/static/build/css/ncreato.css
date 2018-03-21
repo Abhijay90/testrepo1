@@ -58,23 +58,26 @@ section.bottom_tabs{
 	float:left;
 	height:100%;
 }
-.prime .pp{
-	display:inline-block;
-	width:auto;
-	height:100%;
-	overflow:hidden;
-	border-radius:50%;
-	text-align:center;
-	vertical-align: middle;
+.prime .pp {
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    background-image: url(/static/build/images/circle.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 .prime .pp img {
-    padding: 3px;
+    padding: 5px;
     height: 100%;
     max-width: 100%;
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
-    border: 1px solid #FFF;
 }
 .prime .pdet_out{
 	text-align:left;
@@ -115,25 +118,24 @@ ul.cards_outer li {
     background-color: rgba(62, 123, 253,1);
     margin: 20px 0 10px;
     box-shadow: 0px 0px 10px 3px #666;
+    cursor:pointer;
 }
 ul.cards_outer li:nth-child(even){
 	background-color:rgba(102, 99, 211,1);
 }
 ul.cards_outer li .icon{
 	width:80px;
-	vertical-align: top;
+	vertical-align: middle;
 	display:inline-block;
-	float:left;
 }
 ul.cards_outer li .icon img{
 	width:100%;
 }
 ul.cards_outer li .card_inner{
-	width:calc(100% - 80px);
+	width:calc(100% - 90px);
 	padding-left:20px;
-	vertical-align: top;
+	vertical-align: middle;
 	display:inline-block;
-	float:left;
 	line-height:1;
 }
 ul.cards_outer li h3{
@@ -260,6 +262,25 @@ ul.cards_outer li:hover{
     color:#000;
     overflow:hidden;
 }
+.carousel-inner{
+	overflow:visible;
+}
+.carousel-inner:after {
+    content: '';
+    position: absolute;
+    top: 96%;
+    left: 33%;
+    margin-left: 0;
+    width: 0;
+    height: 0;
+    border-top: 32px solid #FFF;
+    border-right: 32px solid transparent;
+    border-left: 32px solid transparent;
+    transition:all 0.25s ease-in-out;
+}
+.carousel-inner.table:after{
+	left:60%;
+}
 .carousel-inner > .item > .chart_hold > .table{
 	display:none;
 }
@@ -271,6 +292,7 @@ ul.cards_outer li:hover{
 }
 .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
     right: 30%;
+    margin-right:0;
 }
 .carousel-control .glyphicon-chevron-left, .carousel-control .icon-previous {
     left: 30%;
@@ -293,7 +315,7 @@ ul.carousel-tabs{
 }
 ul.carousel-tabs li {
     display: inline-block;
-    width: auto;
+    width: 25%;
     margin: auto;
     position: relative;
     top: 50%;
@@ -479,15 +501,25 @@ h6.item_hd{
 }
 
 
+
 /* Custom, iPhone Retina */ 
 @media only screen and (max-width : 340px) {
 	h6.item_hd {
-	    margin-top: 0;
+	    margin-top: 0.25em;
 	    font-size: 1em;
 	}
-	/*.chart_view.bar div.gp {
-	    transform: scale(0.5);
-	}*/
+	.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
+	    margin-right: -10px;
+	}
+	.carousel-inner:after {
+	    border-top: 32px solid #FFF;
+	    border-right: 32px solid transparent;
+	    border-left: 32px solid transparent;
+	    left: 27%;
+	}
+	.carousel-inner:after {
+	    left: 53%;
+	}
 }
 @media only screen and (min-width : 320px) {
 	.prime h3{
@@ -501,7 +533,7 @@ h6.item_hd{
 	    width: 60px;
 	}
 	ul.cards_outer li .card_inner {
-	    width: calc(100% - 60px);
+	    width: calc(100% - 70px);
 	}
 	.carousel-bottom .btns button {
 	    min-width: 100px;
@@ -513,7 +545,7 @@ h6.item_hd{
 	}
 	.carousel-inner > .item > .chart_hold {
 	    height: 72%;
-	    margin-top:0;
+	    /*margin-top:0;*/
 	}
 	.carousel-inner > .item > .item-head {
 	    height: 23%;
@@ -524,14 +556,23 @@ h6.item_hd{
 	.carousel-bottom img {
 	    width: 35%;
 	}
+	.carousel-inner:after {
+	    border-top: 16px solid #FFF;
+	    border-right: 16px solid transparent;
+	    border-left: 16px solid transparent;
+	    top: 105%;
+	}
+	.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
+	    margin-right: -10px;
+	}
+
 	
 	
 
 }
 
 /* Extra Small Devices, Phones */ 
-@media only screen and (min-width : 480px) {
-	
+@media only screen and (min-width : 410px) {
 
 }
 
@@ -566,18 +607,27 @@ h6.item_hd{
 	    margin-top: 0.5em;
 	    font-size: 1.5em;
 	}
+	.carousel-inner:after {
+	    border-top: 32px solid #FFF;
+	    border-right: 32px solid transparent;
+	    border-left: 32px solid transparent;
+	    top: 105%;
+	}
+	.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
+	    margin-right: 10px;
+	}
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
 	body{
-		font-size:27px;
+		font-size:21px;
 	}
 	ul.cards_outer li .icon {
 	    width: 100px;
 	}
 	ul.cards_outer li .card_inner {
-	    width: calc(100% - 100px);
+	    width: calc(100% - 110px);
 	}
 	.carousel-inner > .item > .chart_hold {
 	    margin-top:0;
@@ -597,7 +647,7 @@ h6.item_hd{
 	}
 	section.top_prof {
 	    width: 100%;
-	    height: 20%;
+	    height: 16%;
 	    padding: 1%;
 	    background-color: #3E7BFD;
 	}
@@ -605,14 +655,14 @@ h6.item_hd{
 	    width: 150px;
 	}
 	ul.cards_outer li .card_inner {
-	    width: calc(100% - 150px);
+	    width: calc(100% - 160px);
 	}
 	.pp_out .ratio {
 	    padding-bottom: 40%;
 	    width: 40%;
 	}
 	.carousel-inner > .item > .chart_hold {
-	    margin-top:0;
+	    margin-top:5%;
 	}
 	.carousel-bottom img {
 	    width: 16%;
@@ -630,6 +680,28 @@ h6.item_hd{
 	.carousel-inner {
 	    max-width: 750px;
 	    margin: auto;
+	}
+	.carousel {
+	    max-width: 750px;
+	    margin: auto;
+	}
+	.chart_view.bar div.gp {
+	    transform: scale(0.9, 0.7);
+	}
+	ul.cards_outer {
+	    max-width: 750px;
+	}
+	.custom_chart .listBl {
+	    max-width: 750px;
+	}
+	.carousel-inner:after {
+	    left:19%;
+	}
+	.carousel-inner.table:after {
+	    left: 73%;
+	}
+	ul.carousel-tabs li img {
+	    width: 64px;
 	}
 }
 @media only screen and (min-width : 1400px) {

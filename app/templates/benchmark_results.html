@@ -66,7 +66,7 @@
             <div class="col-md-12 col-xs-12" style="height:100%">
               <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height:60%">
                 <!-- Indicators -->
-                <ol class="carousel-indicators" style="visibility:hidden">
+                <ol class="carousel-indicators" style="display:none">
                   <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                   <li data-target="#myCarousel" data-slide-to="1"></li>
                   <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -86,7 +86,7 @@
                         <button onClick="change_tab('industry');$('.btns button').removeClass('active'); $(this).addClass('active');">INDUSTRY</button>
                         <button onClick="change_tab('peers') ;$('.btns button').removeClass('active'); $(this).addClass('active');">PEERS(&#x20B9;)</button>
                       </div>
-                      <!-- <h6 class="item_hd">{{resp["head"]}}</h6> -->
+                      <h6 class="item_hd">{{resp["head"]}}</h6>
                     </div>
                     <div class="chart_hold">
                       <div class="chart_view bar valign">
@@ -106,6 +106,7 @@
                           <div id="table_body">
 
                           </div>
+
 
                         </div>
                         <!-- tier data-->
@@ -140,8 +141,8 @@
                 </a>
               </div>
               <ul class="carousel-tabs">
-                <li id="bar"><img src="../static/build/images/bar.jpg" /></li>
-                <li id="table"><img src="../static/build/images/table.jpg" /></li>
+                <li id="bar"><img src="../static/build/images/icon4.png" /></li>
+                <li id="table"><img src="../static/build/images/icon6.png" /></li>
               </ul>
               <div class="carousel-bottom">
                 <div class="btns">
