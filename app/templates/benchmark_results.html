@@ -84,9 +84,11 @@
                         <button onClick="show_hide_tables('industry');">INDUSTRY</button>
                         <button onClick="show_hide_tables('peers');">PEERS(&#x20B9;)</button>
                       </div>
+                      <h6 class="item_hd">{{resp["head"]}}</h6>
                     </div>
                     <div class="chart_hold">
                       <div class="chart_view bar valign">
+                      
                       <div id="peers" class="showhide gp"></div>
                       <div id="industry" class="showhide gp"></div>
                       <div id="tier" class="showhide gp"></div>
@@ -96,7 +98,6 @@
                       <div class="chart_view table valign">
                         <!-- tier data-->
                         <div id="tier" class="showhide">
-                          <h6>{{resp["head"]}}</h6>
                           <ul class="tb thead">
                             <li>Segment</li><li>Data</li>
                           </ul>
@@ -114,7 +115,6 @@
 
                         <!-- industry data-->
                         <div id="industry" class="showhide">
-                          <h6>{{resp["head"]}}</h6>
                           <ul class="tb thead">
                             <li>Segment</li><li>Data</li>
                           </ul>
@@ -134,7 +134,6 @@
 
                         <!-- peer data-->
                         <div id="peers" class="showhide">
-                          <h6>{{resp["head"]}}</h6>
                           <ul class="tb thead">
                             <li>Segment</li><li>Data</li>
                           </ul>
