@@ -118,6 +118,7 @@ ul.cards_outer li {
     background-color: rgba(62, 123, 253,1);
     margin: 20px 0 10px;
     box-shadow: 0px 0px 10px 3px #666;
+    cursor:pointer;
 }
 ul.cards_outer li:nth-child(even){
 	background-color:rgba(102, 99, 211,1);
@@ -661,7 +662,7 @@ h6.item_hd{
 	    width: 40%;
 	}
 	.carousel-inner > .item > .chart_hold {
-	    margin-top:0;
+	    margin-top:5%;
 	}
 	.carousel-bottom img {
 	    width: 16%;
@@ -692,6 +693,15 @@ h6.item_hd{
 	}
 	.custom_chart .listBl {
 	    max-width: 750px;
+	}
+	.carousel-inner:after {
+	    left:19%;
+	}
+	.carousel-inner.table:after {
+	    left: 73%;
+	}
+	ul.carousel-tabs li img {
+	    width: 64px;
 	}
 }
 @media only screen and (min-width : 1400px) {
