@@ -374,9 +374,9 @@ button[disabled]{
 	overflow-y:auto;
 	color:#000;
 }
-.custom_chart .listBl{
-	width:80%;
-	margin:auto;
+.custom_chart .listBl {
+    width: 80%;
+    margin: 0 auto 1.5em;
 }
 .custom_chart .listBl h3{
 	color:#1A89FF;
@@ -384,7 +384,6 @@ button[disabled]{
 	font-size:1em;
 	font-weight:300;
 	padding-bottom:0.5em;
-	margin:0.5em auto;
 }
 .custom_chart .listBl ul{
 	width:100%;
