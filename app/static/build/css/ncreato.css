@@ -323,6 +323,41 @@ ul.carousel-tabs li img{
 button[disabled]{
 	pointer-events: none;
 }
+.chart_view.table h6{
+	text-align:center;
+	color:#1A89FF;
+	margin:0.5em auto;
+}
+.chart_view.table ul{
+	width:80%;
+	margin:auto;
+	list-style:none;
+}
+.chart_view.table ul li{
+	width:calc(50% - 1px);
+	display:inline-block;
+	padding:0.5em 0;
+	text-align:center;
+	box-sizing:border-box;
+	color:#000;
+	font-weight:300;
+	font-size:0.6em;
+}
+.chart_view.table ul.thead li{
+	color:#FFF;
+}
+.chart_view.table ul.thead li:first-child{
+	background-color:#1A89FF;
+}
+.chart_view.table ul.thead li:last-child{
+	background-color:#F68E00;
+}
+.chart_view.table ul.tbody li~li{
+	border-left:1px solid #ccc;
+}
+.chart_view.table ul.tbody{
+	border-bottom:1px solid #ccc;
+}
 
 /* Custom, iPhone Retina */ 
 @media only screen and (min-width : 320px) {
@@ -355,6 +390,9 @@ button[disabled]{
 	}
 	.carousel-inner > .item > .item-head > .btns {
 	    margin: 0em auto;
+	}
+	.carousel-bottom img {
+	    width: 35%;
 	}
 }
 
@@ -412,6 +450,12 @@ button[disabled]{
 	.pp_out .ratio {
 	    padding-bottom: 40%;
 	    width: 40%;
+	}
+	.carousel-inner > .item > .chart_hold {
+	    margin-top:0;
+	}
+	.carousel-bottom img {
+	    width: 16%;
 	}
 }
 @media only screen and (min-width : 1400px) {
