@@ -561,6 +561,9 @@ h6.item_hd{
 	    border-left: 16px solid transparent;
 	    top: 105%;
 	}
+	.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
+	    margin-right: -10px;
+	}
 
 	
 	
@@ -608,6 +611,9 @@ h6.item_hd{
 	    border-right: 32px solid transparent;
 	    border-left: 32px solid transparent;
 	    top: 105%;
+	}
+	.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
+	    margin-right: 10px;
 	}
 }
 
