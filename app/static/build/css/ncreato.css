@@ -443,7 +443,7 @@ button[disabled]{
     outline: none;
     outline-offset: 0;
 }
-.custom_chart form button {
+.custom_chart button.bt {
     margin: 1em auto;
     display: block;
     border: none;
