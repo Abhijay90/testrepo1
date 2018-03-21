@@ -358,6 +358,74 @@ button[disabled]{
 .chart_view.table ul.tbody{
 	border-bottom:1px solid #ccc;
 }
+.custom_chart div.hd{
+	height:10%;
+}
+.custom_chart div.hd h3{
+	color:#1A89FF;
+	text-align: center;
+	font-size:1em;
+	font-weight:900;
+}
+.custom_chart div.scroll{
+	height:90%;
+	overflow:hidden;
+	overflow-y:auto;
+	color:#000;
+}
+.custom_chart .listBl{
+	width:80%;
+	margin:auto;
+}
+.custom_chart .listBl h3{
+	color:#1A89FF;
+	border-bottom:1px solid #ccc;
+	font-size:1em;
+	font-weight:300;
+	padding-bottom:0.5em;
+	margin:0.5em auto;
+}
+.custom_chart .listBl ul{
+	width:100%;
+	list-style: none
+}
+.custom_chart .listBl ul li{
+	font-size:0.8em;
+	margin-bottom: 0.5em;
+	padding-left:20px;
+	position: relative;
+}
+.custom_chart .listBl ul li input{
+	vertical-align: text-bottom;
+	position: absolute;
+	left:0;
+	top:0;
+	margin:auto;
+}
+.custom_chart .listBl ul li span{
+	vertical-align: middle;
+	transition:all 0.25s ease-in-out;
+}
+.custom_chart .listBl ul li input:checked{
+	border:1px solid #1A89FF;
+}
+.custom_chart .listBl ul li input:checked + span {
+    color:#1A89FF;
+}
+.custom_chart .listBl ul li input[type=checkbox]:focus {
+    outline: none;
+    outline-offset: 0;
+}
+.custom_chart form button {
+    margin: 1em auto;
+    display: block;
+    border: none;
+    background-color: #1A89FF;
+    color: #fff;
+    padding: 0.5em 2em;
+    line-height: 1;
+    font-size: 1em;
+}
 
 /* Custom, iPhone Retina */ 
 @media only screen and (min-width : 320px) {

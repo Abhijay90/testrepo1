@@ -86,66 +86,72 @@
                       </div>
                     </div>
                     <div class="chart_hold">
-                      <div class="chart_view bar">BAR</div>
-
-                      <div class="chart_view table">TABLE</div>
-
-<!-- tier data-->
-                      <div class="chart_view table valign" id="tier">
-                        <h6>HR Cost as a % of Revenue</h6>
-                        <ul class="tb thead">
-                          <li>Overall Attrition</li><li>Benchmark</li>
-                        </ul>
-                        <ul class="tb tbody">
-                          <li>Your Organnization</li><li>{{resp.tier.user_data}}</li>
-                        </ul>
-                        {% for item in resp.tier.tab_data: %}
-                        <ul class="tb tbody">
-                         <li>{{item.name}}</li><li>{{item.data}}</li>                         
-                        </ul>
-                          {% endfor %}
+                      <div class="chart_view bar">
+                      <div id="peers" class="showhide" style="width:80%; height:100%;"></div>
+                      <div id="industry" class="showhide" style="width:80%; height:100%;"></div>
+                      <div id="tier" class="showhide" style="width:80%; height:100%;"></div>
                       </div>
-<!-- tier data-->
+
+                      
+                      <div class="chart_view table valign">
+                        <!-- tier data-->
+                        <div id="tier" class="showhide">
+                          <h6>HR Cost as a % of Revenue</h6>
+                          <ul class="tb thead">
+                            <li>Overall Attrition</li><li>Benchmark</li>
+                          </ul>
+                          <ul class="tb tbody">
+                            <li>Your Organnization</li><li>{{resp.tier.user_data}}</li>
+                          </ul>
+                          {% for item in resp.tier.tab_data: %}
+                          <ul class="tb tbody">
+                           <li>{{item.name}}</li><li>{{item.data}}</li>                         
+                          </ul>
+                            {% endfor %}
+                        </div>
+                        <!-- tier data-->
 
 
-<!-- industry data-->
-                      <div class="chart_view table valign" id="industry">
-                        <h6>HR Cost as a % of Revenue</h6>
-                        <ul class="tb thead">
-                          <li>Overall Attrition</li><li>Benchmark</li>
-                        </ul>
-                        <ul class="tb tbody">
-                          <li>Your Organnization</li><li>{{resp.industry.user_data}}</li>
-                        </ul>
-                        <ul class="tb tbody">
-                          <li>Others</li><li>{{resp.industry.data}}</li>
-                        </ul>
-                        {% for item in resp.industry.tab_data: %}
-                        <ul class="tb tbody">
-                         <li>Your Industry</li><li>{{item.data}}</li>                         
-                        </ul>
-                          {% endfor %}
+                        <!-- industry data-->
+                        <div id="industry" class="showhide">
+                          <h6>HR Cost as a % of Revenue</h6>
+                          <ul class="tb thead">
+                            <li>Overall Attrition</li><li>Benchmark</li>
+                          </ul>
+                          <ul class="tb tbody">
+                            <li>Your Organization</li><li>{{resp.industry.user_data}}</li>
+                          </ul>
+                          <ul class="tb tbody">
+                            <li>Others</li><li>{{resp.industry.data}}</li>
+                          </ul>
+                          {% for item in resp.industry.tab_data: %}
+                          <ul class="tb tbody">
+                           <li>Your Industry</li><li>{{item.data}}</li>                         
+                          </ul>
+                            {% endfor %}
+                        </div>
+                        <!-- tier data-->
 
+                        <!-- peer data-->
+                        <div id="peers" class="showhide">
+                          <h6>HR Cost as a % of Revenue</h6>
+                          <ul class="tb thead">
+                            <li>Overall Attrition</li><li>Benchmark</li>
+                          </ul>
+                          <ul class="tb tbody">
+                            <li>Your Organnization</li><li>{{resp.peers.user_data}}</li>
+                          </ul>
+                          {% for item in resp.peers.tab_data: %}
+                          <ul class="tb tbody">
+                           <li>Value {{item.name}}</li><li>{{item.data}}</li>                         
+                          </ul>
+                            {% endfor %}
+                        </div>
+                        <!-- peer data-->
 
                       </div>
-<!-- tier data-->
 
-<!-- peer data-->
-                      <div class="chart_view table valign" id="peers">
-                        <h6>HR Cost as a % of Revenue</h6>
-                        <ul class="tb thead">
-                          <li>Overall Attrition</li><li>Benchmark</li>
-                        </ul>
-                        <ul class="tb tbody">
-                          <li>Your Organnization</li><li>{{resp.peers.user_data}}</li>
-                        </ul>
-                        {% for item in resp.peers.tab_data: %}
-                        <ul class="tb tbody">
-                         <li>Value {{item.name}}</li><li>{{item.data}}</li>                         
-                        </ul>
-                          {% endfor %}
-                      </div>
-<!-- tier data-->
+
 
 
                     </div>
@@ -299,12 +305,114 @@
 
   function show_hide_tables(val){
     if (val!=last_val){
-      $(".table").hide();
-      $("#"+val).show();
+      console.log(val);
+      $(".showhide").hide();
+      $("#"+val +".showhide").show();
     }
 
+  
   }
+  show_hide_tables("tier");
+  // init_morris_charts();
+
 </script>
+
+
+<script type="text/javascript">
+  function init_morris_charts() {
+      
+      if( typeof (Morris) === 'undefined'){ return; }
+      console.log('init_morris_charts');
+      
+      if ($('#peers').length){ 
+      
+        Morris.Bar({
+          element: 'peers',
+          data: [
+          { company: 'User', revenue: {{ resp.peers.user_data }} },
+          {% for item in resp.peers.tab_data: %}
+            {company:  "{{item.name}}", revenue: {{ item.data }} },
+          {% endfor %}
+          // {company: 'TCS', revenue: 92691.2}
+          ],
+          xkey: 'company',
+          ykeys: ['revenue'],
+          labels: ['Geekbench'],
+          barRatio: 0.4,
+          barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+          xLabelAngle: 35,
+          hideHover: 'auto',
+          resize: true
+        });
+
+      }
+
+
+      if( typeof (Morris) === 'undefined'){ return; }
+      console.log('init_morris_charts');
+      
+      if ($('#industry').length){ 
+      
+        Morris.Bar({
+          element: 'industry',
+          data: [
+          { company: 'Your Organization', revenue: {{ resp.industry.user_data }} },
+          { company: 'Others', revenue: {{ resp.industry.data }} },
+
+          {% for item in resp.industry.tab_data: %}
+            {company:  "Your Industry", revenue: {{ item.data }} },
+          {% endfor %}
+          // {company: 'TCS', revenue: 92691.2}
+          ],
+          xkey: 'company',
+          ykeys: ['revenue'],
+          labels: ['Geekbench'],
+          barRatio: 0.4,
+          barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+          xLabelAngle: 35,
+          hideHover: 'auto',
+          resize: true
+        });
+
+      }
+
+
+      if( typeof (Morris) === 'undefined'){ return; }
+      console.log('init_morris_charts');
+      
+      if ($('#tier').length){ 
+      
+        Morris.Bar({
+          element: 'tier',
+          data: [
+          { company: 'Your Organization', revenue: {{ resp.tier.user_data }} },
+          {% for item in resp.peers.tab_data: %}
+            {company:  "{{item.name}}", revenue: {{ item.data }} },
+          {% endfor %}
+          // {company: 'TCS', revenue: 92691.2}
+          ],
+          xkey: 'company',
+          ykeys: ['revenue'],
+          labels: ['Geekbench'],
+          barRatio: 0.4,
+          barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+          xLabelAngle: 35,
+          hideHover: 'auto',
+          resize: true
+        });
+
+      }
+
+
+
+
+
+
+      
+    };
+
+    init_morris_charts()
+</script>>
 
 
 <script type="text/javascript">
