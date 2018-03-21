@@ -88,64 +88,65 @@
                     <div class="chart_hold">
                       <div class="chart_view bar">BAR</div>
                       
-                      <div class="chart_view table">TABLE</div>
+                      <div class="chart_view table valign">
+                        <!-- tier data-->
+                        <div id="tier">
+                          <h6>HR Cost as a % of Revenue</h6>
+                          <ul class="tb thead">
+                            <li>Overall Attrition</li><li>Benchmark</li>
+                          </ul>
+                          <ul class="tb tbody">
+                            <li>Your Organnization</li><li>{{resp.tier.user_data}}</li>
+                          </ul>
+                          {% for item in resp.tier.tab_data: %}
+                          <ul class="tb tbody">
+                           <li>{{item.name}}</li><li>{{item.data}}</li>                         
+                          </ul>
+                            {% endfor %}
+                        </div>
+                        <!-- tier data-->
 
-<!-- tier data-->
-                      <div class="chart_view table valign" id="tier">
-                        <h6>HR Cost as a % of Revenue</h6>
-                        <ul class="tb thead">
-                          <li>Overall Attrition</li><li>Benchmark</li>
-                        </ul>
-                        <ul class="tb tbody">
-                          <li>Your Organnization</li><li>{{resp.tier.user_data}}</li>
-                        </ul>
-                        {% for item in resp.tier.tab_data: %}
-                        <ul class="tb tbody">
-                         <li>{{item.name}}</li><li>{{item.data}}</li>                         
-                        </ul>
-                          {% endfor %}
+
+                        <!-- industry data-->
+                        <div id="industry">
+                          <h6>HR Cost as a % of Revenue</h6>
+                          <ul class="tb thead">
+                            <li>Overall Attrition</li><li>Benchmark</li>
+                          </ul>
+                          <ul class="tb tbody">
+                            <li>Your Organnization</li><li>{{resp.industry.user_data}}</li>
+                          </ul>
+                          <ul class="tb tbody">
+                            <li>Others</li><li>{{resp.industry.data}}</li>
+                          </ul>
+                          {% for item in resp.industry.tab_data: %}
+                          <ul class="tb tbody">
+                           <li>Your Industry</li><li>{{item.data}}</li>                         
+                          </ul>
+                            {% endfor %}
+                        </div>
+                        <!-- tier data-->
+
+                        <!-- peer data-->
+                        <div id="peers">
+                          <h6>HR Cost as a % of Revenue</h6>
+                          <ul class="tb thead">
+                            <li>Overall Attrition</li><li>Benchmark</li>
+                          </ul>
+                          <ul class="tb tbody">
+                            <li>Your Organnization</li><li>{{resp.peers.user_data}}</li>
+                          </ul>
+                          {% for item in resp.peers.tab_data: %}
+                          <ul class="tb tbody">
+                           <li>Value {{item.name}}</li><li>{{item.data}}</li>                         
+                          </ul>
+                            {% endfor %}
+                        </div>
+                        <!-- peer data-->
+
                       </div>
-<!-- tier data-->
 
 
-<!-- industry data-->
-                      <div class="chart_view table valign" id="industry">
-                        <h6>HR Cost as a % of Revenue</h6>
-                        <ul class="tb thead">
-                          <li>Overall Attrition</li><li>Benchmark</li>
-                        </ul>
-                        <ul class="tb tbody">
-                          <li>Your Organnization</li><li>{{resp.industry.user_data}}</li>
-                        </ul>
-                        <ul class="tb tbody">
-                          <li>Others</li><li>{{resp.industry.data}}</li>
-                        </ul>
-                        {% for item in resp.industry.tab_data: %}
-                        <ul class="tb tbody">
-                         <li>Your Industry</li><li>{{item.data}}</li>                         
-                        </ul>
-                          {% endfor %}
-
-
-                      </div>
-<!-- tier data-->
-
-<!-- peer data-->
-                      <div class="chart_view table valign" id="peers">
-                        <h6>HR Cost as a % of Revenue</h6>
-                        <ul class="tb thead">
-                          <li>Overall Attrition</li><li>Benchmark</li>
-                        </ul>
-                        <ul class="tb tbody">
-                          <li>Your Organnization</li><li>{{resp.peers.user_data}}</li>
-                        </ul>
-                        {% for item in resp.peers.tab_data: %}
-                        <ul class="tb tbody">
-                         <li>Value {{item.name}}</li><li>{{item.data}}</li>                         
-                        </ul>
-                          {% endfor %}
-                      </div>
-<!-- tier data-->
 
 
                     </div>
