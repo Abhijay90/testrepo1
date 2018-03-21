@@ -99,7 +99,7 @@ def Average_Hiring_Annual(obj):
 @user_access()
 def Cost_Per_Hire_Annual(obj):
     resp = obj.user_averages_rs(required_field="Cost_Per_Hire_Annual",json=0)
-    resp["data"].update(dict(head="Employee Cost (INR Crore or $)"))
+    resp["data"].update(dict(head="Cost Per Hiring Annual"))
     return render_template('benchmark_results.html',resp=resp["data"])
 
 
@@ -109,7 +109,7 @@ def Cost_Per_Hire_Annual(obj):
 @user_access()
 def Time_to_Hire_Days(obj):
     resp = obj.user_averages_rs(required_field="Time_to_Hire_Days",json=0)
-    resp["data"].update(dict(head="Employee Cost (INR Crore or $)"))
+    resp["data"].update(dict(head="Time to Hire (Days)"))
     return render_template('benchmark_results.html',resp=resp["data"])
 
 
