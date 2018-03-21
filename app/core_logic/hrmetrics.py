@@ -182,11 +182,11 @@ def ger_resp_head(key):
     "Average_Hiring_Annual":"Average Hiring (Annual)",
     "Average_Hiring_Quarterly":"Average Hiring",
     "Overall_Attrition_Annual":"Employee Voluntary Attrition - Annual",
-    "Voluntary_Attrition_Annual":"Employee Cost (INR Crore or $)",
+    "Voluntary_Attrition_Annual":"Employee Cost (INR Cr. or $)",
     "Employee_Cost":"Employee Cost (INR Crore or $)",
     "Revenue_Per_Employe":"Revenue Per Employee ($)",
     "Employee_Cost_Revenue_percentage":"Employee Cost as % of Revenue",
-    "Average_Employee_Cost_rs":"Average Employee Cost (INR Crore or $)"
+    "Average_Employee_Cost_rs":"Avg Employee Cost (INR Cr. or $)"
     }
 
     return headings[key]
