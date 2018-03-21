@@ -74,7 +74,7 @@ def Voluntary_Attrition_Annual(obj):
 @user_access()
 def attrition_overall(obj):
     resp = obj.user_averages_rs(required_field="Overall_Attrition_Annual",json=0)
-    resp["data"].update(dict(head="EmployeeVoluntary Attrition - Annual"))
+    resp["data"].update(dict(head="Employee Voluntary Attrition - Annual"))
     return render_template('benchmark_results.html',resp=resp["data"])
 
 
