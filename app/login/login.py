@@ -8,7 +8,7 @@ from app.utility import response_json
 
 from app.login.baseUser import User
 try:
-    from flask import Blueprint, render_template,jsonify,request,Response,session
+    from flask import Blueprint, render_template,jsonify,request,Response,session,make_response
 except:
      print "install flask"
      exit(0)
@@ -51,5 +51,7 @@ def login_new():
 @login_dummy.route('/',methods=['GET'])
 def dummy_session():
     obj = User(username = "",password="",id=1)
-    return obj.set_cookie(response_json(status=True,data={}),user_type=1,user_company_id=1)
+
+    # obj.set_cookie(response_json(status=True,data={},as_json=1),user_type=1,user_company_id=1)
+    return obj.set_cookie(make_response(render_template('login1.html')),user_type=1,user_company_id=1)
     # return redirect("/home", code=302)
