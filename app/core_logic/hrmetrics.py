@@ -186,7 +186,8 @@ def ger_resp_head(key):
     "Employee_Cost":"Employee Cost (INR Crore or $)",
     "Revenue_Per_Employe":"Revenue Per Employee ($)",
     "Employee_Cost_Revenue_percentage":"Employee Cost as % of Revenue",
-    "Average_Employee_Cost_rs":"Avg Employee Cost (INR Cr. or $)"
+    "Average_Employee_Cost_rs":"Avg Employee Cost (INR Cr. or $)",
+    "Training_Spend_Annual":"Training Spend (Annual)",
     }
 
     return headings[key]
