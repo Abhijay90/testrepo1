@@ -23,7 +23,7 @@ logging_in = Blueprint('login',__name__)#,template_folder='templates')
 
 login_dummy = Blueprint('login_dummy',__name__)
 
-@logging_in.route('/',methods=['POST'])
+@logging_in.route('/new',methods=['POST'])
 def login_new():
     s =  json.loads(request.data)
     try:
@@ -47,6 +47,12 @@ def login_new():
         return obj.set_cookie(response_json(status=True,data={}),user_type=data["data"]["user_type"],user_company_id=data["data"]["user_company_id"]) #login
     else:
         return obj.set_cookie(response_json(status=False,data={}))
+
+
+
+@login_dummy.route('/new',methods=['GET'])
+def login_new_one():
+    return render_template('login2.html')
 
 @login_dummy.route('/',methods=['GET'])
 def dummy_session():

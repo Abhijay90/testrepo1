@@ -13,7 +13,7 @@ password,
 is_active
 '''
 
-from app import flask_login
+from app import flask_login#,alchemy_db
 from app.db import db,db_cursor
 
 from flask import session
@@ -63,3 +63,14 @@ class User(flask_login.UserMixin):
     def login(self):
         resp=dict(status=True,val=dict(user_type=1,user_company_id=1))
         return resp
+
+
+
+# class students(db_alchemy.Model):
+#    id = db.Column('student_id', db.Integer, primary_key = True)
+#    name = db.Column(db.String(100))
+#    city = db.Column(db.String(50))  
+#    addr = db.Column(db.String(200))
+#    pin = db.Column(db.String(10))
+
+
