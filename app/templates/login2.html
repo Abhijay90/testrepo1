@@ -6,28 +6,41 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <meta name="theme-color" content="#4E00FF" />
 
-    <title>Gentelella Alela! | </title>
+    <title>LOGIN</title>
 
     <!-- Bootstrap -->
     <link href="../static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
+
     <!-- NProgress -->
     <link href="../static/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- Animate.css -->
-    <link href="../static/vendors/animate.css/animate.min.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../static/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  
+    <!-- bootstrap-progressbar -->
+    <link href="../static/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../static/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../static/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="../static/build/css/custom.min.css" rel="stylesheet">
 
+    <!-- New Styles -->
+    <link href="../static/build/css/ncreato.css" rel="stylesheet">
+
   </head>
 
-  <body class="login">
+<!--   <body class="login">
     <div>
-      <a class="hiddenanchor" id="signup"></a>
-      <a class="hiddenanchor" id="signin"></a>
-
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
@@ -43,63 +56,63 @@
                 <a class="btn btn-default submit" onclick="$(this).closest('form').submit()" >Log in</a>
                 <a class="reset_pass" href="#">Lost your password?</a>
               </div>
-
-<!--               <div class="clearfix"></div>
-
-              <div class="separator">
-                <p class="change_link">New to site?
-                  <a href="#signup" class="to_register"> Create Account </a>
-                </p>
-
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                </div>
-              </div> -->
-            </form>
-          </section>
-        </div>
-
-        <div id="register" class="animate form registration_form">
-          <section class="login_content">
-            <form>
-              <h1>Create Account</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
-              </div>
-              <div>
-                <a class="btn btn-default submit" href="index.html">Submit</a>
-              </div>
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
-                <p class="change_link">Already a member ?
-                  <a href="#signin" class="to_register"> Log in </a>
-                </p>
-
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                </div>
-              </div>
             </form>
           </section>
         </div>
       </div>
     </div>
     <script src="../static/vendors/jquery/dist/jquery.min.js"></script>
-  </body>
+  </body> -->
+<body>
+      <div class="container main">
+        <section class="top_prof">
+          <div class=" prime">
+              <div class="valign" style="height:100%">
+                <div class="row" style="height:100%">
+                  <div  style="height:100%">
+                    <div class="pp_out" style="width:100%;text-align:center">
+                      <div class="pp">
+                        <img src="../static/build/images/logo.png" alt="Logo" />
+                      </div>
+                    <div class="clear"></div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </section>
+        <section class="middle_scroll login">
+          <div class="row scroll">
+            <div class="col-md-12 col-xs-12">
+              <div class="login_wrapper">
+                <h1 class="clr">Hey there! Let's get started...</h1>
+                <div class="animate form login_form">
+                  <section class="login_content">
+                    <form action="/creds" method="POST" name="login-form">
+                      <div>
+                        <input type="text" class="form-control" placeholder="Email" name="username" required="" />
+                      </div>
+                      <div>
+                        <input type="password" class="form-control" placeholder="Password" name ="password" required="" />
+                      </div>
+                      <div class="bl">
+                        <a class="reset" href="#">Lost your password?</a>
+                      </div>
+                      <div class="bl"><button class="btn btn-default submit" onclick="$(this).closest('form').submit()" >Log in</button></div>
+                    </form>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+                <section class="bottom_tabs">
+          <ul class="valign">
+            <li>
+              <a href="/home"><span><i class="fa fa-lg fa-home"></i><br/>HOME</span></a>
+            </li>
+          </ul>
+        </section>
+      </div>
+</body>
+
 </html>
