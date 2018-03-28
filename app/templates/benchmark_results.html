@@ -679,7 +679,15 @@ function data_graph(value){
     }
     else{
       if (v!=-1){
+        if (i=="user_data"){
+          resp_val.push({"name":"You","y":parseFloat(v)})
+        }
+        else if(i=="data"){
+         resp_val.push({"name":"Your Industry","y":parseFloat(v)}) 
+        }
+        else{
           resp_val.push({"name":i,"y":parseFloat(v)})
+          }
       }
     }
   }
@@ -705,7 +713,6 @@ function data_drilldown(value){
   var resp_val=[]
   $.each(value,function(ind,val){
     index = resp_val.map(function(el){return el.name}).indexOf(val["name"])
-    console.log(index);
     if (index == -1 ){
       resp_val.push({"name":val["name"],"id":val["name"],"data":[]})
       resp_val[resp_val.length-1]["data"].push([val["sub_name"],parseFloat(val["data"])])
