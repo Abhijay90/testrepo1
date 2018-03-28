@@ -102,11 +102,11 @@
                   <h3>Efficiency</h3>
                   <ul>
                      <li><input type="checkbox" id="myCheck" onclick="myFunction(10)"><span>HR Headcount</span></li>
-                     <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Employee to HR Ratio</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction(13)" ><span>Employee to HR Ratio</span></li>
                      <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>HR BP Headcount</span></li>
                      <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Employee to HR BP Ratio</span></li>
                      <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>India HR Spend in Million $</span></li>
-                     <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>India HR Spend as % of Revenue</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled="" ><span>India HR Spend as % of Revenue</span></li>
                   </ul>
                 </div>
 
@@ -119,6 +119,7 @@
                      <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Joiner Per Recruiter (Annual)</span></li>
                      <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Training Time (Days/Hours)</span></li>
                      <li><input type="checkbox" id="myCheck" onclick="myFunction(11)" ><span>Training Spend (Annual)</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction(12)" ><span>Training Spend as % of Revenue</span></li>
                   </ul>
                 </div>
 
@@ -203,7 +204,7 @@ var url_redirect_objects=
 "/metrics/hiring_annual",
 "/metrics/hiring_cost",
 "/metrics/time_to_hire",
-"/metrics/headcount_hr"
+"/metrics/headcount_hr",
 ];
 
 var post_params=
@@ -218,7 +219,9 @@ var post_params=
 "Cost_Per_Hire_Annual",
 "Time_to_Hire_Days",
 "HR_Headcount",
-"Training_Spend_Annual"
+"Training_Spend_Annual",
+"Training_Spend_Revenue_Percentage",
+"Employee_to_HR"
 ];
 glob_arr=[];
 glob_key_arr=[];

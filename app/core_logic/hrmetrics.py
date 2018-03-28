@@ -173,21 +173,22 @@ def aggregate_data(obj):
 
 def ger_resp_head(key):
     headings={
-    "Employee_HR_BP_Ratio":"Employee Cost (INR Crore or $)",
-    "HR_BP_Headcount":"Employee Cost (INR Crore or $)",
-    "Employee_to_HR":"",
-    "HR_Headcount":"",
+    "Employee_HR_BP_Ratio":"Employee Cost($)",
+    # "HR_BP_Headcount":"Employee Cost($)",
+    "Employee_to_HR":"Employee to HR Ratio",
+    "HR_Headcount":"HR Headcount",
     "Time_to_Hire_Days":"Time to Hire (Days)",
     "Cost_Per_Hire_Annual":"Cost Per Hiring Annual",
     "Average_Hiring_Annual":"Average Hiring (Annual)",
     "Average_Hiring_Quarterly":"Average Hiring",
     "Overall_Attrition_Annual":"Employee Voluntary Attrition - Annual",
-    "Voluntary_Attrition_Annual":"Employee Cost (INR Cr. or $)",
+    "Voluntary_Attrition_Annual":"Employee Cost ($)",
     "Employee_Cost":"Employee Cost (INR Crore or $)",
     "Revenue_Per_Employe":"Revenue Per Employee ($)",
     "Employee_Cost_Revenue_percentage":"Employee Cost as % of Revenue",
-    "Average_Employee_Cost_rs":"Avg Employee Cost (INR Cr. or $)",
+    "Average_Employee_Cost_rs":"Avg Employee Cost ($)",
     "Training_Spend_Annual":"Training Spend (Annual)",
+    "Training_Spend_Revenue_Percentage":"Training Spend as % of Revenue",
     }
 
     return headings[key]

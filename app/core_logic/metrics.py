@@ -104,14 +104,18 @@ class metrics_logic(object):
             ### getting avg data of industry
             query_user_industry = '''select truncate(AVG({selector}),2) as data, industry as name from company_data where id <> {user_company_id}  group by industry order by data desc limit 5;'''.format(selector =selector ,user_company_id=self.user_company_id)
 
+            query_user_industry_drill_down = '''select truncate(AVG({selector}),2) as data, industry as name,tier as sub_name from company_data where id <> {user_company_id}  group by industry,tier order by data desc limit 5;'''.format(selector =selector ,user_company_id=self.user_company_id)
+
 
             resp_selector_tab = self.to_string(db(query_user_industry,asdict=True))
+
+            resp_selector_tab_drill_down = self.to_string(db(query_user_industry_drill_down,asdict=True))
 
             
             if not resp_selector_tab:
                 return response_json(data={},status=False,state=2)
 
-            res=dict(data=resp[0]["data"],user_data = resp_user[0]["data"],tab_data = resp_selector_tab,drill_down = [])
+            res=dict(data=resp[0]["data"],user_data = resp_user[0]["data"],tab_data = resp_selector_tab,drill_down = resp_selector_tab_drill_down)
         except Exception as e:
             print e
             return response_json(data={},status=False,as_json=json)
