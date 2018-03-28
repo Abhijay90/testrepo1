@@ -45,7 +45,7 @@
           <div class=" prime">
               <div class="valign" style="height:100%">
                 <div class="row" style="height:100%">
-                  <div style="height:100%">
+                  <div style="height:100%;text-align:center">
 
                       <div class="pp_out dropdown">
                         <div class="pp dropbtn">
@@ -226,4 +226,53 @@ var post_params=
     </script>
   
   </body>
+
+<style>
+.prime .pp_out {
+    text-align: center;
+    vertical-align: middle;
+    width: auto;
+    display: inline-block;
+    float: none;
+    height: 100%;
+    padding-right: 0;
+    margin: 6.5% 0;
+}
+.prime .pp {
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    background-image: url(/static/build/images/circle.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+    transform: scale(2);
+}
+.dropdown-content:after {
+    right: 47%;
+}
+.dropdown-content {
+      min-width: 300px;
+      right: 0;
+      position: relative;
+      top: 8px;
+  }
+
+ul.cards_outer {
+    padding-top: 15%;
+}
+@media only screen and (min-width : 1025px) {
+  .prime .pp_out {
+    margin:3% 0;
+  }
+  ul.cards_outer {
+    padding-top: 5%;
+}
+  }
+</style>
 </html>

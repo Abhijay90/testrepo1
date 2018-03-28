@@ -557,6 +557,16 @@ h6.item_hd{
     line-height: 1;
     font-size: 1em;
 }
+button.bt {
+    margin: 1em auto;
+    display: block;
+    border: none;
+    background-color: #1A89FF;
+    color: #fff;
+    padding: 0.5em 2em;
+    line-height: 1;
+    font-size: 1em;
+}
 .chart_view.bar div.gp{
 	width:100%;
 	height:100%;
@@ -598,7 +608,7 @@ h6.item_hd{
 	color:#3E7BFD;
 }
 .login_wrapper form {
-    width: 60%;
+    width: 40%;
     margin: 40px auto;
 }
 .login_wrapper form input,
@@ -608,7 +618,7 @@ h6.item_hd{
     border: none;
     background-color: transparent;
     box-shadow: none;
-    border-bottom: 1px solid #3E7BFD;
+    border-bottom: 1px solid #017AFA;
     border-radius: 0;
 }
 .login_wrapper .bl{
@@ -618,18 +628,19 @@ h6.item_hd{
 	margin:20px auto;
 }
 .login_content form div a{
-	font-size:1em;
+	font-size:0.75em;
 	text-decoration: underline;
 }
 .login_content form button{
-	background-color:#3E7BFD;
+	background-color:#017AFA;
 	color:#FFF;
 	padding:10px;
 	font-size:1em;
 	min-width:100px;
+	width:100%;
 }
 .login_content form button:hover{
-	background-color:#3E7BFD;
+	background-color:#017AFA;
 	box-shadow: 0px 0px 3px 3px #ccc;
 	color:#FFF;
 }
