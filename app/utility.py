@@ -17,7 +17,7 @@ def response_json(data,status,state=0,as_json=1):
     response_data["status"] = status
     response_data["state"] = state
     response_data["data"] = data
-    # print response_data
+    print as_json
     if not as_json:
         return response_data
     return Response(json.dumps(response_data,default=defaultencode),mimetype='application/json')

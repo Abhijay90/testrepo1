@@ -1,10 +1,10 @@
 from sys import exit
-from app import mysql
+from app import mysql,login_manager,flask_login
 
 from app.utility import response_json 
 
 try:
-    from flask import Blueprint, render_template,jsonify,request,Response,session
+    from flask import Blueprint, render_template,jsonify,request,Response,session,redirect
 except:
      print "install flask"
      exit(0)
@@ -16,10 +16,12 @@ homepage_bp = Blueprint('homepage',__name__,template_folder='templates')
 user_check= Blueprint('multicheck',__name__,template_folder='templates')
 
 @homepage_bp.route('',methods=['GET'])
+@flask_login.login_required
 def homepage():
     return render_template('home.html')
 
 
 @user_check.route('',methods=['GET'])
+@flask_login.login_required
 def multicheck():
     return render_template('index_choice.html')

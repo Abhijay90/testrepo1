@@ -1,5 +1,5 @@
 from sys import exit
-from app import app,mysql,flask_login
+from app import app,mysql,flask_login,login_manager
 from flask import redirect,url_for
 from functools import wraps
 from app.db import db,db_cursor
@@ -19,13 +19,16 @@ except:
     print "install json"
     exit(0)
 
+
+
 logging_in = Blueprint('login',__name__)#,template_folder='templates')
 
 login_dummy = Blueprint('login_dummy',__name__)
 
-@logging_in.route('/new',methods=['POST'])
+@login_dummy.route('/creds',methods=['POST'])
 def login_new():
     s =  json.loads(request.data)
+    print s
     try:
         username = s["username"]
         if not username:
@@ -44,20 +47,30 @@ def login_new():
     data = obj.login()
 
     if data["status"]:
-        return obj.set_cookie(response_json(status=True,data={}),user_type=data["data"]["user_type"],user_company_id=data["data"]["user_company_id"]) #login
+        return redirect('/home')
     else:
-        return obj.set_cookie(response_json(status=False,data={}))
+        return redirect('/login')
 
-
-
-@login_dummy.route('/new',methods=['GET'])
-def login_new_one():
-    return render_template('login2.html')
 
 @login_dummy.route('/',methods=['GET'])
-def dummy_session():
-    obj = User(username = "",password="",id=1)
+def login_new_one():
+    if (flask_login.current_user.is_authenticated):
+        return redirect('/home')
+    return render_template('login2.html')
 
-    # obj.set_cookie(response_json(status=True,data={},as_json=1),user_type=1,user_company_id=1)
-    return obj.set_cookie(make_response(render_template('login1.html')),user_type=1,user_company_id=1)
-    # return redirect("/home", code=302)
+
+@login_manager.user_loader
+def load_user(id):
+    obj = User(username = "abhijay@tententen.in",password="abhijay",id=id)
+    resp = obj.get_user_from_id()
+    return resp
+
+@login_manager.unauthorized_handler
+def unauth_handler():
+    return redirect("/login")
+
+@login_dummy.route('/logout',methods=['GET'])
+@flask_login.login_required
+def logout():
+    flask_login.logout_user()
+    return redirect("/login")

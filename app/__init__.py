@@ -11,15 +11,15 @@ app.config.update(db_conf)
 app.config.update(app_secret)
 mysql = MySQL(app)
 
-
-from controller import *
-
 # sql alchemy init
 app.config.update(db_conf_alchemy)
-# alchemy_db = SQLAlchemy(app)
+alchemy_db = SQLAlchemy(app)
+
+
 # initiating login manager
 
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
 
+from controller import *

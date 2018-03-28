@@ -22,7 +22,7 @@ from app.utility import response_json
 
 register = Blueprint('register',__name__)#,template_folder='templates')
 
-@register.route('/',methods = ['POST'])
+@register.route('/metrics/',methods = ['POST'])
 def register():
     s =  json.loads(request.data)
     name = s["name"]
