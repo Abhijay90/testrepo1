@@ -20,27 +20,24 @@ except:
     exit(0)
 
 
-
-logging_in = Blueprint('login',__name__)#,template_folder='templates')
-
-login_dummy = Blueprint('login_dummy',__name__)
-
-@login_dummy.route('/creds',methods=['POST'])
+user_login = Blueprint('login_dummy',__name__)
+user_logout = Blueprint('user_logout',__name__)
+@user_login.route('/creds',methods=['POST'])
 def login_new():
-    s =  json.loads(request.data)
-    print s
     try:
-        username = s["username"]
+        username = request.form["username"]
         if not username:
             return response_json(status=False,data=dict(msg="enter username"))
     except:
-        return response_json(status=False,data=dict(msg="enter username"))
+        return response_json(status=False,data=dict(msg="enter valid username"))
     try:
-        secret = s["password"]
-        if not secret:
+        password = request.form["password"]
+        print password
+
+        if not password:
             return response_json(status=False,data=dict(msg="enter password"))
     except:
-        return response_json(status=False,data=dict(msg="enter password"))
+        return response_json(status=False,data=dict(msg="enter valid password"))
 
     obj = User(username = username,password=password,id=0)
 
@@ -52,7 +49,7 @@ def login_new():
         return redirect('/login')
 
 
-@login_dummy.route('/',methods=['GET'])
+@user_login.route('/',methods=['GET'])
 def login_new_one():
     if (flask_login.current_user.is_authenticated):
         return redirect('/home')
@@ -69,7 +66,7 @@ def load_user(id):
 def unauth_handler():
     return redirect("/login")
 
-@login_dummy.route('/logout',methods=['GET'])
+@user_logout.route('',methods=['GET'])
 @flask_login.login_required
 def logout():
     flask_login.logout_user()

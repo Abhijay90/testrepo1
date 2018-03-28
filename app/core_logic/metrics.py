@@ -34,7 +34,7 @@ class metrics_logic(object):
         self.user_access=""
         self.user_access_list=[]
 
-    def user_accessible_fields(self,):
+    def user_accessible_fields(self):
         if session:
             self.user_type=int(session["data"]["user_type"])
             self.user_company_id=int(session["data"]["user_company_id"])
@@ -111,7 +111,7 @@ class metrics_logic(object):
             if not resp_selector_tab:
                 return response_json(data={},status=False,state=2)
 
-            res=dict(data=resp[0]["data"],user_data = resp_user[0]["data"],tab_data = resp_selector_tab)
+            res=dict(data=resp[0]["data"],user_data = resp_user[0]["data"],tab_data = resp_selector_tab,drill_down = [])
         except Exception as e:
             print e
             return response_json(data={},status=False,as_json=json)
@@ -129,11 +129,13 @@ class metrics_logic(object):
                 return response_json(data={},status=False,state=2)
             ### getting avg of tier
             query_user_tier = '''select truncate(AVG({selector}),2) as data,tier as name from company_data where id <> {user_company_id} and tier <>"" and tier is not null group by tier;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
+            query_user_tier_drill_down = '''select truncate(AVG({selector}),2) as data,tier as name,industry as sub_name from company_data where id <> {user_company_id} and tier <>"" and tier is not null group by tier,industry;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
             resp_selector_tab = self.to_string(db(query_user_tier,asdict=True))
+            resp_selector_tab_drill_down = self.to_string(db(query_user_tier_drill_down,asdict=True))
             if not resp_selector_tab:
                 return response_json(data={},status=False,state=2)
 
-            res=dict(data=-1,user_data = resp_user[0]["data"],tab_data = resp_selector_tab)
+            res=dict(data=-1,user_data = resp_user[0]["data"],tab_data = resp_selector_tab,drill_down = resp_selector_tab_drill_down)
         except Exception as e:
             print e
             return response_json(data={},status=False,as_json=json)
@@ -161,7 +163,7 @@ class metrics_logic(object):
             if not resp_selector_tab:
                 return response_json(data={},status=False,state=2)
 
-            res=dict(data=-1,user_data = resp_user[0]["data"],tab_data = resp_selector_tab)
+            res=dict(data=-1,user_data = resp_user[0]["data"],tab_data = resp_selector_tab,drill_down = [])
         except Exception as e:
             print e
             return response_json(data={},status=False,as_json=json)

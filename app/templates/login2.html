@@ -20,6 +20,7 @@
 
     <!-- Custom Theme Style -->
     <link href="../static/build/css/custom.min.css" rel="stylesheet">
+
   </head>
 
   <body class="login">
@@ -30,20 +31,20 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form action="/login/creds" method="POST" name="login-form">
               <h1>Login Form</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" placeholder="Email" name="username" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" placeholder="Password" name ="password" required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Log in</a>
+                <a class="btn btn-default submit" onclick="$(this).closest('form').submit()" >Log in</a>
                 <a class="reset_pass" href="#">Lost your password?</a>
               </div>
 
-              <div class="clearfix"></div>
+<!--               <div class="clearfix"></div>
 
               <div class="separator">
                 <p class="change_link">New to site?
@@ -57,7 +58,7 @@
                   <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
                   <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
                 </div>
-              </div>
+              </div> -->
             </form>
           </section>
         </div>
@@ -99,5 +100,6 @@
         </div>
       </div>
     </div>
+    <script src="../static/vendors/jquery/dist/jquery.min.js"></script>
   </body>
 </html>

@@ -209,12 +209,15 @@
     <script src="../static/vendors/raphael/raphael.min.js"></script>
     <script src="../static/vendors/morris.js/morris.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/data.js"></script>
+    <!-- <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script> -->
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
 
 
         <!-- Custom Theme Scripts -->
@@ -319,7 +322,6 @@ function go_prev_link(){
 
 function create_table_elements(value){
 
-
   function create_table_row(val,val2){
     $("#table_body").append(val).fadeIn(500);
     $("#table_body_graph").append(val2);
@@ -329,6 +331,8 @@ function create_table_elements(value){
 
   obj_table_map = {"tier":json_string[json_index].data.tier,"peers":json_string[json_index].data.peers,"industry":json_string[json_index].data.industry};
 
+  // console.log(obj_table_map[value]);
+  graph_provider(obj_table_map[value])
 
   $.each(obj_table_map[value],function(i,e){
    if (e!=-1 && i=="user_data"){
@@ -358,7 +362,7 @@ function create_table_elements(value){
 
    }
 
-graph_provider();
+// graph_provider();
    
   });
 
@@ -426,7 +430,7 @@ function init_change(val1){
 
 
 
-var graph_provider = function () {
+var graph_provider_bkp = function () {
     var options = {
         data: {
             table: document.getElementById('graph-table'),
@@ -466,6 +470,103 @@ var graph_provider = function () {
         $('#graph').highcharts(Highcharts.merge(options));
     });
 };
+
+
+function data_graph(value){
+  resp_val = []
+$.each(value,function(i,v){
+  if(i!=="drill_down"){
+    if(v.constructor === Array){
+      $.each(v,function(ind,val){
+      resp_val.push({"name":val["name"],"y":parseFloat(val["data"])});
+      });
+    }
+    else{
+      if (v!=-1){
+          resp_val.push({"name":i,"y":parseFloat(v)})
+      }
+    }
+  }
+
+});
+
+
+
+if(value["drill_down"].length>0){
+  $.each(resp_val,function(i,v){
+    v["drilldown"]=v["name"]
+  });
+}
+
+console.log(resp_val);
+
+return resp_val
+}
+
+function data_drilldown(value){
+  console.log("in drilldown");
+resp_val=[]
+  $.each(value,function(ind,val){
+    index = resp_val.map(function(el){return el.name}).indexOf(val["name"])
+    console.log(index);
+    if (index == -1 ){
+      resp_val.push({"name":val["name"],"id":val["name"],"data":[]})
+      resp_val[resp_val.length-1]["data"].push([val["data"],val["name"]])
+    }
+    else{
+      resp_val[index]["data"].push([val["data"],val["name"]])
+    }
+  });
+console.log(resp_val);
+return resp_val
+
+}
+
+var graph_provider = function (value) {
+  console.log(value);
+    var options = {
+        chart: {
+            type: 'column'
+        },
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: null,
+            }
+        },
+        title:{
+          text:null,
+
+        },
+
+        xAxis: {
+          title: {
+            text:null,
+            // labels: null,
+          },
+          labels:{
+            enabled:false,
+          }
+        },
+        credits: {
+          enabled:false,
+        },
+        series:[{
+          name:"",
+          data: data_graph(value),
+        }],
+        drilldown:{
+          series:data_drilldown(value["drill_down"]),
+        }
+    };
+
+    $('#graph').highcharts(Highcharts.merge(options));
+    $('#toggle').click(function () {
+        options.data.switchRowsAndColumns = !options.data.switchRowsAndColumns;
+        $('#graph').highcharts(Highcharts.merge(options));
+    });
+};
+
 
 init_change(0);
 

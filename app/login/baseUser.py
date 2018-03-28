@@ -84,6 +84,9 @@ class User(alchemy_db.Model):
             return dict(status=True)
         return dict(status=False)
 
+    def __set_session_vars(self,user_row):
+        session["data"]={"user_company_id":user_row.user_company_id,"user_type":user_row.user_type}
+
 
     def insert_user_in_db(self,name,company,role,department,revenue,employees,phone):
         #use orm here, doing with raw query to make it work first
@@ -100,6 +103,7 @@ class User(alchemy_db.Model):
         if registered_user is None:
             return dict(status=False,data=dict())
         flask_login.login_user(registered_user)
+        self.__set_session_vars(registered_user)
         return dict(status=True,data=dict(id=registered_user.id,user_type=registered_user.user_type,user_company_id=registered_user.user_company_id))
    
 
