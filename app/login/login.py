@@ -64,10 +64,10 @@ def load_user(id):
 
 @login_manager.unauthorized_handler
 def unauth_handler():
-    return redirect("/login")
+    return redirect("/")
 
 @user_logout.route('',methods=['GET'])
 @flask_login.login_required
 def logout():
     flask_login.logout_user()
-    return redirect("/login")
+    return redirect("/")

@@ -498,13 +498,13 @@ if(value["drill_down"].length>0){
   });
 }
 
-console.log(resp_val);
+// console.log(resp_val);
 
 return resp_val
 }
 
 function data_drilldown(value){
-  console.log("in drilldown");
+  // console.log("in drilldown");
 resp_val=[]
   $.each(value,function(ind,val){
     index = resp_val.map(function(el){return el.name}).indexOf(val["name"])
