@@ -111,8 +111,9 @@ section.bottom_tabs{
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 999;
-    right:15px;
+    right:11px;
     transition:all 0.25s ease-in-out;
+    top: calc(100% + 4px)
 }
 .dropdown-content:after {
   content: '';
@@ -317,7 +318,7 @@ ul.cards_outer li:hover{
 .carousel-inner{
 	overflow:visible;
 }
-.carousel-inner:after {
+.ci1:after {
     content: '';
     position: absolute;
     top: 96%;
@@ -330,16 +331,20 @@ ul.cards_outer li:hover{
     border-left: 32px solid transparent;
     transition:all 0.25s ease-in-out;
 }
-.carousel-inner.table:after{
+.ci1.table2:after{
 	left:60%;
 }
 .carousel-inner > .item > .chart_hold > .table{
 	display:none;
 }
-.carousel-inner.table > .item > .chart_hold > .table{
+.carousel-inner > .item.table0 > .chart_hold > .table,
+.carousel-inner > .item.table1 > .chart_hold > .table,
+.carousel-inner.table2 > .item > .chart_hold > .table{
 	display:block;
 }
-.carousel-inner.table > .item > .chart_hold > .bar{
+.carousel-inner > .item.table0 > .chart_hold > .bar,
+.carousel-inner > .item.table1 > .chart_hold > .bar,
+.carousel-inner.table2 > .item > .chart_hold > .bar{
 	display:none;
 }
 .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
@@ -365,8 +370,12 @@ ul.cards_outer li:hover{
     text-align: center;
     margin-bottom:0;
 }
+.carousel-tabs-inner{
+	max-width:1024px;
+	margin:auto;
+	height:100%;
+}
 .carousel-tabs ul{
-	max-width:750px;
 	height:100%;
 	margin:auto;
 	list-style: none;
@@ -638,7 +647,8 @@ select:-webkit-autofill {
 	    margin-top: 0.25em;
 	    font-size: 1em;
 	}
-	.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
+	.carousel-control .glyphicon-chevron-right,
+	.carousel-control .icon-next {
 	    margin-right: -10px;
 	}
 	.carousel-inner:after {
@@ -686,7 +696,7 @@ select:-webkit-autofill {
 	.carousel-bottom img {
 	    width: 35%;
 	}
-	.carousel-inner:after {
+	.ci1:after {
 	    border-top: 16px solid #FFF;
 	    border-right: 16px solid transparent;
 	    border-left: 16px solid transparent;
@@ -833,12 +843,14 @@ select:-webkit-autofill {
 }
 
 @media only screen and (max-width : 1024px) {
-	.carousel.desktop{
+	.carousel.desktop,
+	.carousel-tabs.desktop{
 		display:none;
 	}
 }
-@media only screen and (min-width : 1024px) {
-	.carousel.mobile{
+@media only screen and (min-width : 1025px) {
+	.carousel.mobile,
+	.carousel-tabs.mobile{
 		display:none;
 	}
 	.carousel-inner {
@@ -867,4 +879,44 @@ select:-webkit-autofill {
 	.carousel-inner.table:after {
 	    left: 56%;
 	}
+	.carousel-tabs ul {
+	    height: 100%;
+	    margin: auto;
+	    list-style: none;
+	    width: 50%;
+	    float: left;
+	}
+	.ci0 .i1:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 28.5%;
+    margin-left: 0;
+    width: 0;
+    height: 0;
+    border-top: 32px solid #FFF;
+    border-right: 32px solid transparent;
+    border-left: 32px solid transparent;
+    transition:all 0.25s ease-in-out;
+	}
+	.ci0 .i2:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 31.5%;
+    margin-left: 0;
+    width: 0;
+    height: 0;
+    border-top: 32px solid #FFF;
+    border-right: 32px solid transparent;
+    border-left: 32px solid transparent;
+    transition:all 0.25s ease-in-out;
+	}
+	.ci0 .i1.table0:after{
+		left:55.5%;
+	}
+	.ci0 .i2.table1:after{
+		left:58.5%;
+	}
+
 }
