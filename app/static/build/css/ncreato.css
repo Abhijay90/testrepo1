@@ -660,6 +660,9 @@ select:-webkit-autofill {
 	.carousel-inner.table:after {
 	    left: 59%;
 	}
+	h3 {
+	    font-size: 1em;
+	}
 }
 @media only screen and (min-width : 320px) {
 	.prime h3{
@@ -759,6 +762,9 @@ select:-webkit-autofill {
 	.item-head h3#title {
 	    font-size: 2em;
 	}
+	h3 {
+	    font-size: 1.8em;
+	}
 }
 
 /* Medium Devices, Desktops */
@@ -789,6 +795,9 @@ select:-webkit-autofill {
 	.item-head h3#title {
 	    font-size: 1em;
 	}
+	h3 {
+    font-size: 1.5em;
+}
 }
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
