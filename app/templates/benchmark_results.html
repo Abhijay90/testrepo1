@@ -692,7 +692,7 @@ if(value["drill_down"].length>0){
   });
 }
 
-// console.log(resp_val);
+console.log(resp_val);
 
 return resp_val
 }
@@ -722,6 +722,9 @@ return resp_val
 var graph_provider = function (value,div_id) {
   console.log(value);
     var options = {
+      lang: {
+               drillUpText: '◁ Back to Main'
+           },
         chart: {
             type: 'column'
         },
@@ -737,17 +740,22 @@ var graph_provider = function (value,div_id) {
         },
 
         xAxis: {
-          title: {
-            text:null,
-            // labels: null,
-          },
+          type: 'category',
+          // title: {
+          //   text:null,
+          //   // labels: null,
+          // },
           labels:{
-            enabled:false,
-          }
+            enabled:true,
+          },
+          legend: {
+              enabled: true
+             },
         },
         credits: {
           enabled:false,
         },
+        // series:data_graph(value),
         series:[{
           name:"",
           data: data_graph(value),
