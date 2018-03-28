@@ -97,7 +97,7 @@
                       <div class="bl">
                         <a class="reset" href="#">Lost your password?</a>
                       </div>
-                      <div class="bl"><button class="btn btn-default submit" onclick="$(this).closest('form').submit()" >Log in</button></div>
+                      <div class="bl"><button class="btn bt btn-default submit" onclick="$(this).closest('form').submit()" >Log in</button></div>
                     </form>
                   </section>
                 </div>
@@ -120,27 +120,33 @@
     background-image: none; 
 }
 .prime .pp img {
-    padding:0px;
+    padding: 10px;
     height: 100%;
     max-width: 100%;
     object-fit: cover;
     object-position: center;
     border-radius: 0;
+    background-color: #fff;
+    border-radius: 10px;
 }
 .login_form, .registration_form {
     position: relative;
 }
 
 @media only screen and (min-width : 320px) and (max-width : 768px){
-.prime .pp img {
-    padding: 0px;
-    height: 60%;
-    margin: 10% auto;
-    max-width: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 0;
-}
+  .prime .pp img {
+      padding: 10px;
+      height: 80%;
+      margin: 5% auto;
+      max-width: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 10px;
+  }
+  .login_wrapper form {
+      width: 60%;
+      margin: 20px auto;
+  }
 }
 </style>
 </html>
