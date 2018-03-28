@@ -22,7 +22,7 @@ except:
 
 user_login = Blueprint('login_dummy',__name__)
 user_logout = Blueprint('user_logout',__name__)
-@user_login.route('/creds',methods=['POST'])
+@user_login.route('creds',methods=['POST'])
 def login_new():
     try:
         username = request.form["username"]
