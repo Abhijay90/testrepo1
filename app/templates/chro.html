@@ -42,20 +42,29 @@
           <div class=" prime">
               <div class="valign" style="height:100%">
                 <div class="row" style="height:100%">
-                  <div  style="height:100%">
-                    <div class="pp_out">
-                      <div class="pp">
-                        <img src="../static/build/images/dummy-profile.jpg" alt="Profile Name" />
+                  <div style="height:100%">
+
+                      <div class="pp_out dropdown">
+                        <div class="pp dropbtn">
+                          <img src="../static/build/images/dummy-profile.jpg" alt="Profile Name" />
+                        </div>
+                        <div class="dropdown-content">
+                          <a href="#">Profile</a>
+                          <a href="#">Settings</a>
+                          <a href="/logout">Logout</a>
+                        </div>
                       </div>
-                      <!-- <div  class="ratio img-responsive img-circle" style="background-image: url('../static/build/images/dummy-profile.jpg');"></div> -->
-                    </div>
-                    <div class="pdet_out">
-                      <div class="pdet valign">
-                        <h3>Alex Pandiyan</h3>
-                        <h6>CHRO</h6>
-                        <h6><span>TATA CONSULTANCY SERVICES</span></h6>
-                      </div>
-                    </div>
+
+                      <!-- <div class="pdet_out dropbtn">
+                        <div class="pdet valign">
+                          <h3>Alex Pandiyan</h3>
+                          <h6>CHRO</h6>
+                          <h6><span>TATA CONSULTANCY SERVICES</span></h6>
+                        </div>
+                      </div> -->
+
+                    
+                    
                     <div class="clear"></div>
                   </div>
                 </div>
@@ -65,7 +74,7 @@
         <section class="middle_scroll">
           <div class="row scroll" style="height:100%">
             <div class="col-md-12 col-xs-12" style="height:100%">
-              <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height:60%">
+              <div id="myCarousel0" class="carousel slide desktop" data-ride="carousel" data-type="multi" data-interval="2500" style="height:60%">
                 <!-- Indicators -->
                 <ol class="carousel-indicators" style="display:none">
                   <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -75,25 +84,24 @@
                 </ol>
 
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
+                <div class="carousel-inner ci0" role="listbox">
 
 
-                  <div class="item active" id="data">
+                  <div class="item i1 active" id="data0">
 
                     <div class="item-head">
-                      <h3>CHRO Metric</h3>
-                      <h3 id="title"> </h3>
+                      <div ><h3 id="title0"> </h3></div>
                       <div class="btns">
-                        <button  class ="active" onclick="change_tab('tier');$('.btns button').removeClass('active'); $(this).addClass('active');" id="def_click">TIER</button>
-                        <button onClick="change_tab('industry');$('.btns button').removeClass('active'); $(this).addClass('active');">INDUSTRY</button>
-                        <button onClick="change_tab('peers') ;$('.btns button').removeClass('active'); $(this).addClass('active');">PEERS(&#x20B9;)</button>
+                        <button  class ="active" onclick="change_tab('tier',0);$('.btns button').removeClass('active'); $(this).addClass('active');" id="def_click0">TIER</button>
+                        <button onClick="change_tab('industry',0);$('.btns button').removeClass('active'); $(this).addClass('active');">INDUSTRY</button>
+                        <button onClick="change_tab('peers',0) ;$('.btns button').removeClass('active'); $(this).addClass('active');">PEERS(&#x20B9;)</button>
                       </div>
                       <h6 class="item_hd">{{resp["head"]}}</h6>
                     </div>
                     <div class="chart_hold">
                       <div class="chart_view bar ">
                       
-                      <div id="graph" class="showhide gp"></div>
+                      <div id="graph0" class="showhide gp"></div>
                       
                       </div>
 
@@ -105,7 +113,7 @@
                             <li>Segment</li><li>Data</li>
                           </ul>
 
-                          <div id="table_body">
+                          <div id="table_body0">
 
                           </div>
 
@@ -113,14 +121,66 @@
                         </div>
                         <!-- tier data-->
                       </div>
-                      <table style="display:none" id = "graph-table">
+                      <table style="display:none" id = "graph-table0">
                          <thead>
                             <tr>
                                 <th></th>
                                 <th>Segments</th>
                                 </tr>
                               </thead>
-                            <tbody id = "table_body_graph">                              
+                            <tbody id = "table_body_graph0">                              
+                            </tbody>
+                      </table>
+
+
+
+
+                    </div>
+                  </div>
+
+
+                  <div class="item i2 active" id="data1">
+
+                    <div class="item-head">
+                      <div ><h3 id="title1"> </h3></div>
+                      <div class="btns">
+                        <button  class ="active" onclick="change_tab('tier',1);$('.btns button').removeClass('active'); $(this).addClass('active');" id="def_click1">TIER</button>
+                        <button onClick="change_tab('industry',1);$('.btns button').removeClass('active'); $(this).addClass('active');">INDUSTRY</button>
+                        <button onClick="change_tab('peers',1) ;$('.btns button').removeClass('active'); $(this).addClass('active');">PEERS(&#x20B9;)</button>
+                      </div>
+                      <h6 class="item_hd">{{resp["head"]}}</h6>
+                    </div>
+                    <div class="chart_hold">
+                      <div class="chart_view bar ">
+                      
+                      <div id="graph1" class="showhide gp"></div>
+                      
+                      </div>
+
+                      
+                      <div class="chart_view table valign">
+                        <!-- tier data-->
+                        <div id="data-table" >
+                          <ul class="tb thead">
+                            <li>Segment</li><li>Data</li>
+                          </ul>
+
+                          <div id="table_body1">
+
+                          </div>
+
+
+                        </div>
+                        <!-- tier data-->
+                      </div>
+                      <table style="display:none" id = "graph-table1">
+                         <thead>
+                            <tr>
+                                <th></th>
+                                <th>Segments</th>
+                                </tr>
+                              </thead>
+                            <tbody id = "table_body_graph1">                              
                             </tbody>
                       </table>
 
@@ -133,22 +193,116 @@
                 </div>
 
                 <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel"  onclick="go_prev_link();" role="button" data-slide="prev">
+                <a class="left carousel-control" href="#myCarousel0"  onclick="go_prev_link();" role="button" data-slide="prev">
                   <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
                 </a>
-                <a class="right carousel-control" href="#myCarousel"  onclick="go_next_link()" role="button" data-slide="next">
+                <a class="right carousel-control" href="#myCarousel0"  onclick="go_next_link()" role="button" data-slide="next">
                   <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                   <span class="sr-only" >Next</span>
                 </a>
               </div>
-              <ul class="carousel-tabs">
-                <li id="bar"><img src="../static/build/images/icon4.png" /></li>
-                <li id="table"><img src="../static/build/images/icon6.png" /></li>
-              </ul>
-              <!-- <div class="carousel-bottom">
-                <img src="../static/build/images/latest.jpg" />
-              </div> -->
+              <div id="myCarousel1" class="carousel slide mobile" data-ride="carousel" data-type="multi" data-interval="2500" style="height:60%">
+                <!-- Indicators -->
+                <ol class="carousel-indicators" style="display:none">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#myCarousel" data-slide-to="3"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner ci1" role="listbox">
+
+
+                  <div class="item active" id="data2">
+
+                    <div class="item-head">
+                      <div ><h3 id="title2"> </h3></div>
+                      <div class="btns">
+                        <button  class ="active" onclick="change_tab('tier',2);$('.btns button').removeClass('active'); $(this).addClass('active');" id="def_click2">TIER</button>
+                        <button onClick="change_tab('industry',2);$('.btns button').removeClass('active'); $(this).addClass('active');">INDUSTRY</button>
+                        <button onClick="change_tab('peers',2) ;$('.btns button').removeClass('active'); $(this).addClass('active');">PEERS(&#x20B9;)</button>
+                      </div>
+                      <h6 class="item_hd">{{resp["head"]}}</h6>
+                    </div>
+                    <div class="chart_hold">
+                      <div class="chart_view bar ">
+                      
+                      <div id="graph2" class="showhide gp"></div>
+                      
+                      </div>
+
+                      
+                      <div class="chart_view table valign">
+                        <!-- tier data-->
+                        <div id="data-table" >
+                          <ul class="tb thead">
+                            <li>Segment</li><li>Data</li>
+                          </ul>
+
+                          <div id="table_body2">
+
+                          </div>
+
+
+                        </div>
+                        <!-- tier data-->
+                      </div>
+                      <table style="display:none" id = "graph-table2">
+                         <thead>
+                            <tr>
+                                <th></th>
+                                <th>Segments</th>
+                                </tr>
+                              </thead>
+                            <tbody id = "table_body_graph2">                              
+                            </tbody>
+                      </table>
+
+
+
+
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel1"  onclick="go_prev_link();" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel1"  onclick="go_next_link()" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only" >Next</span>
+                </a>
+              </div>
+              <div class="carousel-tabs desktop">
+                <div class="carousel-tabs-inner">
+                  <ul>
+                    <li id="bar0"><img src="../static/build/images/icon4.png" /></li>
+                    <li id="table0"><img src="../static/build/images/icon6.png" /></li>
+                  </ul>
+                  <ul>
+                    <li id="bar1"><img src="../static/build/images/icon4.png" /></li>
+                    <li id="table1"><img src="../static/build/images/icon6.png" /></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="carousel-tabs mobile">
+                <ul>
+                  <li id="bar2"><img src="../static/build/images/icon4.png" /></li>
+                  <li id="table2"><img src="../static/build/images/icon6.png" /></li>
+                </ul>
+              </div>
+              <div class="carousel-bottom">
+                <!-- <div class="btns">
+                  <button>EXPORT</button>
+                  <button>SHARE</button>
+                </div> -->
+                <!-- <img class="valign" src="../static/build/images/latest.jpg" /> -->
+              </div>
             </div>
           </div>
         </section>
@@ -206,9 +360,11 @@
     <script src="../static/vendors/raphael/raphael.min.js"></script>
     <script src="../static/vendors/morris.js/morris.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
+  
+  <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/data.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 
@@ -223,12 +379,28 @@
       interval: false
   });
 
-    $("#bar").click(function(){
-      $(".carousel-inner").removeClass("table");
+    $("#bar0").click(function(){
+      $("#myCarousel0 .ci0 .i1").removeClass("table0");
     });
 
-    $("#table").click(function(){
-      $(".carousel-inner").addClass("table");
+    $("#table0").click(function(){
+      $("#myCarousel0 .ci0 .i1").addClass("table0");
+    });
+
+    $("#bar1").click(function(){
+      $("#myCarousel0 .ci0 .i2").removeClass("table1");
+    });
+
+    $("#table1").click(function(){
+      $("#myCarousel0 .ci0 .i2").addClass("table1");
+    });
+
+    $("#bar2").click(function(){
+      $("#myCarousel1 .ci1").removeClass("table2");
+    });
+
+    $("#table2").click(function(){
+      $("#myCarousel1 .ci1").addClass("table2");
     });
 </script>
 
@@ -314,18 +486,23 @@ function go_prev_link(){
   }
 
 
-function create_table_elements(value){
-
+function create_table_elements(value,div_id){
 
   function create_table_row(val,val2){
-    $("#table_body").append(val).fadeIn(500);
-    $("#table_body_graph").append(val2);
+    $("#table_body"+div_id).append(val).fadeIn(500);
+    $("#table_body_graph"+div_id).append(val2);
 
   }
 
+  if (div_id==1){
+      obj_table_map = {"tier":json_string[json_index_1].data.tier,"peers":json_string[json_index_1].data.peers,"industry":json_string[json_index_1].data.industry};
+  }
+  else{
+   obj_table_map = {"tier":json_string[json_index].data.tier,"peers":json_string[json_index].data.peers,"industry":json_string[json_index].data.industry}; 
+  }
 
-  obj_table_map = {"tier":json_string[json_index].data.tier,"peers":json_string[json_index].data.peers,"industry":json_string[json_index].data.industry};
-
+  // console.log(obj_table_map[value]);
+  graph_provider(obj_table_map[value],div_id)
 
   $.each(obj_table_map[value],function(i,e){
    if (e!=-1 && i=="user_data"){
@@ -355,67 +532,87 @@ function create_table_elements(value){
 
    }
 
-graph_provider();
+// graph_provider();
    
   });
 
   // 
 }
 
-function destroy_table_elements(value)
+function destroy_table_elements(div_id)
 {
 
-$("#table_body").fadeOut(50).empty();//,function(){$(this).empty()});
+$("#table_body"+div_id).fadeOut(50).empty();//,function(){$(this).empty()});
   // $("#table_body").empty();
-$("#table_body_graph").empty();
+$("#table_body_graph"+div_id).empty();
 
 }
 
-function change_title(value)
+function change_title(value,div_id)
 {
 
-$("#title").text(value);
+$("#title"+div_id).text(value);
 
 }
 
-function change_tab(value){
+function change_tab(value,div_id){
 
-destroy_table_elements(value);
-create_table_elements(value);
+destroy_table_elements(div_id);
+create_table_elements(value,div_id);
 
 }
 
 var json_index=0;
+var json_index_1=json_index+1;
 
 function init_change(val1){
 
-  if (json_string.length==1 && val1 !=0){
-    return 0
+  function change(tmp_index){
+    // console.log(json_string.length);
+  
+    if (json_string.length==1){ //val!=0
+      $("#data1").css("display","none");
+      return 0
+    }
+
+    if (val1==1){
+      if (tmp_index>=json_string.length-1){
+        tmp_index=0;
+      }
+      else{
+       tmp_index=tmp_index+1; 
+      }
+    }
+
+    if (val1==-1){
+      if (tmp_index<=0){
+        tmp_index=json_string.length-1;
+      }
+      else{
+       tmp_index=tmp_index-1; 
+      }
+    }
+
+    return tmp_index
+
   }
+  json_index=change(json_index);
+  json_index_1=change(json_index_1);
 
-  if (val1==1){
-    if (json_index==json_string.length-1){
-      json_index=0;
-    }
-    else{
-     json_index=json_index+1; 
-    }
-  }
+  console.log(json_index);
+  console.log(json_index_1);
 
-  if (val1==-1){
-    if (json_index==0){
-      json_index=json_string.length-1;
-    }
-    else{
-     json_index=json_index-1; 
-    }
-  }
+  change_title(json_string[json_index].data.head,0);
+  change_title(json_string[json_index_1].data.head,1);
+  change_title(json_string[json_index].data.head,2);
 
+  destroy_table_elements(0);
+  destroy_table_elements(1);
+  destroy_table_elements(2);
 
-  change_title(json_string[json_index].data.head);
-
-  destroy_table_elements();
-  $("#def_click").click();
+  $("#def_click0").click();
+  $("#def_click1").click();
+  $("#def_click2").click();
 
   // create_table_elements("tier");
 
@@ -423,22 +620,20 @@ function init_change(val1){
 
 
 
-var graph_provider = function () {
+/*var graph_provider_bkp = function () {
     var options = {
         data: {
             table: document.getElementById('graph-table'),
             switchRowsAndColumns: true
         },
         chart: {
-            type: 'column',
-            fontFamily:'Helvetica',
+            type: 'column'
         },
         yAxis: {
             allowDecimals: false,
             title: {
                 text: null,
-            },
-            gridLineWidth:1,
+            }
         },
         title:{
           text:null,
@@ -452,14 +647,11 @@ var graph_provider = function () {
           },
           labels:{
             enabled:false,
-          },
-          gridLineWidth:1,
-          reversed:false,
+          }
         },
         credits: {
           enabled:false,
         }
-
     };
 
     $('#graph').highcharts(Highcharts.merge(options));
@@ -468,8 +660,111 @@ var graph_provider = function () {
         $('#graph').highcharts(Highcharts.merge(options));
     });
 };
+*/
+
+function data_graph(value){
+  var resp_val = []
+  $.each(value,function(i,v){
+  if(i!=="drill_down"){
+    if(v.constructor === Array){
+      $.each(v,function(ind,val){
+      resp_val.push({"name":val["name"],"y":parseFloat(val["data"])});
+      });
+    }
+    else{
+      if (v!=-1){
+          resp_val.push({"name":i,"y":parseFloat(v)})
+      }
+    }
+  }
+
+});
+
+if(value["drill_down"].length>0){
+  $.each(resp_val,function(i,v){
+    v["drilldown"]=v["name"]
+  });
+}
+
+// console.log(resp_val);
+
+return resp_val
+}
+
+
+
+
+function data_drilldown(value){
+  console.log("in drilldown");
+  var resp_val=[]
+  $.each(value,function(ind,val){
+    index = resp_val.map(function(el){return el.name}).indexOf(val["name"])
+    console.log(index);
+    if (index == -1 ){
+      resp_val.push({"name":val["name"],"id":val["name"],"data":[]})
+      resp_val[resp_val.length-1]["data"].push([val["sub_name"],parseFloat(val["data"])])
+    }
+    else{
+      resp_val[index]["data"].push([val["sub_name"],parseFloat(val["data"])])
+    }
+  });
+// console.log(resp_val);
+return resp_val
+
+}
+
+var graph_provider = function (value,div_id) {
+  console.log(value);
+    var options = {
+        chart: {
+            type: 'column'
+        },
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: null,
+            }
+        },
+        title:{
+          text:null,
+
+        },
+
+        xAxis: {
+          title: {
+            text:null,
+            // labels: null,
+          },
+          labels:{
+            enabled:false,
+          }
+        },
+        credits: {
+          enabled:false,
+        },
+        series:[{
+          name:"",
+          data: data_graph(value),
+        }],
+        drilldown:{
+          "series":data_drilldown(value["drill_down"]),
+        }
+    };
+
+    $('#graph'+div_id).highcharts(Highcharts.merge(options));
+    $('#toggle').click(function () {
+        options.data.switchRowsAndColumns = !options.data.switchRowsAndColumns;
+        $('#graph'+div_id).highcharts(Highcharts.merge(options));
+    });
+};
+
 
 init_change(0);
+
+// $(".dropdown").click(function(){
+//   $(".dropdown-content").fadeIn();
+//   event.stopPropagation();
+// })
 
 </script>
 

@@ -568,8 +568,10 @@ var json_index_1=json_index+1;
 function init_change(val1){
 
   function change(tmp_index){
+    // console.log(json_string.length);
   
-    if (json_string.length==1 && val1 !=0){
+    if (json_string.length==1){ //val!=0
+      $("#data1").css("display","none");
       return 0
     }
 
@@ -594,11 +596,11 @@ function init_change(val1){
     return tmp_index
 
   }
-  json_index_1=json_index+1;
-
   json_index=change(json_index);
   json_index_1=change(json_index_1);
 
+  console.log(json_index);
+  console.log(json_index_1);
 
   change_title(json_string[json_index].data.head,0);
   change_title(json_string[json_index_1].data.head,1);
@@ -706,7 +708,7 @@ function data_drilldown(value){
       resp_val[index]["data"].push([val["sub_name"],parseFloat(val["data"])])
     }
   });
-console.log(resp_val);
+// console.log(resp_val);
 return resp_val
 
 }
