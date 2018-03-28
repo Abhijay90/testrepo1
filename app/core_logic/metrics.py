@@ -102,7 +102,7 @@ class metrics_logic(object):
                 return response_json(data={},status=False,state=2)
             
             ### getting avg data of industry
-            query_user_industry = '''select truncate(AVG({selector}),2) as data, industry as name from company_data where id <> {user_company_id}  group by industry;'''.format(selector =selector ,user_company_id=self.user_company_id)
+            query_user_industry = '''select truncate(AVG({selector}),2) as data, industry as name from company_data where id <> {user_company_id}  group by industry order by data desc limit 5;'''.format(selector =selector ,user_company_id=self.user_company_id)
 
 
             resp_selector_tab = self.to_string(db(query_user_industry,asdict=True))
