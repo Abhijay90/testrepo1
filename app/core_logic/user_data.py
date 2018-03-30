@@ -21,12 +21,14 @@ class UserData():
 
     def profile(self,json):
         query = '''select a.name,b.name as company_name,a.phone,a.email from auth_user a inner join company_data b on a.company=b.id where a.id={user_id}; '''.format(user_id =self.user_id)
-        print query
+        # print query
+        order_of_data=["name","company_name","email","phone"]
         try:
+            res={}
             resp = db(query,asdict=True)
             if resp:
-                res=resp[0]
-            print res
+                res.update({"data":resp[0]})
+            res.update({"key_order":order_of_data})
         except Exception as e:
             print e
             return response_json(data={},status=False,as_json=json)
