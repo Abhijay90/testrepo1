@@ -94,7 +94,7 @@
                       <div class="btns">
                         <button  class ="active" onclick="change_tab('tier',0);$('#data0 .btns button').removeClass('active'); $(this).addClass('active');" id="def_click0">TIER</button>
                         <button onClick="change_tab('industry',0);$('#data0  .btns button').removeClass('active'); $(this).addClass('active');">INDUSTRY</button>
-                        <button onClick="change_tab('peers',0) ;$('#data0 .btns button').removeClass('active'); $(this).addClass('active');">PEERS(&#x20B9;)</button>
+                        <button onClick="change_tab('peers',0) ;$('#data0 .btns button').removeClass('active'); $(this).addClass('active');">PEERS</button>
                       </div>
                       <h6 class="item_hd">{{resp["head"]}}</h6>
                     </div>
@@ -146,7 +146,7 @@
                       <div class="btns">
                         <button  class ="active" onclick="change_tab('tier',1);$('#data1 .btns button').removeClass('active'); $(this).addClass('active');" id="def_click1">TIER</button>
                         <button onClick="change_tab('industry',1);$('#data1 .btns button').removeClass('active'); $(this).addClass('active');">INDUSTRY</button>
-                        <button onClick="change_tab('peers',1) ;$('#data1 .btns button').removeClass('active'); $(this).addClass('active');">PEERS(&#x20B9;)</button>
+                        <button onClick="change_tab('peers',1) ;$('#data1 .btns button').removeClass('active'); $(this).addClass('active');">PEERS</button>
                       </div>
                       <h6 class="item_hd">{{resp["head"]}}</h6>
                     </div>
@@ -222,7 +222,7 @@
                       <div class="btns">
                         <button  class ="active" onclick="change_tab('tier',2);$('#data2 .btns button').removeClass('active'); $(this).addClass('active');" id="def_click2">TIER</button>
                         <button onClick="change_tab('industry',2);$('#data2 .btns button').removeClass('active'); $(this).addClass('active');">INDUSTRY</button>
-                        <button onClick="change_tab('peers',2) ;$('#data2 .btns button').removeClass('active'); $(this).addClass('active');">PEERS(&#x20B9;)</button>
+                        <button onClick="change_tab('peers',2) ;$('#data2 .btns button').removeClass('active'); $(this).addClass('active');">PEERS</button>
                       </div>
                       <h6 class="item_hd">{{resp["head"]}}</h6>
                     </div>
@@ -707,9 +707,95 @@ return resp_val
 
 
 
+function data_graph_drilldown_legends(value){
+
+  function create_array(value,val,resp){
+    // console.log(resp.map(function(el){return el.name}));
+    index = resp.map(function(el){return el.name}).indexOf(val["name"])
+    // console.log(val["name"]);
+    // console.log("index: "+index);
+    if (index==-1){
+      resp.push({"name":val["name"],"data":[{"name":val["name"],"y":parseFloat(val["data"]),"drilldown":[] } ] })
+      drill_down_data=data_drilldown_new(value["drill_down"],val["name"]);
+      resp[resp.length-1]["data"][0]["drilldown"]=drill_down_data;
+    }
+    else{
+      resp[index]["data"].push({"name":val["name"],"y":parseFloat(val["data"]) })
+    }
+    return resp;
+  }
+
+
+  var resp_val = []
+  $.each(value,function(i,v){
+  if(i!=="drill_down"){
+    if(v.constructor === Array){
+      $.each(v,function(ind,val)
+      {
+        resp_val = create_array(value,val,resp_val)
+      // resp_val.push({"name":val["name"],"data":[{"name":val["name"],"y":parseFloat(val["data"])}]})
+      });
+    }
+    else{
+      if (v!=-1){
+        if (i=="user_data"){
+          resp_val =  create_array(value,{"name":"You","y":parseFloat(v)},resp_val);
+          // resp_val.push({"name":"You","y":parseFloat(v)})
+        }
+        else if(i=="data"){
+          resp_val = create_array(value,{"name":"Your Industry","y":parseFloat(v)},resp_val);
+         // resp_val.push({"name":"Your Industry","y":parseFloat(v)}) 
+        }
+        else{
+          resp_val =  create_array(value,{"name":i,"y":parseFloat(v)},resp_val);
+          // resp_val.push({"name":i,"y":parseFloat(v)})
+          }
+      }
+    }
+  }
+
+});
+
+console.log("here check it");
+console.log(resp_val)
+return resp_val
+}
+
+
+function data_drilldown_new(value,name){
+  var resp_val={};
+  var data=[];
+  var categories=[];
+  $.each(value,function(ind,val){
+    if (name==val["name"]){
+        index = categories.map(function(el){return el.name}).indexOf(val["sub_name"])
+        if (index == -1 ){
+          // resp_val.push({"name":val["name"],"id":val["name"],"data":[]})
+          categories.push(val["sub_name"]);
+          data.push(parseFloat(val["data"]))
+
+          // console.log(categories + "  " + data);
+
+          // resp_val[resp_val.length-1]["data"].push([val["sub_name"],parseFloat(val["data"])])
+        }
+        
+        // else{
+        //   resp_val[index]["data"].push([val["sub_name"],parseFloat(val["data"])])
+        // }
+
+    }
+
+  });
+resp_val={"data":data,"categories":categories,"type": 'column'};
+return resp_val
+
+}
+
+
 
 function data_drilldown(value){
   console.log("in drilldown");
+  console.log(value);
   var resp_val=[]
   $.each(value,function(ind,val){
     index = resp_val.map(function(el){return el.name}).indexOf(val["name"])
@@ -727,7 +813,7 @@ return resp_val
 }
 
 var graph_provider = function (value,div_id) {
-  console.log(value);
+  // console.log(value);
     var options = {
       lang: {
                drillUpText: '◁ Back'
@@ -764,12 +850,14 @@ var graph_provider = function (value,div_id) {
         credits: {
           enabled:false,
         },
-        // series:data_graph(value),
+        series:data_graph(value),
         series:[{
           showInLegend: false,
           name:"",
           data: data_graph(value),
         }],
+        // series:data_graph_drilldown_legends(value),
+
         drilldown:{
           "series":data_drilldown(value["drill_down"]),
         }
