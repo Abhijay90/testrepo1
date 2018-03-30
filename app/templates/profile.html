@@ -77,8 +77,8 @@
             <div class="col-md-12 col-xs-12"  style="height:100%">
               <div  style="display:inline-table;width:100%;height:100%">
                 <ul  class="prof-inner">
-					{% for i in resp %}
-					<li><span style="text-transform:capitalize;">{{i}}</span>:&nbsp;<span style="text-transform:capitalize;">{{resp[i]}}</span></li>
+					{% for i in resp["key_order"] %}
+					<li><span style="text-transform:capitalize;">{{i}}</span>:&nbsp;<span style="text-transform:capitalize;">{{resp["data"][i]}}</span></li>
 					{%endfor%}
 				</ul>
               </div>
