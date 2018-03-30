@@ -497,12 +497,30 @@ h6.item_hd{
 	width:100%;
 	list-style: none
 }
-.custom_chart .listBl ul li{
-	font-size:0.8em;
-	margin: 0.5em;
-	padding-left:20px;
-	position: relative;
+.custom_chart .listBl ul li {
+    font-size: 0.8em;
+    margin: 0.9em 0;
+    padding-left: 20px;
+    position: relative;
+    width: calc(100% - 20px);
 }
+.custom_chart .listBl ul li input.srch_inp[disabled] {
+    display:none;
+}
+.custom_chart .listBl ul li input.srch_inp {
+      position: relative;
+      float: right;
+      display: inline-block;
+      width: 30%;
+      padding: 5px;
+      height: 18px;
+      margin-top: -3px;
+      font-size: 0.75em;
+      right: 0;
+      background-color:transparent;
+      border:none;
+      border-bottom:1px solid #3E7BFD;
+  }
 .custom_chart .listBl ul li input{
 	vertical-align: text-bottom;
 	position: absolute;
@@ -649,6 +667,8 @@ textarea:-webkit-autofill,
 select:-webkit-autofill {
 	background-color:transparent !important;
 }
+
+
 
 
 
