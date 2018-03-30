@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <meta name="theme-color" content="#4E00FF" />
+
+    <title>BENCHMARK METRICS</title>
+
+    <!-- Bootstrap -->
+    <link href="../static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../static/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../static/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  
+    <!-- bootstrap-progressbar -->
+    <link href="../static/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../static/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../static/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../static/build/css/custom.min.css" rel="stylesheet">
+
+    <!-- New Styles -->
+    <link href="../static/build/css/ncreato.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <div class="container main">
+        <section class="top_prof">
+          <div class=" prime">
+              <div class="valign" style="height:100%">
+                <div class="row" style="height:100%">
+                  <div style="height:100%">
+
+                      <div class="pp_out dropdown">
+                        <div class="pp dropbtn">
+                          <img src="../static/build/images/dummy-profile.jpg" alt="Profile Name" />
+                        </div>
+                        <div class="dropdown-content">
+                          <a href="profile">Profile</a>
+                          <a href="/logout">Logout</a>
+                        </div>
+                      </div>
+
+                      <!-- <div class="pdet_out dropbtn">
+                        <div class="pdet valign">
+                          <h3>Alex Pandiyan</h3>
+                          <h6>CHRO</h6>
+                          <h6><span>TATA CONSULTANCY SERVICES</span></h6>
+                        </div>
+                      </div> -->
+
+                    
+                    
+                    <div class="clear"></div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </section>
+        <section class="middle_scroll custom_chart" style="overflow:hidden;overflow-y:hidden">
+          <div class="hd"><h3 class="valign">PICK YOUR BENCHMARK METRICS</h3></div>
+          <div class="row scroll">
+            <div class="col-md-12 col-xs-12">
+              <!-- <form> -->
+                <div class="listBl">
+                  <h3>Cost</h3>
+                  <ul>
+                      <li><input type="checkbox" onclick="myFunction(0)"><span>Average Employee Cost ($)</span><input class="srch_inp" type="text" placeholder="" /></li>                      
+                      <li><input type="checkbox" onclick="myFunction(3)"><span>Average Employee Cost (Rs.)</span><input class="srch_inp" type="text" placeholder="" /></li>
+                      <li><input type="checkbox" onclick="myFunction(1)"><span>Revenue Per Employe ($)</span><input class="srch_inp" type="text" placeholder="" /></li>
+                      <li><input type="checkbox" onclick="myFunction(2)"><span>Employee Cost as % of Revenue</span><input class="srch_inp" type="text" placeholder="" /></li>
+                  </ul>
+                </div>
+
+                <div class="listBl">
+                  <h3>Performance</h3>
+                  <ul>
+
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(4)"><span>Voluntary Attrition - Annual</span><input class="srch_inp" type="text" placeholder="" /></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(5)"><span>Overall Attrition - Annual (Voluntary + Involuntary)</span><input class="srch_inp" type="text" placeholder="" /></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(6)"><span>Average Hiring (Quarterly)</span><input class="srch_inp" type="text" placeholder="" /></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(7)"><span>Average Hiring (Annual)</span><input class="srch_inp" type="text" placeholder="" /></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(8)"><span>Cost Per Hire (Annual) ($)</span><input class="srch_inp" type="text" placeholder="" /></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(9)"><span>Time to Hire (Days)</span><input class="srch_inp" type="text" placeholder="" /></li>
+                      <!-- <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Hiring Channel Mix (Agency, Referral & Direct)</span><input class="srch_inp" type="text" placeholder="" disabled/></li> -->
+                  </ul>
+                </div>
+
+                <div class="listBl" disabled>
+                  <h3>Efficiency</h3>
+                  <ul>
+<!--                      <li><input type="checkbox" id="myCheck" onclick="myFunction(10)" disabled><span>HR Headcount</span></li> -->
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction(13)" ><span>Employee to HR Ratio</span><input class="srch_inp" type="text" placeholder=""/></li>
+                    <li><input type="checkbox" id="myCheck" onclick="myFunction(15)" ><span>Employee to HR Business Partner Ratio</span><input class="srch_inp" type="text" placeholder=""/></li>
+
+<!--                      <li><input type="checkbox" id="myCheck" onclick="myFunction(10)" disabled><span>HR Headcount</span><input class="srch_inp" type="text" placeholder="" disabled/></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>HR Business Partner Headcount</span><input class="srch_inp" type="text" placeholder="" disabled/></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Employee to HR Business Partner Ratio</span><input class="srch_inp" type="text" placeholder="" disabled/></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>India HR Spend in Million $</span><input class="srch_inp" type="text" placeholder="" disabled/></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled="" ><span>India HR Spend as % of Revenue</span><input class="srch_inp" type="text" placeholder="" disabled/></li> -->
+                  </ul>
+                </div>
+
+
+                <div class="listBl">
+                  <h3>HR Productivity</h3>
+                  <ul>
+<!--                      <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Joiner Per Recruiter (Quarterly)</span><input class="srch_inp" type="text" placeholder="" disabled/></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Joiner Per Recruiter (Annual)</span><input class="srch_inp" type="text" placeholder="" disabled/></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Training Time (Days/Hours)</span><input class="srch_inp" type="text" placeholder="" disabled/></li> -->
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction(14)"><span>Training Spend Per Person ($)</span><input class="srch_inp" type="text" placeholder=""/></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction(12)" ><span>Training Spend as % of Revenue</span><input class="srch_inp" type="text" placeholder=""/></li>
+                  </ul>
+                </div>
+
+                <button class="bt" onclick="to_next_page()">NEXT</button>
+              <!-- </form> -->
+            </div>
+          </div>
+        </section>
+        <section class="bottom_tabs">
+          <ul class="valign">
+            <li>
+              <a href="/home"><span><i class="fa fa-lg fa-home"></i><br/>HOME</span></a>
+            </li>
+          </ul>
+        </section>
+    </div>
+    <form hidden="true" action="/metrics/aggregate_data" method="POST" id="form">
+    <input type="text" name="aggregate_key">
+    </form>
+  </body>
+
+
+    <!-- jQuery -->
+    <script src="../static/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <!-- <script src="../static/vendors/fastclick/lib/fastclick.js"></script> -->
+    <!-- NProgress -->
+    <!-- <script src="../static/vendors/nprogress/nprogress.js"></script> -->
+    <!-- Chart.js -->
+    <script src="../static/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <!-- <script src="../static/vendors/gauge.js/dist/gauge.min.js"></script> -->
+    <!-- bootstrap-progressbar -->
+    <!-- <script src="../static/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script> -->
+    <!-- iCheck -->
+    <!-- <script src="../static/vendors/iCheck/icheck.min.js"></script> -->
+    <!-- Skycons -->
+    <!-- <script src="../static/vendors/skycons/skycons.js"></script> -->
+    <!-- Flot -->
+    <!-- <script src="../static/vendors/Flot/jquery.flot.js"></script>
+    <script src="../static/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../static/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../static/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../static/vendors/Flot/jquery.flot.resize.js"></script> -->
+    <!-- Flot plugins -->
+    <!-- <script src="../static/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../static/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../static/vendors/flot.curvedlines/curvedLines.js"></script> -->
+    <!-- DateJS -->
+    <!-- <script src="../static/vendors/DateJS/build/date.js"></script> -->
+    <!-- JQVMap -->
+    <!-- <script src="../static/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../static/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../static/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script> -->
+    <!-- bootstrap-daterangepicker -->
+    <!-- <script src="../static/vendors/moment/min/moment.min.js"></script>
+    <script src="../static/vendors/bootstrap-daterangepicker/daterangepicker.js"></script> -->
+
+
+
+    <script src="../static/vendors/raphael/raphael.min.js"></script>
+    <script src="../static/vendors/morris.js/morris.min.js"></script>
+        <!-- Custom Theme Scripts -->
+    <!-- <script src="../build/js/custom.min.js"></script> -->
+
+    <!-- <script src="../static/build/js/custom_example.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+   
+    <script type="text/javascript">
+      
+var url_redirect_objects=
+["/metrics/",
+"/metrics/revenue_employee",
+"/metrics/employee_cost_to_revenue",
+"/metrics/employee_cost_avg",
+"/metrics/attrition_voluntary",
+"/metrics/attrition_all",
+"/metrics/hiring_quarterly",
+"/metrics/hiring_annual",
+"/metrics/hiring_cost",
+"/metrics/time_to_hire",
+"/metrics/headcount_hr",
+];
+
+var post_params=
+["Employee_Cost",
+"Revenue_Per_Employe",
+"Employee_Cost_Revenue_percentage",
+"Average_Employee_Cost_rs",
+"Voluntary_Attrition_Annual",
+"Overall_Attrition_Annual",
+"Average_Hiring_Quarterly",
+"Average_Hiring_Annual",
+"Cost_Per_Hire_Annual",
+"Time_to_Hire_Days",
+"HR_Headcount",
+"Training_Spend_Annual",
+"Training_Spend_Revenue_Percentage",
+"Employee_to_HR",
+"Training_Spend_Per_Person",
+"Employee_HR_BP_Ratio"
+];
+glob_arr=[];
+glob_key_arr=[];
+function myFunction(val){
+  index=glob_arr.indexOf(val);
+
+  if (index==-1){
+    glob_arr.push(val);
+    glob_key_arr.push(post_params[val]);
+  } 
+  else{
+    glob_arr.splice(index, 1);
+    glob_key_arr.splice(index, 1);
+  }
+
+
+
+}
+function to_next_page(){
+  s = glob_arr[0]
+if (cookie_storage(glob_arr))
+{
+  // console.log(s);
+  console.log(url_redirect_objects[s]);
+ // window.location.href=url_redirect_objects[s];
+ post_data(JSON.stringify(glob_key_arr));
+ 
+}
+}
+
+function cookie_storage(arr){
+  if (arr.length>0)
+  {
+    $.removeCookie("nxt_arr");
+    $.removeCookie("chro_pg");
+    $.cookie("nxt_arr",j_arr );
+      var j_arr = JSON.stringify(arr); 
+      $.cookie("nxt_arr",j_arr );
+      return 1;
+    }
+  else{
+    return 0;
+  }
+
+}
+
+function post_data(value){
+
+  $("input[name=aggregate_key]").val(value);
+
+ console.log($("input[name=aggregate_key]").val());
+
+$('form#form').submit();
+
+  
+}
+    </script>
+
+  
+  </body>
+</html>
