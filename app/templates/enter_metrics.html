@@ -77,10 +77,12 @@
                 <div class="listBl">
                   <h3>Cost</h3>
                   <ul>
-                      <li><input type="checkbox" onclick="myFunction(0)"><span>Average Employee Cost ($)</span><input class="srch_inp" type="text" placeholder="" /></li>                      
-                      <li><input type="checkbox" onclick="myFunction(3)"><span>Average Employee Cost (Rs.)</span><input class="srch_inp" type="text" placeholder="" /></li>
-                      <li><input type="checkbox" onclick="myFunction(1)"><span>Revenue Per Employe ($)</span><input class="srch_inp" type="text" placeholder="" /></li>
-                      <li><input type="checkbox" onclick="myFunction(2)"><span>Employee Cost as % of Revenue</span><input class="srch_inp" type="text" placeholder="" /></li>
+                      <li><input type="checkbox" onclick="myFunction(0,$(this))"><span>Average Employee Cost ($)</span><input class="srch_inp" type="text" placeholder="" /></li>                      
+                      <li><input type="checkbox" onclick="myFunction(3,$(this))"><span>Average Employee Cost (Rs.)</span><input class="srch_inp" type="text" placeholder="" /></li>
+
+                      <li><input type="checkbox" onclick="myFunction(1,$(this))"><span>Revenue Per Employe ($)</span><input class="srch_inp" type="text" placeholder="" /></li>
+
+                      <li><input type="checkbox" onclick="myFunction(2,$(this))"><span>Employee Cost as % of Revenue</span><input class="srch_inp" type="text" placeholder="" /></li>
                   </ul>
                 </div>
 
@@ -88,12 +90,13 @@
                   <h3>Performance</h3>
                   <ul>
 
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction(4)"><span>Voluntary Attrition - Annual</span><input class="srch_inp" type="text" placeholder="" /></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction(5)"><span>Overall Attrition - Annual (Voluntary + Involuntary)</span><input class="srch_inp" type="text" placeholder="" /></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction(6)"><span>Average Hiring (Quarterly)</span><input class="srch_inp" type="text" placeholder="" /></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction(7)"><span>Average Hiring (Annual)</span><input class="srch_inp" type="text" placeholder="" /></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction(8)"><span>Cost Per Hire (Annual) ($)</span><input class="srch_inp" type="text" placeholder="" /></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction(9)"><span>Time to Hire (Days)</span><input class="srch_inp" type="text" placeholder="" /></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(4,$(this))"><span>Voluntary Attrition - Annual</span><input class="srch_inp" type="text" placeholder="" /></li>
+
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(5,$(this))"><span>Overall Attrition - Annual (Voluntary + Involuntary)</span><input class="srch_inp" type="text" placeholder="" /></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(6,$(this))"><span>Average Hiring (Quarterly)</span><input class="srch_inp" type="text" placeholder="" /></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(7,$(this))"><span>Average Hiring (Annual)</span><input class="srch_inp" type="text" placeholder="" /></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(8,$(this))"><span>Cost Per Hire (Annual) ($)</span><input class="srch_inp" type="text" placeholder="" /></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(9,$(this))"><span>Time to Hire (Days)</span><input class="srch_inp" type="text" placeholder="" /></li>
                       <!-- <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Hiring Channel Mix (Agency, Referral & Direct)</span><input class="srch_inp" type="text" placeholder="" disabled/></li> -->
                   </ul>
                 </div>
@@ -102,8 +105,8 @@
                   <h3>Efficiency</h3>
                   <ul>
 <!--                      <li><input type="checkbox" id="myCheck" onclick="myFunction(10)" disabled><span>HR Headcount</span></li> -->
-                     <li><input type="checkbox" id="myCheck" onclick="myFunction(13)" ><span>Employee to HR Ratio</span><input class="srch_inp" type="text" placeholder=""/></li>
-                    <li><input type="checkbox" id="myCheck" onclick="myFunction(15)" ><span>Employee to HR Business Partner Ratio</span><input class="srch_inp" type="text" placeholder=""/></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction(13,$(this))" ><span>Employee to HR Ratio</span><input class="srch_inp" type="text" placeholder=""/></li>
+                    <li><input type="checkbox" id="myCheck" onclick="myFunction(15,$(this))" ><span>Employee to HR Business Partner Ratio</span><input class="srch_inp" type="text" placeholder=""/></li>
 
 <!--                      <li><input type="checkbox" id="myCheck" onclick="myFunction(10)" disabled><span>HR Headcount</span><input class="srch_inp" type="text" placeholder="" disabled/></li>
                      <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>HR Business Partner Headcount</span><input class="srch_inp" type="text" placeholder="" disabled/></li>
@@ -120,8 +123,8 @@
 <!--                      <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Joiner Per Recruiter (Quarterly)</span><input class="srch_inp" type="text" placeholder="" disabled/></li>
                      <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Joiner Per Recruiter (Annual)</span><input class="srch_inp" type="text" placeholder="" disabled/></li>
                      <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Training Time (Days/Hours)</span><input class="srch_inp" type="text" placeholder="" disabled/></li> -->
-                     <li><input type="checkbox" id="myCheck" onclick="myFunction(14)"><span>Training Spend Per Person ($)</span><input class="srch_inp" type="text" placeholder=""/></li>
-                     <li><input type="checkbox" id="myCheck" onclick="myFunction(12)" ><span>Training Spend as % of Revenue</span><input class="srch_inp" type="text" placeholder=""/></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction(14,$(this))"><span>Training Spend Per Person ($)</span><input class="srch_inp" type="text" placeholder=""/></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction(12,$(this))" ><span>Training Spend as % of Revenue</span><input class="srch_inp" type="text" placeholder=""/></li>
                   </ul>
                 </div>
 
@@ -138,7 +141,7 @@
           </ul>
         </section>
     </div>
-    <form hidden="true" action="/metrics/aggregate_data" method="POST" id="form">
+    <form hidden="true" action="" method="POST" id="form">
     <input type="text" name="aggregate_key">
     </form>
   </body>
@@ -229,16 +232,22 @@ var post_params=
 ];
 glob_arr=[];
 glob_key_arr=[];
-function myFunction(val){
+glob_value_arr=[];
+function myFunction(val,data){
+  console.log();
+  value =  data.parent().children()[2].value
+
   index=glob_arr.indexOf(val);
 
   if (index==-1){
     glob_arr.push(val);
     glob_key_arr.push(post_params[val]);
+    glob_value_arr.push(value);
   } 
   else{
     glob_arr.splice(index, 1);
     glob_key_arr.splice(index, 1);
+    glob_value_arr.splice(index,1);
   }
 
 
@@ -249,9 +258,21 @@ function to_next_page(){
 if (cookie_storage(glob_arr))
 {
   // console.log(s);
-  console.log(url_redirect_objects[s]);
+  // console.log(url_redirect_objects[s]);
+  var new_val={};
+  for (i=0;i< glob_key_arr.length;i++)
+  {
+
+    console.log(glob_key_arr[i]+" "+glob_value_arr[i]);
+
+    var _key = glob_key_arr[i];
+    var _val= glob_value_arr[i];
+
+    new_val[_key]=_val;
+
+  }
  // window.location.href=url_redirect_objects[s];
- post_data(JSON.stringify(glob_key_arr));
+ post_data(JSON.stringify(new_val));
  
 }
 }
@@ -279,6 +300,8 @@ function post_data(value){
  console.log($("input[name=aggregate_key]").val());
 
 $('form#form').submit();
+
+
 
   
 }

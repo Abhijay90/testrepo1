@@ -22,4 +22,4 @@ user_profile = Blueprint('profile',__name__)
 def user_data():
     obj = UserData()
     resp = obj.profile(json=0)
-    return render_template('profile.html',resp=resp["data"] )
+    return render_template('profile.html',resp=resp["data"])

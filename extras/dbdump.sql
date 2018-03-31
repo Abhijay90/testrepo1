@@ -37,7 +37,7 @@ CREATE TABLE `auth_user` (
   `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_type` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'abhiajay','1',NULL,NULL,NULL,NULL,'abhijay@tententen.in',NULL,'abhijay',1,'2018-03-27 04:57:19',1);
+INSERT INTO `auth_user` VALUES (1,'abhiajay','1',NULL,NULL,NULL,NULL,'abhijay@tententen.in',NULL,'abhijay',1,'2018-03-27 04:57:19',1),(2,'Suman','1',NULL,NULL,NULL,NULL,'Suman@cct.com',NULL,'123456',1,'2018-03-31 11:47:52',1);
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +92,7 @@ CREATE TABLE `company_data` (
   `Training_Spend_Per_Person` decimal(10,2) DEFAULT '0.00',
   `CHRO` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=256 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=206 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +135,7 @@ CREATE TABLE `company_data_master` (
   `Learning_Solution` varchar(255) DEFAULT NULL,
   `HR_Products` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1024 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=759 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,6 +203,63 @@ INSERT INTO `company_data_master_dataset1` VALUES ('3i Infotech','Computers - So
 UNLOCK TABLES;
 
 --
+-- Table structure for table `user_data_log`
+--
+
+DROP TABLE IF EXISTS `user_data_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_data_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `industry` varchar(255) DEFAULT NULL,
+  `tier` varchar(255) DEFAULT NULL,
+  `Revenue_rs` decimal(10,2) DEFAULT '0.00',
+  `Revenue_dollar` decimal(10,2) DEFAULT '0.00',
+  `Employee_Cost` decimal(10,2) DEFAULT '0.00',
+  `Total_Headcount` int(11) DEFAULT '0',
+  `India_Headcount` int(11) DEFAULT '0',
+  `Revenue_Per_Employe` decimal(10,2) DEFAULT '0.00',
+  `Employee_Cost_Revenue_percentage` decimal(10,2) DEFAULT '0.00',
+  `Average_Employee_Cost_rs` decimal(10,2) DEFAULT '0.00',
+  `Average_Employee_Cost_dollar` decimal(10,2) DEFAULT '0.00',
+  `HR_Headcount` int(11) DEFAULT '0',
+  `Employee_to_HR` decimal(10,2) DEFAULT '0.00',
+  `HR_BP_Headcount` int(11) DEFAULT '0',
+  `Employee_HR_BP_Ratio` decimal(10,2) DEFAULT '0.00',
+  `Average_Hiring_Quarterly` decimal(10,2) DEFAULT '0.00',
+  `Average_Hiring_Annual` decimal(10,2) DEFAULT '0.00',
+  `TAG_Team` varchar(255) DEFAULT NULL,
+  `Joiner_Per_Recruiter_Annual` decimal(10,2) DEFAULT '0.00',
+  `Cost_Per_Hire_Annual` decimal(10,2) DEFAULT '0.00',
+  `Time_to_Hire_Days` int(11) DEFAULT '0',
+  `Hiring_Channle_Mix` varchar(255) DEFAULT NULL,
+  `Voluntary_Attrition_Annual` decimal(10,2) DEFAULT '0.00',
+  `Overall_Attrition_Annual` decimal(10,2) DEFAULT '0.00',
+  `India_HR_Spend` decimal(10,2) DEFAULT '0.00',
+  `India_HR_Spend_Revenue_Percentge` decimal(10,2) DEFAULT '0.00',
+  `Training_Time` int(11) DEFAULT '0',
+  `Training_Spend_Annual` decimal(10,2) DEFAULT '0.00',
+  `Training_Spend_Revenue_Percentage` decimal(10,2) DEFAULT '0.00',
+  `Training_Spend_Per_Person` decimal(10,2) DEFAULT '0.00',
+  `CHRO` varchar(255) DEFAULT NULL,
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `company_id` int(11) NOT NULL DEFAULT '0',
+  `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_data_log`
+--
+
+LOCK TABLES `user_data_log` WRITE;
+/*!40000 ALTER TABLE `user_data_log` DISABLE KEYS */;
+INSERT INTO `user_data_log` VALUES (1,NULL,NULL,0.00,0.00,0.00,0,0,0.00,0.00,0.00,0.00,0,0.00,0,0.00,0.00,0.00,NULL,0.00,0.00,0,NULL,0.00,0.00,0.00,0.00,0,0.00,0.00,0.00,NULL,1,1,'2018-03-31 11:29:57'),(2,NULL,NULL,0.00,0.00,0.00,0,0,0.00,0.00,0.00,0.00,0,0.00,0,0.00,0.00,0.00,NULL,0.00,0.00,0,NULL,0.00,0.00,0.00,0.00,0,0.00,0.00,0.00,NULL,1,1,'2018-03-31 11:36:28'),(3,NULL,NULL,0.00,0.00,0.00,0,0,0.00,0.00,0.00,0.00,0,0.00,0,0.00,0.00,0.00,NULL,0.00,0.00,0,NULL,0.00,0.00,0.00,0.00,0,0.00,0.00,0.00,NULL,1,1,'2018-03-31 11:36:33'),(4,NULL,NULL,0.00,0.00,1000.00,0,0,0.00,0.00,111.00,0.00,0,0.00,0,0.00,0.00,0.00,NULL,0.00,0.00,0,NULL,0.00,0.00,0.00,0.00,0,0.00,0.00,0.00,NULL,1,1,'2018-03-31 11:44:49'),(5,NULL,NULL,0.00,0.00,1000.00,0,0,0.00,0.00,111.00,0.00,0,0.00,0,0.00,0.00,0.00,NULL,0.00,0.00,0,NULL,0.00,0.00,0.00,0.00,0,0.00,0.00,0.00,NULL,1,1,'2018-03-31 11:45:13');
+/*!40000 ALTER TABLE `user_data_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user_roles`
 --
 
@@ -235,4 +292,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-28 23:28:50
+-- Dump completed on 2018-03-31 17:18:22

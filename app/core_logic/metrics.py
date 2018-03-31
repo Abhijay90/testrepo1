@@ -38,6 +38,7 @@ class metrics_logic(object):
         if session:
             self.user_type=int(session["data"]["user_type"])
             self.user_company_id=int(session["data"]["user_company_id"])
+            self.user_id=int(session["user_id"])
         if not self.user_type:
             return dict(status=False)
         query_user_access = '''select fields from user_roles where user_type={user_type};'''.format(user_type=int(self.user_type))
@@ -187,6 +188,26 @@ class metrics_logic(object):
             data["industry"]=industry["data"]
             return response_json(data=data,status=True,as_json=json)
         return response_json(data={},status=False,as_json=json)
+
+    def update_company_data(self,data,json=1):
+        if not self.is_function_accessible(required_field="update")["status"]:
+            return response_json(data={},status=False,as_json=json)
+        query_str = '''user_id="{}",company_id="{}",'''.format(self.user_id,self.user_company_id)
+        query_list=[]
+        for i in data:
+            key=i
+            value=data[i]
+            if value:
+                query_list.append('''{}="{}"'''.format(key,value))
+        query_str+=",".join(query_list )
+        query  =  '''insert into user_data_log SET {};'''.format(query_str);
+        try:
+            db(query,commit=True)
+        except:
+            return response_json(data={},status=False,as_json=json)
+        return response_json(data = {} , status=True,as_json=json)
+
+        
 
 
 
