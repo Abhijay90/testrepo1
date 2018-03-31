@@ -186,7 +186,7 @@ def ger_resp_head(key):
     "Employee_Cost":"Average Employee Cost ($)",
     "Revenue_Per_Employe":"Revenue Per Employee ($)",
     "Employee_Cost_Revenue_percentage":"Employee Cost as % of Revenue",
-    "Average_Employee_Cost_rs":"Average Employee Cost (Lakh Rs.)",
+    "Average_Employee_Cost_rs":"Avg. Employee Cost (Lakh Rs.)",
     "Training_Spend_Annual":"Training Spend (Annual)",
     "Training_Spend_Revenue_Percentage":"Training Spend as % of Revenue",
     "Training_Spend_Per_Person":"Training Spend Per Person ($)"

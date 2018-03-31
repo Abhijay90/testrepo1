@@ -69,27 +69,32 @@ class metrics_logic(object):
 
 
 
-    def __avg_data(self,selector,json=1):
-        query = '''select AVG({selector}) as data from company_data where id <> {user_company_id};'''.format(selector =selector ,user_company_id=self.user_company_id)
+    # def __avg_data(self,selector,json=1):
+    #     query = '''select AVG({selector}) as data from company_data where id <> {user_company_id};'''.format(selector =selector ,user_company_id=self.user_company_id)
 
-        query_user_company='''select {selector} as data from company_data where id = {user_company_id}; '''.format(selector=selector,user_company_id=self.user_company_id)
-        try:
-            resp = db(query,asdict=True)
-            resp_user = db(query_user_company,asdict=True)
-            if not resp:
-                return response_json(data={},status=False,state=2)
-            if not resp_user:
-                return response_json(data={},status=False,state=2)
-            res=dict(data=int(resp[0]["data"]),user_data = int(resp_user[0]["data"]))
-        except Exception as e:
-            print e
-            return response_json(data={},status=False,as_json=json)
-        return response_json(data=res,status=True,as_json=json)
+    #     query_user_company='''select {selector} as data from company_data where id = {user_company_id}; '''.format(selector=selector,user_company_id=self.user_company_id)
+    #     try:
+    #         resp = db(query,asdict=True)
+    #         resp_user = db(query_user_company,asdict=True)
+    #         if not resp:
+    #             return response_json(data={},status=False,state=2)
+    #         if not resp_user:
+    #             return response_json(data={},status=False,state=2)
+    #         res=dict(data=int(resp[0]["data"]),user_data = int(resp_user[0]["data"]))
+    #     except Exception as e:
+    #         print e
+    #         return response_json(data={},status=False,as_json=json)
+    #     return response_json(data=res,status=True,as_json=json)
 
     def __avg_data_by_industry(self,selector,json=1):
         query = '''select truncate(AVG({selector}),2) as data from company_data where id <> {user_company_id};'''.format(selector =selector ,user_company_id=self.user_company_id)
 
-        query_user_company='''select truncate({selector},2) as data,industry as name from company_data where id = {user_company_id}; '''.format(selector=selector,user_company_id=self.user_company_id)
+        query_user_company='''select truncate({selector},2) as data,
+            case when industry = "Software / Internet" then "IT Services"
+            when industry = "Computers - Software" then "IT Services"
+            else industry end 
+            as name from company_data where id = {user_company_id}; '''.format(selector=selector,user_company_id=self.user_company_id)
+        
         try:
             # for json conversion
             resp = self.to_string(db(query,asdict=True))
@@ -103,9 +108,17 @@ class metrics_logic(object):
                 return response_json(data={},status=False,state=2)
             
             ### getting avg data of industry
-            query_user_industry = '''select truncate(AVG({selector}),2) as data, industry as name from company_data where id <> {user_company_id}  group by industry order by data desc limit 5;'''.format(selector =selector ,user_company_id=self.user_company_id)
+            query_user_industry = '''select truncate(AVG({selector}),2) as data, 
+                case when industry = "Software / Internet" then "IT Services"
+                when industry = "Computers - Software" then "IT Services"
+                else industry end  
+                as name from company_data where id <> {user_company_id}  group by industry order by data desc limit 5;'''.format(selector =selector ,user_company_id=self.user_company_id)
 
-            query_user_industry_drill_down = '''select truncate(AVG({selector}),2) as data, industry as name,tier as sub_name from company_data where id <> {user_company_id}  group by industry,tier order by data desc limit 5;'''.format(selector =selector ,user_company_id=self.user_company_id)
+            query_user_industry_drill_down = '''select truncate(AVG({selector}),2) as data, 
+                case when industry = "Software / Internet" then "IT Services"
+                when industry = "Computers - Software" then "IT Services"
+                else industry end  
+                as name,tier as sub_name from company_data where id <> {user_company_id}  group by industry,tier order by data desc limit 5;'''.format(selector =selector ,user_company_id=self.user_company_id)
 
 
             resp_selector_tab = self.to_string(db(query_user_industry,asdict=True))
@@ -134,7 +147,11 @@ class metrics_logic(object):
                 return response_json(data={},status=False,state=2)
             ### getting avg of tier
             query_user_tier = '''select truncate(AVG({selector}),2) as data,tier as name from company_data where id <> {user_company_id} and tier <>"" and tier is not null group by tier;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
-            query_user_tier_drill_down = '''select truncate(AVG({selector}),2) as data,tier as name,industry as sub_name from company_data where id <> {user_company_id} and tier <>"" and tier is not null group by tier,industry;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
+            query_user_tier_drill_down = '''select truncate(AVG({selector}),2) as data,tier as name,
+                case when industry = "Software / Internet" then "IT Services"
+                when industry = "Computers - Software" then "IT Services"
+                else industry end  
+                as sub_name from company_data where id <> {user_company_id} and tier <>"" and tier is not null group by tier,industry;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
             resp_selector_tab = self.to_string(db(query_user_tier,asdict=True))
             resp_selector_tab_drill_down = self.to_string(db(query_user_tier_drill_down,asdict=True))
             if not resp_selector_tab:
@@ -200,9 +217,11 @@ class metrics_logic(object):
             if value:
                 query_list.append('''{}="{}"'''.format(key,value))
         query_str+=",".join(query_list )
+        query_update='''update company_data set {} where id = {};''' .format(",".join(query_list ),self.user_company_id)
         query  =  '''insert into user_data_log SET {};'''.format(query_str);
         try:
             db(query,commit=True)
+            db(query_update,commit=True)
         except:
             return response_json(data={},status=False,as_json=json)
         return response_json(data = {} , status=True,as_json=json)
