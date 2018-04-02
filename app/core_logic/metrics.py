@@ -112,13 +112,13 @@ class metrics_logic(object):
                 case when industry = "Software / Internet" then "IT Services"
                 when industry = "Computers - Software" then "IT Services"
                 else industry end  
-                as name from company_data where id <> {user_company_id}  group by industry order by data desc limit 5;'''.format(selector =selector ,user_company_id=self.user_company_id)
+                as name from company_data where id <> {user_company_id} and {selector}<>0  group by industry order by data desc limit 5;'''.format(selector =selector ,user_company_id=self.user_company_id)
 
             query_user_industry_drill_down = '''select truncate(AVG({selector}),2) as data, 
                 case when industry = "Software / Internet" then "IT Services"
                 when industry = "Computers - Software" then "IT Services"
                 else industry end  
-                as name,tier as sub_name from company_data where id <> {user_company_id}  group by industry,tier order by data desc limit 5;'''.format(selector =selector ,user_company_id=self.user_company_id)
+                as name,tier as sub_name from company_data where id <> {user_company_id} and {selector}<>0  group by industry,tier order by data desc limit 5;'''.format(selector =selector ,user_company_id=self.user_company_id)
 
 
             resp_selector_tab = self.to_string(db(query_user_industry,asdict=True))
@@ -146,12 +146,12 @@ class metrics_logic(object):
             if not resp_user:
                 return response_json(data={},status=False,state=2)
             ### getting avg of tier
-            query_user_tier = '''select truncate(AVG({selector}),2) as data,tier as name from company_data where id <> {user_company_id} and tier <>"" and tier is not null group by tier;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
+            query_user_tier = '''select truncate(AVG({selector}),2) as data,tier as name from company_data where id <> {user_company_id} and tier <>"" and tier is not null and {selector}<>0 group by tier;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
             query_user_tier_drill_down = '''select truncate(AVG({selector}),2) as data,tier as name,
                 case when industry = "Software / Internet" then "IT Services"
                 when industry = "Computers - Software" then "IT Services"
                 else industry end  
-                as sub_name from company_data where id <> {user_company_id} and tier <>"" and tier is not null group by tier,industry;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
+                as sub_name from company_data where id <> {user_company_id} and tier <>"" and tier is not null and {selector}<>0 group by tier,industry;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
             resp_selector_tab = self.to_string(db(query_user_tier,asdict=True))
             resp_selector_tab_drill_down = self.to_string(db(query_user_tier_drill_down,asdict=True))
             if not resp_selector_tab:
@@ -174,7 +174,7 @@ class metrics_logic(object):
         query_user_revenue_bracket = '''select truncate(AVG(data),2) as data, name from  (select {selector} as data,
         case when Revenue_rs<500 then "<500 Cr"
         when Revenue_rs>500 and Revenue_rs<1000 then ">500 Cr and <1000 Cr"
-        else  ">1000 Cr" end as name from company_data where id <> {user_company_id} ) a group by name;'''.format(selector =selector ,user_company_id=self.user_company_id)
+        else  ">1000 Cr" end as name from company_data where id <> {user_company_id} and {selector}<>0) a group by name;'''.format(selector =selector ,user_company_id=self.user_company_id)
         
         try:
             resp_user = self.to_string(db(query_user_company,asdict=True))
