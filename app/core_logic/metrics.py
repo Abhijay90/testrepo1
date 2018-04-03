@@ -67,25 +67,6 @@ class metrics_logic(object):
         print val
         return val
 
-
-
-    # def __avg_data(self,selector,json=1):
-    #     query = '''select AVG({selector}) as data from company_data where id <> {user_company_id};'''.format(selector =selector ,user_company_id=self.user_company_id)
-
-    #     query_user_company='''select {selector} as data from company_data where id = {user_company_id}; '''.format(selector=selector,user_company_id=self.user_company_id)
-    #     try:
-    #         resp = db(query,asdict=True)
-    #         resp_user = db(query_user_company,asdict=True)
-    #         if not resp:
-    #             return response_json(data={},status=False,state=2)
-    #         if not resp_user:
-    #             return response_json(data={},status=False,state=2)
-    #         res=dict(data=int(resp[0]["data"]),user_data = int(resp_user[0]["data"]))
-    #     except Exception as e:
-    #         print e
-    #         return response_json(data={},status=False,as_json=json)
-    #     return response_json(data=res,status=True,as_json=json)
-
     def __avg_data_by_industry(self,selector,json=1):
         query = '''select truncate(AVG({selector}),2) as data from company_data where id <> {user_company_id};'''.format(selector =selector ,user_company_id=self.user_company_id)
 
@@ -190,22 +171,70 @@ class metrics_logic(object):
             print e
             return response_json(data={},status=False,as_json=json)
         return response_json(data=res,status=True,as_json=json)
+
+    def __avg_data(self,selector,json=1):
+        query_user_company='''select truncate(b.{selector},2) as data,a.tier as name from company_data a inner join company_extended_data b on a.id =b.id where a.id = {user_company_id}; '''.format(selector=selector,user_company_id=self.user_company_id)
+        print query_user_company
+
+        try:
+            resp_user = self.to_string(db(query_user_company,asdict=True))
+            
+            if not resp_user:
+                return response_json(data={},status=False,state=2)
+            ### getting avg of tier
+            query_user_tier = '''select truncate(AVG(b.{selector}),2) as data,a.tier as name from company_data a inner join company_extended_data b on a.id=b.id where a.id <> {user_company_id} and a.tier <>"" and a.tier is not null and b.{selector}<>0 group by tier;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
+            print query_user_tier
+            query_user_tier_drill_down = '''select truncate(AVG({selector}),2) as data,tier as name,
+                case when industry = "Software / Internet" then "IT Services"
+                when industry = "Computers - Software" then "IT Services"
+                else industry end  
+                as sub_name from company_data where id <> {user_company_id} and tier <>"" and tier is not null and {selector}<>0 group by tier,industry;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
+            resp_selector_tab = self.to_string(db(query_user_tier,asdict=True))
+            # resp_selector_tab_drill_down = self.to_string(db(query_user_tier_drill_down,asdict=True))
+            resp_selector_tab_drill_down=[]
+            if not resp_selector_tab:
+                return response_json(data={},status=False,state=2)
+
+            res=dict(data=-1,user_data = resp_user[0]["data"],tab_data = resp_selector_tab,drill_down = resp_selector_tab_drill_down)
+            print res
+        except Exception as e:
+            print e
+            return response_json(data={},status=False,as_json=json)
+        return response_json(data=res,status=True,as_json=json)
         
 
-    def user_averages_rs(self,required_field,json=1):
+    def user_averages_rs(self,required_field,db,show_metric,json=1):
         if not self.is_function_accessible(required_field=required_field)["status"]:
             return response_json(data={},status=False,as_json=json)
-        data=dict(tier={},industry={},peers=dict())
-        tier = self.__avg_data_by_tier(selector=required_field,json=0)
-        industry = self.__avg_data_by_industry(selector=required_field,json=0)
-        peers = self.__avg_data_by_revenue(selector=required_field,json=0)
-        if tier["status"] and industry["status"] and peers["status"]:
-            data["tier"]=tier["data"]
-            data["peers"]=peers["data"]
-            data["industry"]=industry["data"]
-            return response_json(data=data,status=True,as_json=json)
-        return response_json(data={},status=False,as_json=json)
+        data=dict(tier={},industry={},peers={})
+        for i in self.__show_metric(show_metric):
+            if i=="tier":
+                tier = self.__avg_data_by_tier(selector=required_field,json=0)
+                if tier["status"]:
+                    data["tier"]=tier["data"]
+                else:
+                    return response_json(data={},status=False,as_json=json)
+            if i=="industry":
+                industry = self.__avg_data_by_industry(selector=required_field,json=0)
+                if industry["status"]:
+                    data["industry"]=industry["data"]
+                else:
+                    return response_json(data={},status=False,as_json=json)
+            if i=="peers":
+                peers = self.__avg_data_by_revenue(selector=required_field,json=0)
+                if peers["status"]:
+                    data["peers"]=peers["data"]
+                else:
+                    return response_json(data={},status=False,as_json=json)
 
+            if i=="single_tier":
+                tier = self.__avg_data(selector=required_field,json=0)
+                if tier["status"]:
+                    data["tier"]=tier["data"]
+                else:
+                    return response_json(data={},status=False,as_json=json)
+        return response_json(data=data,status=True,as_json=json)
+            
     def update_company_data(self,data,json=1):
         if not self.is_function_accessible(required_field="update")["status"]:
             return response_json(data={},status=False,as_json=json)
@@ -225,6 +254,12 @@ class metrics_logic(object):
         except:
             return response_json(data={},status=False,as_json=json)
         return response_json(data = {} , status=True,as_json=json)
+
+    def __show_metric(self,value):
+        if value==0:
+            return ["tier","industry","peers"]
+        if value==1:
+            return ["single_tier"]
 
         
 

@@ -46,7 +46,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'abhiajay','206',NULL,NULL,NULL,NULL,'abhijay@tententen.in',NULL,'abhijay',1,'2018-03-27 04:57:19',1),(2,'Suman','1',NULL,NULL,NULL,NULL,'Suman@cct.com',NULL,'123456',1,'2018-03-31 11:47:52',1);
+INSERT INTO `auth_user` VALUES (1,'abhiajay','74',NULL,NULL,NULL,NULL,'abhijay@tententen.in',NULL,'abhijay',1,'2018-03-27 04:57:19',1),(2,'Suman','1',NULL,NULL,NULL,NULL,'Suman@cct.com',NULL,'123456',1,'2018-03-31 11:47:52',1);
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,6 +203,39 @@ INSERT INTO `company_data_master_dataset1` VALUES ('3i Infotech','Computers - So
 UNLOCK TABLES;
 
 --
+-- Table structure for table `company_extended_data`
+--
+
+DROP TABLE IF EXISTS `company_extended_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `company_extended_data` (
+  `id` int(11) NOT NULL DEFAULT '0',
+  `overall_revenue_growth` decimal(10,2) DEFAULT '0.00',
+  `headcount_growth` decimal(10,2) DEFAULT '0.00',
+  `ebit` decimal(10,2) DEFAULT '0.00',
+  `employee_cost_revenue_percentage` decimal(10,2) DEFAULT '0.00',
+  `utilization_overall` decimal(10,2) DEFAULT '0.00',
+  `utilization_lateral` decimal(10,2) DEFAULT '0.00',
+  `percentage_headcount` decimal(10,2) DEFAULT '0.00',
+  `campus_hire` decimal(10,2) DEFAULT '0.00',
+  `time_to_bill` decimal(10,2) DEFAULT '0.00',
+  `bench_percentage` decimal(10,2) DEFAULT '0.00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `company_extended_data`
+--
+
+LOCK TABLES `company_extended_data` WRITE;
+/*!40000 ALTER TABLE `company_extended_data` DISABLE KEYS */;
+INSERT INTO `company_extended_data` VALUES (74,9.50,5.50,21.30,49.20,85.80,83.50,6.70,0.00,15.00,3.00),(94,8.70,6.60,25.90,55.50,82.10,79.00,10.00,57.10,45.00,6.00),(183,6.70,10.10,27.20,53.30,80.90,74.50,11.00,62.19,55.00,5.50),(200,4.30,2.30,22.00,49.30,71.00,69.00,8.50,49.90,50.00,4.00);
+/*!40000 ALTER TABLE `company_extended_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user_data_log`
 --
 
@@ -292,4 +325,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-31 19:43:58
+-- Dump completed on 2018-04-03 21:52:02

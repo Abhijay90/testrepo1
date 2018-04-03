@@ -88,6 +88,16 @@
                     </div></a>
                   </li>
                   <li class="cards">
+                    <a onclick=";"><div class="icon">
+                      <img src="../static/build/images/icon2.png" alt="Benchmark Metrics" />
+                    </div>
+                    <div class="card_inner">
+                      <h3>WorkForce Metrics</h3>
+                      <h6>Hand picked metrics for your role.<br/>We've put together the most relevant metrics for you.</h6>
+                    </div></a>
+                  </li>
+
+                  <li class="cards">
                     <a onclick="redirect_to_chro();"><div class="icon">
                       <img src="../static/build/images/icon2.png" alt="Benchmark Metrics" />
                     </div>
@@ -175,6 +185,11 @@
     <!-- <script src="../static/build/js/custom_example.js"></script> -->
     <script type="text/javascript">
 
+    function multiVal_shortcut(){
+      glob_key_arr=["overall_revenue_growth","headcount_growth","ebit","percentage_headcount","time_to_bill","bench_percentage","utilization_overall","utilization_lateral","employee_cost_revenue_percentage","campus_hire"]
+      post_data(JSON.stringify(glob_key_arr),is_chro=0);
+    }
+
 
     function redirect_to_chro(){
 
@@ -212,9 +227,10 @@ var post_params=
 
       }
 
-    function post_data(value){
+    function post_data(value,is_chro=1){
 
   $("input[name=aggregate_key]").val(value);
+  $("input[name=is_chro]").val(is_chro);
 
    console.log($("input[name=aggregate_key]").val());
 
