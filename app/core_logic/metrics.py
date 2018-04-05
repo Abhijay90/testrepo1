@@ -182,8 +182,8 @@ class metrics_logic(object):
             if not resp_user:
                 return response_json(data={},status=False,state=2)
             ### getting avg of tier
-            query_user_tier = '''select truncate(AVG(b.{selector}),2) as data,a.tier as name from company_data a inner join company_extended_data b on a.id=b.id where a.id <> {user_company_id} and a.tier <>"" and a.tier is not null and b.{selector}<>0 group by tier;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
-            print query_user_tier
+            query_user_tier = '''select truncate(AVG(b.{selector}),2) as data,a.tier as name from company_data a inner join company_extended_data b on a.id=b.id where a.tier <>"" and a.tier is not null and b.{selector}<>0 group by tier;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
+
             query_user_tier_drill_down = '''select truncate(AVG({selector}),2) as data,tier as name,
                 case when industry = "Software / Internet" then "IT Services"
                 when industry = "Computers - Software" then "IT Services"
