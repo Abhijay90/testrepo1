@@ -46,7 +46,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'abhiajay','74',NULL,NULL,NULL,NULL,'abhijay@tententen.in',NULL,'abhijay',1,'2018-03-27 04:57:19',1),(2,'Suman','1',NULL,NULL,NULL,NULL,'Suman@cct.com',NULL,'123456',1,'2018-03-31 11:47:52',1);
+INSERT INTO `auth_user` VALUES (1,'abhiajay','74',NULL,NULL,NULL,NULL,'abhijay@tententen.in',NULL,'abhijay',1,'2018-03-27 04:57:19',1),(2,'Suman','74',NULL,NULL,NULL,NULL,'Suman@cct.com',NULL,'123456',1,'2018-03-31 11:47:52',1);
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,6 +221,9 @@ CREATE TABLE `company_extended_data` (
   `campus_hire` decimal(10,2) DEFAULT '0.00',
   `time_to_bill` decimal(10,2) DEFAULT '0.00',
   `bench_percentage` decimal(10,2) DEFAULT '0.00',
+  `company_international` int(1) DEFAULT '0',
+  `indian_headcount` int(11) NOT NULL DEFAULT '0',
+  `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -231,7 +234,7 @@ CREATE TABLE `company_extended_data` (
 
 LOCK TABLES `company_extended_data` WRITE;
 /*!40000 ALTER TABLE `company_extended_data` DISABLE KEYS */;
-INSERT INTO `company_extended_data` VALUES (74,9.50,5.50,21.30,49.20,85.80,83.50,6.70,0.00,15.00,3.00),(94,8.70,6.60,25.90,55.50,82.10,79.00,10.00,57.10,45.00,6.00),(183,6.70,10.10,27.20,53.30,80.90,74.50,11.00,62.19,55.00,5.50),(200,4.30,2.30,22.00,49.30,71.00,69.00,8.50,49.90,50.00,4.00);
+INSERT INTO `company_extended_data` VALUES (74,9.50,5.50,21.30,49.20,85.80,83.50,6.70,0.00,15.00,3.00,0,89440,'HCL Tech'),(94,8.70,6.60,25.90,55.50,82.10,79.00,10.00,57.10,45.00,6.00,0,150691,'Infosys'),(183,6.70,10.10,27.20,53.30,80.90,74.50,11.00,62.19,55.00,5.50,0,296880,'TCS'),(200,4.30,2.30,22.00,49.30,71.00,69.00,8.50,49.90,50.00,4.00,0,123553,'Wipro'),(1000,0.00,0.00,0.00,61.00,81.00,78.00,4.50,25.00,45.00,4.50,1,170000,'Accenture India'),(1001,13.40,9.50,19.80,52.00,79.00,75.00,7.00,24.00,50.00,5.50,1,198000,'Cognizant India');
 /*!40000 ALTER TABLE `company_extended_data` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,4 +328,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-03 21:59:51
+-- Dump completed on 2018-04-06  7:27:46

@@ -64,7 +64,6 @@ class metrics_logic(object):
         for sub in val:
             for key in sub:
                 sub[key] = str(sub[key])
-        print val
         return val
 
     def __avg_data_by_industry(self,selector,json=1):
@@ -173,30 +172,26 @@ class metrics_logic(object):
         return response_json(data=res,status=True,as_json=json)
 
     def __avg_data(self,selector,json=1):
-        query_user_company='''select truncate(b.{selector},2) as data,a.tier as name from company_data a inner join company_extended_data b on a.id =b.id where a.id = {user_company_id}; '''.format(selector=selector,user_company_id=self.user_company_id)
-        print query_user_company
+        query_data_india='''select truncate(AVG({selector}),2) as data,"Tier I (India)" as name from company_extended_data where {selector}<>0 and company_international=0; '''.format(selector=selector)
+
+        query_data_int='''select truncate(AVG({selector}),2) as data,"Tier I (India+MNC)" as name from company_extended_data where {selector}<>0 ; '''.format(selector=selector)
 
         try:
-            resp_user = self.to_string(db(query_user_company,asdict=True))
+            resp_user = self.to_string(db(query_data_india,asdict=True))
             
             if not resp_user:
                 return response_json(data={},status=False,state=2)
-            ### getting avg of tier
-            query_user_tier = '''select truncate(AVG(b.{selector}),2) as data,a.tier as name from company_data a inner join company_extended_data b on a.id=b.id where a.tier <>"" and a.tier is not null and b.{selector}<>0 group by tier;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
 
-            query_user_tier_drill_down = '''select truncate(AVG({selector}),2) as data,tier as name,
-                case when industry = "Software / Internet" then "IT Services"
-                when industry = "Computers - Software" then "IT Services"
-                else industry end  
-                as sub_name from company_data where id <> {user_company_id} and tier <>"" and tier is not null and {selector}<>0 group by tier,industry;'''.format(selector =selector ,user_company_id=self.user_company_id,industry = resp_user[0]["name"])
-            resp_selector_tab = self.to_string(db(query_user_tier,asdict=True))
-            # resp_selector_tab_drill_down = self.to_string(db(query_user_tier_drill_down,asdict=True))
+            data  = db(query_data_int,asdict=True) 
+            data.append(resp_user[0])
+            resp_selector_tab = self.to_string(data)
+
+            # print resp_selector_tab
             resp_selector_tab_drill_down=[]
             if not resp_selector_tab:
                 return response_json(data={},status=False,state=2)
-
-            res=dict(data=-1,user_data = resp_user[0]["data"],tab_data = resp_selector_tab,drill_down = resp_selector_tab_drill_down)
-            print res
+            
+            res=dict(data=-1,user_data = -1,tab_data = resp_selector_tab,drill_down = resp_selector_tab_drill_down)
         except Exception as e:
             print e
             return response_json(data={},status=False,as_json=json)
