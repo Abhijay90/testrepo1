@@ -20,10 +20,18 @@ user_input = Blueprint('user_input',__name__)
 @user_input .route('/',methods=['GET'])
 @flask_login.login_required
 def user_data():
-
     # obj = UserData()
     # resp = obj.profile(json=0)
-    return render_template('enter_metrics.html')
+    pg_val=0
+    try:
+        pg_val = int(request.args["workforce"])
+    except:
+        pass
+
+    if not pg_val:
+        return render_template('enter_metrics.html')
+    else:
+        return render_template('enter_metrics_workforce.html')
 
 @user_input .route('/',methods=['POST'])
 @flask_login.login_required

@@ -691,19 +691,19 @@ function data_graph(value){
   if(i!=="drill_down"){
     if(v.constructor === Array){
       $.each(v,function(ind,val){
-      resp_val.push({"name":val["name"],"y":parseFloat(val["data"])});
+      resp_val.push({"name":val["name"],"y":parseFloat(val["data"]),"dataLabels":{"enabled": true,"format": '{point.y:.1f}'} }); // added data label
       });
     }
     else{
       if (v!=-1){
         if (i=="user_data"){
-          resp_val.push({"name":"You","y":parseFloat(v)})
+          resp_val.push({"name":"You","y":parseFloat(v),"dataLabels":{"enabled": true,"format": '{point.y:.1f}'}})
         }
         else if(i=="data"){
-         resp_val.push({"name":"Your Industry","y":parseFloat(v)}) 
+         resp_val.push({"name":"Your Industry","y":parseFloat(v),"dataLabels":{"enabled": true,"format": '{point.y:.1f}'}}) 
         }
         else{
-          resp_val.push({"name":i,"y":parseFloat(v)})
+          resp_val.push({"name":i,"y":parseFloat(v),"dataLabels":{"enabled": true,"format": '{point.y:.1f}'}})
           }
       }
     }
@@ -787,23 +787,15 @@ function data_drilldown_new(value,name){
     if (name==val["name"]){
         index = categories.map(function(el){return el.name}).indexOf(val["sub_name"])
         if (index == -1 ){
-          // resp_val.push({"name":val["name"],"id":val["name"],"data":[]})
           categories.push(val["sub_name"]);
           data.push(parseFloat(val["data"]))
-
-          // console.log(categories + "  " + data);
-
-          // resp_val[resp_val.length-1]["data"].push([val["sub_name"],parseFloat(val["data"])])
         }
         
-        // else{
-        //   resp_val[index]["data"].push([val["sub_name"],parseFloat(val["data"])])
-        // }
-
     }
 
   });
 resp_val={"data":data,"categories":categories,"type": 'column'};
+console.log(resp_val);
 return resp_val
 
 }
@@ -817,7 +809,7 @@ function data_drilldown(value){
   $.each(value,function(ind,val){
     index = resp_val.map(function(el){return el.name}).indexOf(val["name"])
     if (index == -1 ){
-      resp_val.push({"name":val["name"],"id":val["name"],"data":[]})
+      resp_val.push({"name":val["name"],"id":val["name"],"data":[],"dataLabels":{"enabled": true,"format": '{point.y:.1f}'} })// added data label
       resp_val[resp_val.length-1]["data"].push([val["sub_name"],parseFloat(val["data"])])
     }
     else{
@@ -867,7 +859,7 @@ var graph_provider = function (value,div_id) {
         credits: {
           enabled:false,
         },
-        series:data_graph(value),
+        // series:data_graph(value),
         series:[{
           showInLegend: false,
           name:"",

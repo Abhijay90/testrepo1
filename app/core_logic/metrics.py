@@ -230,18 +230,20 @@ class metrics_logic(object):
                     return response_json(data={},status=False,as_json=json)
         return response_json(data=data,status=True,as_json=json)
             
-    def update_company_data(self,data,json=1):
+    def update_company_data(self,data ,json=1):
         if not self.is_function_accessible(required_field="update")["status"]:
             return response_json(data={},status=False,as_json=json)
         query_str = '''user_id="{}",company_id="{}",'''.format(self.user_id,self.user_company_id)
         query_list=[]
+        __db = "company_data"
         for i in data:
             key=i
             value=data[i]
+            __db=self.__ger_resp_head(i)["db"]
             if value:
                 query_list.append('''{}="{}"'''.format(key,value))
         query_str+=",".join(query_list )
-        query_update='''update company_data set {} where id = {};''' .format(",".join(query_list ),self.user_company_id)
+        query_update='''update {} set {} where id = {};''' .format(__db,",".join(query_list ),self.user_company_id)
         query  =  '''insert into user_data_log SET {};'''.format(query_str);
         try:
             db(query,commit=True)
@@ -256,7 +258,41 @@ class metrics_logic(object):
         if value==1:
             return ["single_tier"]
 
-        
+    
+    def __ger_resp_head(self,key):
+        headings={
+        "Employee_HR_BP_Ratio":{"name":"Employee/HR Business Partner","db":"company_data","show_metric":0},
+        # "HR_BP_Headcount":"Employee Cost($)",
+        "Employee_to_HR":{"name":"Employee to HR Ratio","db":"company_data","show_metric":0},
+        "HR_Headcount":{"name":"HR Headcount","db":"company_data","show_metric":0},
+        "Time_to_Hire_Days":{"name":"Time to Hire (Days)","db":"company_data","show_metric":0},
+        "Cost_Per_Hire_Annual":{"name":"Cost Per Hiring Annual($)","db":"company_data","show_metric":0},
+        "Average_Hiring_Annual":{"name":"Gross Hiring (Annual)","db":"company_data","show_metric":0},
+        "Average_Hiring_Quarterly":{"name":"Gross Hiring (Quarterly)","db":"company_data","show_metric":0},
+        "Overall_Attrition_Annual":{"name":"Overall Attrition (Annual)","db":"company_data","show_metric":0},
+        "Voluntary_Attrition_Annual":{"name":"Voluntary Attrition (Annual)","db":"","show_metric":0},
+        "Employee_Cost":{"name":"Average Employee Cost ($)","db":"company_data","show_metric":0},
+        "Revenue_Per_Employe":{"name":"Revenue Per Employee ($)","db":"company_data","show_metric":0},
+        "Employee_Cost_Revenue_percentage":{"name":"Employee Cost as % of Revenue","db":"company_data","show_metric":0},
+        "Average_Employee_Cost_rs":{"name":"Avg. Employee Cost (Lakh Rs.)","db":"company_data","show_metric":0},
+        "Training_Spend_Annual":{"name":"Training Spend (Annual)","db":"company_data","show_metric":0},
+        "Training_Spend_Revenue_Percentage":{"name":"Training Spend as % of Revenue","db":"company_data","show_metric":0},
+        "Training_Spend_Per_Person":{"name":"Training Spend Per Person ($)","db":"company_data","show_metric":0},
+        "overall_revenue_growth":{"name":"Overall Revenue Growth(%)","db":"company_extended_data","show_metric":1},
+        "headcount_growth":{"name":"Headcount Growth (%)","db":"company_extended_data","show_metric":1},
+        "ebit":{"name":"EBIT (%)","db":"company_extended_data","show_metric":1},
+        "percentage_headcount":{"name":"Headcount in Tier II & Tier III","db":"company_extended_data","show_metric":1},
+        "campus_hire":{"name":"Campus Hires 2017 (%)","db":"company_extended_data","show_metric":1},
+        "time_to_bill":{"name":"Time to Bill (Days)","db":"company_extended_data","show_metric":1},
+        "bench_percentage":{"name":"Bench Strength (%)","db":"company_extended_data","show_metric":1},
+        "utilization_overall":{"name":"Utilisations Overall (%)","db":"company_extended_data","show_metric":1},
+        "utilization_lateral":{"name":"Utilisations Lateral (%)","db":"company_extended_data","show_metric":1},
+        "employee_cost_revenue_percentage":{"name":"Employee Cost as a % of Revenues","db":"company_extended_data","show_metric":1}
+        }
+
+        return headings[key]
+
+
 
 
 

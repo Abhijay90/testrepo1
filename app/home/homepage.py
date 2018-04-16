@@ -25,3 +25,8 @@ def homepage():
 @flask_login.login_required
 def multicheck():
     return render_template('index_choice.html')
+
+@user_check.route('/workforce',methods=['GET'])
+@flask_login.login_required
+def workforce_index():
+    return render_template('index_choice_workforce.html')

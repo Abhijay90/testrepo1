@@ -190,16 +190,16 @@ def ger_resp_head(key):
     "Training_Spend_Annual":{"name":"Training Spend (Annual)","db":"company_data","show_metric":0},
     "Training_Spend_Revenue_Percentage":{"name":"Training Spend as % of Revenue","db":"company_data","show_metric":0},
     "Training_Spend_Per_Person":{"name":"Training Spend Per Person ($)","db":"company_data","show_metric":0},
-    "overall_revenue_growth":{"name":"Overall Revenue Growth(%)","db":"company_data","show_metric":1},
-    "headcount_growth":{"name":"Headcount Growth (%)","db":"company_data","show_metric":1},
-    "ebit":{"name":"EBIT/Revenues (%)","db":"company_data","show_metric":1},
-    "percentage_headcount":{"name":"Headcount in Tier II & Tier III","db":"company_data","show_metric":1},
-    "campus_hire":{"name":"Campus Hires 2017 (%)","db":"company_data","show_metric":1},
-    "time_to_bill":{"name":"Time to Bill (Days)","db":"company_data","show_metric":1},
-    "bench_percentage":{"name":"Bench Strength (%)","db":"company_data","show_metric":1},
-    "utilization_overall":{"name":"Utilisations Overall (%)","db":"company_data","show_metric":1},
-    "utilization_lateral":{"name":"Utilisations Lateral (%)","db":"company_data","show_metric":1},
-    "employee_cost_revenue_percentage":{"name":"Employee Cost as a % of Revenues","db":"company_data","show_metric":1}
+    "overall_revenue_growth":{"name":"Overall Revenue Growth(%)","db":"company_extended_data","show_metric":1},
+    "headcount_growth":{"name":"Headcount Growth (%)","db":"company_extended_data","show_metric":1},
+    "ebit":{"name":"EBIT (%)","db":"company_extended_data","show_metric":1},
+    "percentage_headcount":{"name":"Headcount in Tier II & Tier III","db":"company_extended_data","show_metric":1},
+    "campus_hire":{"name":"Campus Hires 2017 (%)","db":"company_extended_data","show_metric":1},
+    "time_to_bill":{"name":"Time to Bill (Days)","db":"company_extended_data","show_metric":1},
+    "bench_percentage":{"name":"Bench Strength (%)","db":"company_extended_data","show_metric":1},
+    "utilization_overall":{"name":"Utilisations Overall (%)","db":"company_extended_data","show_metric":1},
+    "utilization_lateral":{"name":"Utilisations Lateral (%)","db":"company_extended_data","show_metric":1},
+    "employee_cost_revenue_percentage":{"name":"Employee Cost as a % of Revenues","db":"company_extended_data","show_metric":1}
     }
 
     return headings[key]
