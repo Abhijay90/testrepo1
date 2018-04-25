@@ -45,10 +45,14 @@
 
                       <div class="pp_out dropdown">
                         <div class="pp dropbtn">
+                          {%if resp["user_type"]==2%}
+                          <img src="../static/build/images/user4.png" alt="Profile Name" />
+                        {%else%}
                           <img src="../static/build/images/dummy-profile.jpg" alt="Profile Name" />
+                        {%endif%}
                         </div>
                         <div class="dropdown-content">
-                          <a href="profile">Profile</a>
+                          {%if resp["user_type"]!=2%}<a href="profile">Profile</a>{%endif%}
                           <a href="/logout">Logout</a>
                         </div>
                       </div>
@@ -71,6 +75,8 @@
         </section>
         <section class="middle_scroll custom_chart" style="overflow:hidden;overflow-y:hidden">
           <div class="hd"><h3 class="valign">PICK YOUR BENCHMARK METRICS</h3></div>
+          {%if resp["user_type"]==2%} <div><span style="color: #1A89FF;"> To Sign Up And View All Our Available Metrics, <br/>Please Contact Us At: <a href="mailto:team@cocreatetomorrow.com" target="_top">team@cocreatetomorrow.com</a></span></div> {%endif%}
+          
           <div class="row scroll">
             <div class="col-md-12 col-xs-12">
               <!-- <form> -->

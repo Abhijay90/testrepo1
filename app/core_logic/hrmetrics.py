@@ -162,14 +162,14 @@ def aggregate_data(obj):
             resp["data"].update(dict(head=ger_resp_head(i)["name"]))
             resp_data.append(dict(key=i,data=resp["data"]))
         else:
-            return render_template('benchmark_results.html',resp=resp_data)
+            return render_template('benchmark_results.html',resp=resp_data,session_data = session["data"])
     # print resp_data
     # return response_json(data=resp_data,status=True,as_json=1)
     # return response_json(data={},status=True,as_json=1)
     if is_chro:
-        return render_template('chro.html',resp=resp_data)
+        return render_template('chro.html',resp=resp_data,session_data = session["data"])
     else:
-        return render_template('benchmark_results.html',resp=resp_data)
+        return render_template('benchmark_results.html',resp=resp_data,session_data = session["data"])
 
 def ger_resp_head(key):
     headings={

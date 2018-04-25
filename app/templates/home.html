@@ -49,10 +49,16 @@
 
                       <div class="pp_out dropdown">
                         <div class="pp dropbtn">
+                        {%if resp["user_type"]==2%}
+                          <img src="../static/build/images/user4.png" alt="Profile Name" />
+                        {%else%}
                           <img src="../static/build/images/dummy-profile.jpg" alt="Profile Name" />
+                        {%endif%}
                         </div>
                         <div class="dropdown-content">
+                        {%if resp["user_type"]!=2%}  
                           <a href="/profile">Profile</a>
+                        {%endif%}
                           <a href="/logout">Logout</a>
                         </div>
                       </div>
