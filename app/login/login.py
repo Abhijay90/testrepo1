@@ -62,6 +62,18 @@ def load_user(id):
     resp = obj.get_user_from_id()
     return resp
 
+@user_login.route('dummy',methods=['GET'])
+def demo_user():
+    obj = User(username = "testuser@testuser.com",password="123456",id=0)
+    data = obj.login()
+
+    if data["status"]:
+        return redirect('/home')
+    else:
+        return redirect('/login')
+    return resp
+
+
 @login_manager.unauthorized_handler
 def unauth_handler():
     return redirect("/")

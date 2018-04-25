@@ -37,7 +37,7 @@ CREATE TABLE `auth_user` (
   `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_type` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'abhiajay','74',NULL,NULL,NULL,NULL,'abhijay@tententen.in',NULL,'abhijay',1,'2018-03-27 04:57:19',1),(2,'Suman','74',NULL,NULL,NULL,NULL,'Suman@cct.com',NULL,'123456',1,'2018-03-31 11:47:52',1);
+INSERT INTO `auth_user` VALUES (1,'abhiajay','74',NULL,NULL,NULL,NULL,'abhijay@tententen.in',NULL,'abhijay',1,'2018-03-27 04:57:19',1),(2,'Suman','74',NULL,NULL,NULL,NULL,'Suman@cct.com',NULL,'123456',1,'2018-03-31 11:47:52',1),(3,'testuser','74',NULL,NULL,NULL,NULL,'testuser@testuser.com',NULL,'123456',1,'2018-04-25 12:09:46',2);
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -315,7 +315,7 @@ CREATE TABLE `user_roles` (
 
 LOCK TABLES `user_roles` WRITE;
 /*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
-INSERT INTO `user_roles` VALUES (1,'*'),(2,'Approx_India_Headcount'),(2,'name');
+INSERT INTO `user_roles` VALUES (1,'*'),(2,'Average_Employee_Cost_rs'),(2,'Employee_Cost');
 /*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -328,4 +328,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-06  7:27:46
+-- Dump completed on 2018-04-25 19:58:30

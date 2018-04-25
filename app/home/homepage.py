@@ -18,13 +18,13 @@ user_check= Blueprint('multicheck',__name__,template_folder='templates')
 @homepage_bp.route('',methods=['GET'])
 @flask_login.login_required
 def homepage():
-    return render_template('home.html')
+    return render_template('home.html',resp=session["data"])
 
 
 @user_check.route('',methods=['GET'])
 @flask_login.login_required
 def multicheck():
-    return render_template('index_choice.html')
+    return render_template('index_choice.html',resp=session["data"])
 
 @user_check.route('/workforce',methods=['GET'])
 @flask_login.login_required

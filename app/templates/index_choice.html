@@ -77,10 +77,11 @@
                 <div class="listBl">
                   <h3>Cost</h3>
                   <ul>
-                      <li><input type="checkbox" onclick="myFunction(0)"><span>Average Employee Cost ($)</span></li>                      
+                      <li><input type="checkbox" onclick="myFunction(0)" ><span>Average Employee Cost ($)</span></li>                      
                       <li><input type="checkbox" onclick="myFunction(3)"><span>Average Employee Cost (Rs.)</span></li>
-                      <li><input type="checkbox" onclick="myFunction(1)"><span>Revenue Per Employe ($)</span></li>
-                      <li><input type="checkbox" onclick="myFunction(2)"><span>Employee Cost as % of Revenue</span></li>
+
+                      <li><input type="checkbox" onclick="myFunction(1)" {%if resp["user_type"]!=1%} disabled {%endif%}><span>Revenue Per Employe ($)</span></li>
+                      <li><input type="checkbox" onclick="myFunction(2)" {%if resp["user_type"]!=1%} disabled {%endif%}><span>Employee Cost as % of Revenue</span></li>
                   </ul>
                 </div>
 
@@ -88,12 +89,12 @@
                   <h3>Performance</h3>
                   <ul>
 
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction(4)"><span>Voluntary Attrition - Annual</span></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction(5)"><span>Overall Attrition - Annual (Voluntary + Involuntary)</span></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction(6)"><span>Average Hiring (Quarterly)</span></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction(7)"><span>Average Hiring (Annual)</span></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction(8)"><span>Cost Per Hire (Annual) ($)</span></li>
-                      <li><input type="checkbox" id="myCheck" onclick="myFunction(9)"><span>Time to Hire (Days)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(4)" {%if resp["user_type"]!=1%} disabled {%endif%}><span>Voluntary Attrition - Annual</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(5)" {%if resp["user_type"]!=1%} disabled {%endif%}><span>Overall Attrition - Annual (Voluntary + Involuntary)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(6)" {%if resp["user_type"]!=1%} disabled {%endif%}><span>Average Hiring (Quarterly)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(7)" {%if resp["user_type"]!=1%} disabled {%endif%}><span>Average Hiring (Annual)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(8)" {%if resp["user_type"]!=1%} disabled {%endif%}><span>Cost Per Hire (Annual) ($)</span></li>
+                      <li><input type="checkbox" id="myCheck" onclick="myFunction(9)" {%if resp["user_type"]!=1%} disabled {%endif%}><span>Time to Hire (Days)</span></li>
                       <!-- <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Hiring Channel Mix (Agency, Referral & Direct)</span></li> -->
                   </ul>
                 </div>
@@ -102,8 +103,8 @@
                   <h3>Efficiency</h3>
                   <ul>
 <!--                      <li><input type="checkbox" id="myCheck" onclick="myFunction(10)" disabled><span>HR Headcount</span></li> -->
-                     <li><input type="checkbox" id="myCheck" onclick="myFunction(13)" ><span>Employee to HR Ratio</span></li>
-                    <li><input type="checkbox" id="myCheck" onclick="myFunction(15)" ><span>Employee to HR Business Partner Ratio</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction(13)" {%if resp["user_type"]!=1%} disabled {%endif%}><span>Employee to HR Ratio</span></li>
+                    <li><input type="checkbox" id="myCheck" onclick="myFunction(15)" {%if resp["user_type"]!=1%} disabled {%endif%}><span>Employee to HR Business Partner Ratio</span></li>
 
 <!--                      <li><input type="checkbox" id="myCheck" onclick="myFunction(10)" disabled><span>HR Headcount</span></li>
                      <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>HR Business Partner Headcount</span></li>
@@ -120,8 +121,8 @@
 <!--                      <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Joiner Per Recruiter (Quarterly)</span></li>
                      <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Joiner Per Recruiter (Annual)</span></li>
                      <li><input type="checkbox" id="myCheck" onclick="myFunction()" disabled><span>Training Time (Days/Hours)</span></li> -->
-                     <li><input type="checkbox" id="myCheck" onclick="myFunction(14)"><span>Training Spend Per Person ($)</span></li>
-                     <li><input type="checkbox" id="myCheck" onclick="myFunction(12)" ><span>Training Spend as % of Revenue</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction(14)" {%if resp["user_type"]!=1%} disabled {%endif%}><span>Training Spend Per Person ($)</span></li>
+                     <li><input type="checkbox" id="myCheck" onclick="myFunction(12)" {%if resp["user_type"]!=1%} disabled {%endif%}><span>Training Spend as % of Revenue</span></li>
                   </ul>
                 </div>
 
