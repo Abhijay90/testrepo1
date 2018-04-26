@@ -554,7 +554,7 @@ h6.item_hd{
 	transition:all 0.25s ease-in-out;
 }
 .custom_chart .listBl ul li input {
-    border: 1px solid #000;
+    border: 1px solid rgb(56,148,79);
     -webkit-appearance: none;
     background: transparent;
     border-radius: 0;
@@ -562,13 +562,16 @@ h6.item_hd{
     height: 12px;
 }
 .custom_chart .listBl ul li input:checked{
-	border: 1px solid rgb(56,148,79);
+	border: 1px solid #1A89FF;
 	background-image:url("/static/build/images/check.png");
 	background-position:center;
 	background-size:90%;
 	background-repeat: no-repeat;
 }
 .custom_chart .listBl ul li input:checked + span {
+    color:#1A89FF;
+}
+.custom_chart .listBl ul li input + span {
     color:rgb(56,148,79);
 }
 .custom_chart .listBl ul li input[disabled]{
