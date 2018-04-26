@@ -46,7 +46,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'abhiajay','74',NULL,NULL,NULL,NULL,'abhijay@tententen.in',NULL,'abhijay',1,'2018-03-27 04:57:19',1),(2,'Suman','74',NULL,NULL,NULL,NULL,'Suman@cct.com',NULL,'123456',1,'2018-03-31 11:47:52',1),(3,'testuser','110',NULL,NULL,NULL,NULL,'testuser@testuser.com',NULL,'123456',1,'2018-04-25 12:09:46',2);
+INSERT INTO `auth_user` VALUES (1,'abhiajay','74',NULL,NULL,NULL,NULL,'abhijay@tententen.in',NULL,'abhijay',1,'2018-03-27 04:57:19',1),(2,'Suman','74',NULL,NULL,NULL,NULL,'Suman@cct.com',NULL,'123456',1,'2018-03-31 11:47:52',1),(3,'testuser','184',NULL,NULL,NULL,NULL,'testuser@testuser.com',NULL,'123456',1,'2018-04-25 12:09:46',2);
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,4 +328,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-26 11:09:21
+-- Dump completed on 2018-04-26 11:24:03
