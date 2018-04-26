@@ -193,6 +193,13 @@ ul.cards_outer li {
     box-shadow: 0px 0px 10px 3px #666;
     cursor:pointer;
 }
+ul.cards_outer li.disabledCard {
+    filter: grayscale;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    background-color: #999;
+    pointer-events: none;
+}
 ul.cards_outer li:nth-child(even){
 	background-color:rgba(102, 99, 211,1);
 }
