@@ -572,13 +572,13 @@ h6.item_hd{
     color:#1A89FF;
 }
 .custom_chart .listBl ul li input[disabled]{
-	border: 1px solid #666;
+	border: 1px solid #ccc;
     -webkit-appearance: none;
     background: transparent;
     pointer-events:none;
 }
 .custom_chart .listBl ul li input[disabled] + span {
-    color:#666;
+    color:#ccc;
     pointer-events:none;
 }
 .custom_chart .listBl ul li input[type=checkbox]:focus {
