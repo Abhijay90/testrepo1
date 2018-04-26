@@ -315,7 +315,7 @@ CREATE TABLE `user_roles` (
 
 LOCK TABLES `user_roles` WRITE;
 /*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
-INSERT INTO `user_roles` VALUES (1,'*'),(2,'Average_Employee_Cost_rs'),(2,'Employee_Cost'),(2,'headcount_growth'),(2,'overall_revenue_growth');
+INSERT INTO `user_roles` VALUES (1,'*'),(2,'Average_Employee_Cost_dollar'),(2,'Average_Employee_Cost_rs'),(2,'Average_Hiring_Annual'),(2,'Employee_Cost_Revenue_percentage'),(2,'headcount_growth'),(2,'overall_revenue_growth');
 /*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -328,4 +328,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-26  1:20:02
+-- Dump completed on 2018-04-26 10:56:07
