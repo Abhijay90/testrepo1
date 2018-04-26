@@ -184,6 +184,7 @@ def ger_resp_head(key):
     "Overall_Attrition_Annual":{"name":"Overall Attrition (Annual)","db":"company_data","show_metric":0},
     "Voluntary_Attrition_Annual":{"name":"Voluntary Attrition (Annual)","db":"","show_metric":0},
     "Employee_Cost":{"name":"Average Employee Cost ($)","db":"company_data","show_metric":0},
+    "Average_Employee_Cost_dollar":{"name":"Average Employee Cost ($)","db":"company_data","show_metric":0},
     "Revenue_Per_Employe":{"name":"Revenue Per Employee ($)","db":"company_data","show_metric":0},
     "Employee_Cost_Revenue_percentage":{"name":"Employee Cost as % of Revenue","db":"company_data","show_metric":0},
     "Average_Employee_Cost_rs":{"name":"Avg. Employee Cost (Lakh Rs.)","db":"company_data","show_metric":0},
