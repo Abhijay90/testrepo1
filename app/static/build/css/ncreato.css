@@ -562,14 +562,14 @@ h6.item_hd{
     height: 12px;
 }
 .custom_chart .listBl ul li input:checked{
-	border: 1px solid #1A89FF;
+	border: 1px solid rgb(56,148,79);
 	background-image:url("/static/build/images/check.png");
 	background-position:center;
 	background-size:90%;
 	background-repeat: no-repeat;
 }
 .custom_chart .listBl ul li input:checked + span {
-    color:#1A89FF;
+    color:rgb(56,148,79);
 }
 .custom_chart .listBl ul li input[disabled]{
 	border: 1px solid #ccc;
