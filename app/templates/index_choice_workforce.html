@@ -45,10 +45,14 @@
 
                       <div class="pp_out dropdown">
                         <div class="pp dropbtn">
+                          {%if resp["user_type"]==2%}
+                          <img src="../static/build/images/user4.png" alt="Profile Name" />
+                        {%else%}
                           <img src="../static/build/images/dummy-profile.jpg" alt="Profile Name" />
+                        {%endif%}
                         </div>
                         <div class="dropdown-content">
-                          <a href="profile">Profile</a>
+                          {%if resp["user_type"]!=2%}<a href="profile">Profile</a>{%endif%}
                           <a href="/logout">Logout</a>
                         </div>
                       </div>
@@ -79,14 +83,14 @@
                   <ul>
                       <li><input type="checkbox" onclick="myFunction(0)"><span> Overall Revenue Growth - 3 Yr CAGR</span></li>                      
                       <li><input type="checkbox" onclick="myFunction(1)"><span>Headcount Growth (FTE) - 3 Yr CAGR</span></li>
-                      <li><input type="checkbox" onclick="myFunction(2)"><span>EBIT/Revenues (JFM'17)</span></li>
-                      <li><input type="checkbox" onclick="myFunction(3)"><span>Employee Cost as a % of Revenues</span></li>
-                      <li><input type="checkbox" onclick="myFunction(4)"><span>Utilizations (Overall)</span></li>
-                      <li><input type="checkbox" onclick="myFunction(5)"><span>Utilizations (Lateral)</span></li>
-                      <li><input type="checkbox" onclick="myFunction(6)"><span>Headcount in Tier II & Tier III (%)</span></li>
-                      <li><input type="checkbox" onclick="myFunction(7)"><span>Campus Hires FY17 (%)</span></li>
-                      <li><input type="checkbox" onclick="myFunction(8)"><span>Time to Bill (Days)</span></li>
-                      <li><input type="checkbox" onclick="myFunction(9)"><span>Bench Strength (%)</span></li>
+                      <li><input type="checkbox" onclick="myFunction(2)" {%if resp["user_type"]==2%} disabled {%endif%}><span>EBIT/Revenues (JFM'17)</span></li>
+                      <li><input type="checkbox" onclick="myFunction(3)" {%if resp["user_type"]==2%} disabled {%endif%}><span>Employee Cost as a % of Revenues</span></li>
+                      <li><input type="checkbox" onclick="myFunction(4)" {%if resp["user_type"]==2%} disabled {%endif%}><span>Utilizations (Overall)</span></li>
+                      <li><input type="checkbox" onclick="myFunction(5)" {%if resp["user_type"]==2%} disabled {%endif%}><span>Utilizations (Lateral)</span></li>
+                      <li><input type="checkbox" onclick="myFunction(6)" {%if resp["user_type"]==2%} disabled {%endif%}><span>Headcount in Tier II & Tier III (%)</span></li>
+                      <li><input type="checkbox" onclick="myFunction(7)" {%if resp["user_type"]==2%} disabled {%endif%}><span>Campus Hires FY17 (%)</span></li>
+                      <li><input type="checkbox" onclick="myFunction(8)" {%if resp["user_type"]==2%} disabled {%endif%}><span>Time to Bill (Days)</span></li>
+                      <li><input type="checkbox" onclick="myFunction(9)" {%if resp["user_type"]==2%} disabled {%endif%}><span>Bench Strength (%)</span></li>
                   </ul>
                 </div>
 

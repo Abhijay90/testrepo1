@@ -29,4 +29,4 @@ def multicheck():
 @user_check.route('/workforce',methods=['GET'])
 @flask_login.login_required
 def workforce_index():
-    return render_template('index_choice_workforce.html')
+    return render_template('index_choice_workforce.html',resp=session["data"])
